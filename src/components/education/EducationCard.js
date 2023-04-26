@@ -16,7 +16,7 @@ function EducationCard({ education, setEducations, setEdit, isEditable }) {
       <Row>{education.schoolName}</Row>
       <Row>
         <Col>{education.major}</Col>
-        <Col>{education.graducationTypeCode}</Col>
+        <Col>{education.graduationTypeCode}</Col>
       </Row>
       {isEditable && (
         <Col>
