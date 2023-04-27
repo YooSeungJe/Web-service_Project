@@ -40,7 +40,7 @@ async function patch(endpoint, data) {
   console.log(`%cPATCH 요청: ${serverUrl + endpoint}`, 'color: #059c4b;');
   console.log(`%cPATCH 요청 데이터: ${bodyData}`, 'color: #059c4b;');
 
-  return axios.post(serverUrl + endpoint, bodyData, {
+  return axios.patch(serverUrl + endpoint, bodyData, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${sessionStorage.getItem('userToken')}`,
