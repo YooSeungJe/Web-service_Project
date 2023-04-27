@@ -18,6 +18,21 @@ async function get(endpoint, params = "") {
   });
 }
 
+async function patch(endpoint, data) {
+  // JSON.stringify 함수: Javascript 객체를 JSON 형태로 변환함.
+  // 예시: {name: "Kim"} => {"name": "Kim"}
+  const bodyData = JSON.stringify(data);
+  console.log(`%cPATCH 요청: ${serverUrl + endpoint}`, "color: #296aba;");
+  console.log(`%cPATCH 요청 데이터: ${bodyData}`, "color: #296aba;");
+
+  return axios.post(serverUrl + endpoint, bodyData, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("userToken")}`,
+    },
+  });
+}
+
 async function post(endpoint, data) {
   // JSON.stringify 함수: Javascript 객체를 JSON 형태로 변환함.
   // 예시: {name: "Kim"} => {"name": "Kim"}
