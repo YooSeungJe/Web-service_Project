@@ -12,7 +12,7 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const _id = education.key;
+    const _id = education._id;
 
     await Api.patch('education', {
       _id,
@@ -54,6 +54,7 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
             setGraduationTypeCode(e.target.value);
           }}
           inline
+          checked={graduationTypeCode === '재학중'}
         />
         <Form.Check
           name="graduationTypeCode"
@@ -64,6 +65,7 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
             setGraduationTypeCode(e.target.value);
           }}
           inline
+          checked={graduationTypeCode === '학사졸업'}
         />
         <Form.Check
           name="graduationTypeCode"
@@ -74,6 +76,7 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
             setGraduationTypeCode(e.target.value);
           }}
           inline
+          checked={graduationTypeCode === '석사졸업'}
         />
         <Form.Check
           name="graduationTypeCode"
@@ -84,6 +87,7 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
             setGraduationTypeCode(e.target.value);
           }}
           inline
+          checked={graduationTypeCode === '박사졸업'}
         />
       </Form.Group>
       <Form.Group>

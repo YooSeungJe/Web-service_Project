@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Col, Row } from 'react-bootstrap';
 import Educations from './education/Educations';
+import Projects from './projects/Projects';
 
 import { UserStateContext } from '../App';
 import * as Api from '../api';
@@ -64,6 +65,10 @@ function Portfolio() {
         <Col>
           <div style={{ textAlign: 'center' }}>
             <Educations
+              portfolioOwnerId={portfolioOwner.id}
+              isEditable={portfolioOwner.id === userState.user?.id}
+            />
+            <Projects
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
             />

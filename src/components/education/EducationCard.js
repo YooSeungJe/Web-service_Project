@@ -22,9 +22,13 @@ function EducationCard({
 
   return (
     <Card>
-      <Row>{education.schoolName}</Row>
+      <Row>
+        <Col>{education.schoolName}</Col>
+      </Row>
       <Row>
         <Col>{education.major}</Col>
+      </Row>
+      <Row>
         <Col>{education.graduationTypeCode}</Col>
       </Row>
       {isEditable && (
@@ -37,4 +41,4 @@ function EducationCard({
   );
 }
 
-export default EducationCard;
+export default React.memo(EducationCard);
