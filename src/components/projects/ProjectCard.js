@@ -1,4 +1,4 @@
-import { Card, Button, Row, Col, Modal } from "react-bootstrap";
+import { Card, Button, Row, Col } from "react-bootstrap";
 import { useState, useContext } from "react";
 import * as Api from "../../api";
 // 하위 컴포넌트
@@ -18,7 +18,7 @@ function ProjectCard({ project, isEditable, portfolioOwnerId }) {
     e.preventDefault();
     await Api.delete(`project`);
 
-    const res = await Api.get("projects", userId);
+  const res = await Api.get("project", userId);
     setProjects(res.data);
   };
 

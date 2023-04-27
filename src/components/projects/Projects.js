@@ -14,7 +14,8 @@ function Projects({portfolioOwnerId, isEditable}) {
     const [projects, setProjects] = useState([])
 
     useEffect(() => {
-        Api.get("project", portfolioOwnerId).then((res) => setProjects(res.data));
+        Api.get("project", portfolioOwnerId).then((res) => 
+        setProjects(res.data));
     }, [portfolioOwnerId]);
     
     
@@ -26,7 +27,7 @@ function Projects({portfolioOwnerId, isEditable}) {
                     <Card.Title>프로젝트</Card.Title>
                     {projects.map((project) => (
                         <ProjectCard 
-                        key={projectId}
+                        key={project.Id}
                         project={project}
                         isEditable={isEditable}
                         portfolioOwnerId={portfolioOwnerId}

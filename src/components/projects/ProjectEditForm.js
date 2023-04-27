@@ -19,14 +19,14 @@ function ProjectEditForm({ currentProject, setIsEditing }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userId = currentProject.user_id;
+    const userId = currentProject.userId;
 
     await Api.put(`project/${currentProject.id}`, {
-      user_id: userId,
+      userId,
       title,
       description,
-      from_date: startDate,
-      to_date: endDate,
+      startDate,
+      endDate,
     });
 
     // ? 1. 수정된 정보 GET요청
