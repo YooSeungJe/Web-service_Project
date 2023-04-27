@@ -7,13 +7,14 @@ import * as Api from '../../api';
 function Educations({ portfolioOwnerId, isEditable }) {
   const [educations, setEducations] = useState([]);
   const [registering, setRegistering] = useState(false);
+  const userId = portfolioOwnerId;
 
   useEffect(() => {
-    Api.get('education').then((res) => {
-      setEducations(res.data); //json일 수도...
-      console.log(res.data); //{"schoolName":"aa","major":"aa","graduationTypeCode":"재학중"}
+    Api.get(`education/${userId}`).then((res) => {
+      setEducations(res.data);
+      console.log(res.data); //확인용
     });
-  }, [portfolioOwnerId]);
+  }, [userId]);
 
   return (
     <Card>
@@ -21,6 +22,7 @@ function Educations({ portfolioOwnerId, isEditable }) {
         <Card.Title>학력</Card.Title>
         {educations.map((education) => (
           <Education
+            userId={userId}
             key={education._id}
             education={education}
             isEditable={isEditable}
@@ -28,6 +30,7 @@ function Educations({ portfolioOwnerId, isEditable }) {
         ))}
         {registering && (
           <EducationRegisterForm
+            userId={userId}
             setEducations={setEducations}
             setRegistering={setRegistering}
           />

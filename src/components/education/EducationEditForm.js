@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import * as Api from '../../api';
 
-function EducationEditForm({ education, setEducations, setEdit }) {
+function EducationEditForm({ education, setEducations, setEdit, userId }) {
   const [schoolName, setSchoolName] = useState(education.schoolName);
   const [major, setMajor] = useState(education.major);
   const [graduationTypeCode, setGraduationTypeCode] = useState(
@@ -21,7 +21,7 @@ function EducationEditForm({ education, setEducations, setEdit }) {
       graduationTypeCode,
     });
 
-    const res = await Api.get('education');
+    const res = await Api.get(`education/${userId}`);
     setEducations(res.data);
     setEdit(false);
   };

@@ -1,27 +1,15 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import * as Api from '../../api';
 
-function EducationRegisterForm({
-  portfolioOwnerId,
-  setRegistering,
-  setEducations,
-}) {
-  // const navigate = useNavigate();
-
+function EducationRegisterForm({ userId, setRegistering, setEducations }) {
   const [schoolName, setSchoolName] = useState('');
   const [major, setMajor] = useState('');
   const [graduationTypeCode, setGraduationTypeCode] = useState('');
 
-  // const [educationState, setEducationState] = useState({
-  //   schoolName: '',
-  //   major: '',
-  //   graduationType: '',
-  // });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(schoolName, major, graduationTypeCode); //확인용
 
     await Api.post('education', {
       schoolName,
@@ -29,8 +17,11 @@ function EducationRegisterForm({
       graduationTypeCode,
     });
 
-    const res = await Api.get('education');
+    const res = await Api.get(`education/${userId}`);
     setEducations(res.data);
+    console.log(res.data); //확인용
+
+    setRegistering(false);
   };
 
   return (
