@@ -7,7 +7,7 @@ function EducationCard({ education, setEducations, setEdit, isEditable }) {
   const handleDelete = async (e) => {
     e.preventDefault();
     await Api.delete('education');
-    const res = await Api.get('education', _id);
+    const res = await Api.get('/education', _id);
     setEducations(res.data);
   };
 

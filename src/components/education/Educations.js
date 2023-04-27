@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import Education from './Education';
-import EducationRegisterForm from './EducationRegisterForm';
+import EducationAddForm from './EducationAddForm';
 import * as Api from '../../api';
 
 function Educations({ portfolioOwnerId, isEditable }) {
   const [educations, setEducations] = useState([]);
-  const [registering, setRegistering] = useState(false);
+  const [adding, setAdding] = useState(false);
   const userId = portfolioOwnerId;
 
   useEffect(() => {
@@ -28,14 +28,14 @@ function Educations({ portfolioOwnerId, isEditable }) {
             isEditable={isEditable}
           />
         ))}
-        {registering && (
-          <EducationRegisterForm
+        {adding && (
+          <EducationAddForm
             userId={userId}
             setEducations={setEducations}
-            setRegistering={setRegistering}
+            setAdding={setAdding}
           />
         )}
-        {isEditable && <Button onClick={() => setRegistering(true)}>+</Button>}
+        {isEditable && <Button onClick={() => setAdding(true)}>+</Button>}
       </Card.Body>
     </Card>
   );

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import * as Api from '../../api';
 
-function EducationRegisterForm({ userId, setRegistering, setEducations }) {
+function EducationAddForm({ userId, setAdding, setEducations }) {
   const [schoolName, setSchoolName] = useState('');
   const [major, setMajor] = useState('');
   const [graduationTypeCode, setGraduationTypeCode] = useState('');
@@ -21,12 +21,12 @@ function EducationRegisterForm({ userId, setRegistering, setEducations }) {
     setEducations(res.data);
     console.log(res.data); //확인용
 
-    setRegistering(false);
+    setAdding(false);
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="registerSchoolName">
+      <Form.Group controlId="addSchoolName">
         <Form.Control
           name="schoolName"
           type="text"
@@ -35,7 +35,7 @@ function EducationRegisterForm({ userId, setRegistering, setEducations }) {
           onChange={(e) => setSchoolName(e.target.value)}
         />
       </Form.Group>
-      <Form.Group controlId="registerMajor">
+      <Form.Group controlId="addMajor">
         <Form.Control
           name="major"
           type="text"
@@ -88,7 +88,7 @@ function EducationRegisterForm({ userId, setRegistering, setEducations }) {
         <Button variant="primary" type="submit">
           확인
         </Button>
-        <Button variant="secondary" onClick={() => setRegistering(false)}>
+        <Button variant="secondary" onClick={() => setAdding(false)}>
           취소
         </Button>
       </Form.Group>
@@ -96,4 +96,4 @@ function EducationRegisterForm({ userId, setRegistering, setEducations }) {
   );
 }
 
-export default EducationRegisterForm;
+export default EducationAddForm;
