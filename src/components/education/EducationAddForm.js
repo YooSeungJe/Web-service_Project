@@ -19,7 +19,7 @@ function EducationAddForm({ userId, setAdding, setEducations }) {
 
     const res = await Api.get(`education/${userId}`);
     setEducations(res.data);
-    console.log(res.data); //확인용
+    console.log(userId); //확인용
 
     setAdding(false);
   };

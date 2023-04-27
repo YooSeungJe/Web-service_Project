@@ -6,6 +6,8 @@ function Education({ education, setEducations, isEditable, userId }) {
   const [edit, setEdit] = useState(false);
   return (
     <>
+      {console.log('문제없음')}
+      {console.log(edit)}
       {edit ? (
         <EducationEditForm
           userId={userId}
@@ -15,6 +17,7 @@ function Education({ education, setEducations, isEditable, userId }) {
         />
       ) : (
         <EducationCard
+          userId={userId}
           isEditable={isEditable}
           setEdit={setEdit}
           education={education}
