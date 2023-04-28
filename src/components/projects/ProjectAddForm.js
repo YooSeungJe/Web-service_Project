@@ -28,7 +28,7 @@ function ProjectAddForm({setIsAdding}) {
           endDate,
         });
     
-        const res = await Api.get("projects");
+        const res = await Api.get("project");
         setProjects(res.data);
         setIsAdding(false);
       };

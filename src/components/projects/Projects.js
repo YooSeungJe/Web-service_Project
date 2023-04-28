@@ -9,19 +9,19 @@ export const ProjectsContext = createContext();
 
 
 
-function Projects({portfolioOwnerId, isEditable}) {
+function Projects({ isEditable}) {
     const [isAdding, setIsAdding] = useState(false)
     const [projects, setProjects] = useState([])
 
     useEffect(() => {
-        Api.get("project", portfolioOwnerId).then((res) => 
+        Api.get("project").then((res) => 
         setProjects(res.data));
-    }, [portfolioOwnerId]);
+    }, []);
     
     
     
     return (
-        <ProjectsContext.Provider value={{ setProjects }}>
+        <ProjectsContext.Provider value={{ projects, setProjects }}>
             <Card>
                 <Card.Body>
                     <Card.Title>프로젝트</Card.Title>
@@ -30,12 +30,12 @@ function Projects({portfolioOwnerId, isEditable}) {
                         key={project.Id}
                         project={project}
                         isEditable={isEditable}
-                        portfolioOwnerId={portfolioOwnerId}
+
                         />
                     ))}
                 {isAdding && (
                     <ProjectAddForm
-                        portfolioOwnerId={portfolioOwnerId}
+ 
                         setIsAdding={setIsAdding}
                     />
                 )}
