@@ -7,7 +7,7 @@ import { ProjectsContext } from "./Projects";
 
 
 
-function ProjectEditForm({ currentProject, setIsEditing }) {
+function ProjectEditForm({ portfolioOwnerId, currentProject, setIsEditing }) {
   const { setProjects } = useContext(ProjectsContext);
   const [title, setTitle] = useState(currentProject.title);
   const [description, setDescription] = useState(currentProject.description);
@@ -31,7 +31,7 @@ function ProjectEditForm({ currentProject, setIsEditing }) {
     // ? 1. 수정된 정보 GET요청
     // ? 2. 수정된 정보 projects에 저장
     // ? 3. 편집 폼 종료
-    const res = await Api.get("project");
+    const res = await Api.get(`project/${portfolioOwnerId}`);
     setProjects(res.data);
     setIsEditing(false);
   };

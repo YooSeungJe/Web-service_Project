@@ -8,7 +8,7 @@ import { ProjectsContext } from './Projects';
 // ? 편집 버튼 클릭 시 isEditing의 값이 반대로 바뀜 (true <-> false)
 // ? : default가 false라 true로 바뀌면서 Card 컴포넌트가 사라지고 편집 폼이 나타남
 
-function ProjectCard({ project, isEditable }) {
+function ProjectCard({ portfolioOwnerId, project, isEditable }) {
   const { setProjects } = useContext(ProjectsContext);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -16,7 +16,7 @@ function ProjectCard({ project, isEditable }) {
     e.preventDefault();
     try {
       await Api.delete(`project/${project._id}`);
-      const res = await Api.get('project');
+      const res = await Api.get(`project/${portfolioOwnerId}`);
       setProjects(res.data);
     } catch (err) {
       setProjects([]);
@@ -33,6 +33,7 @@ function ProjectCard({ project, isEditable }) {
       <Row className='align-items-center'>
         {isEditing ? (
           <ProjectEditForm
+            portfolioOwnerId={portfolioOwnerId}
             currentProject={project}
             setIsEditing={setIsEditing}
           />

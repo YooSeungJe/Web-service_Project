@@ -9,12 +9,12 @@ export const ProjectsContext = createContext();
 
 
 
-function Projects({ isEditable}) {
+function Projects({ portfolioOwnerId, isEditable}) {
     const [isAdding, setIsAdding] = useState(false)
     const [projects, setProjects] = useState([])
 
     useEffect(() => {
-        Api.get("project").then((res) => 
+        Api.get(`project/${portfolioOwnerId}`).then((res) => 
         setProjects(res.data));
     }, []);
     
@@ -27,6 +27,7 @@ function Projects({ isEditable}) {
                     <Card.Title>프로젝트</Card.Title>
                     {projects.map((project) => (
                         <ProjectCard 
+                        portfolioOwnerId={portfolioOwnerId} 
                         key={project.Id}
                         project={project}
                         isEditable={isEditable}
@@ -35,7 +36,7 @@ function Projects({ isEditable}) {
                     ))}
                 {isAdding && (
                     <ProjectAddForm
- 
+                        portfolioOwnerId={portfolioOwnerId} 
                         setIsAdding={setIsAdding}
                     />
                 )}
