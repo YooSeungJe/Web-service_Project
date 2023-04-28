@@ -15,9 +15,12 @@ function EducationCard({
     e.preventDefault();
 
     await Api.delete('education', _id);
-
-    const res = await Api.get(`education/${userId}`);
-    setEducations(res.data);
+    try {
+      const res = await Api.get(`education/${userId}`);
+      setEducations(res.data);
+    } catch (err) {
+      setEducations([]);
+    }
   };
 
   return (

@@ -24,7 +24,6 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
     const res = await Api.get(`education/${userId}`);
     setEducations(res.data);
     setEdit(false);
-    console.log(res.data);
   };
 
   return (
