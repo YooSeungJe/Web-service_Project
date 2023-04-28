@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import * as Api from '../../api';
 
@@ -6,10 +6,16 @@ function EducationAddForm({ userId, setAdding, setEducations }) {
   const [schoolName, setSchoolName] = useState('');
   const [major, setMajor] = useState('');
   const [graduationTypeCode, setGraduationTypeCode] = useState('');
+  const schoolNameInput = useRef();
+  const majorInput = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(schoolName, major, graduationTypeCode); //확인용
+    if (schoolName.length < 1) {
+      schoolNameInput.current.focus();
+    } else if (major.length < 1) {
+      majorInput.current.focus();
+    }
 
     await Api.post('education', {
       schoolName,
@@ -28,6 +34,7 @@ function EducationAddForm({ userId, setAdding, setEducations }) {
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="addSchoolName">
         <Form.Control
+          ref={schoolNameInput}
           name="schoolName"
           type="text"
           placeholder="학교 이름"
@@ -37,6 +44,7 @@ function EducationAddForm({ userId, setAdding, setEducations }) {
       </Form.Group>
       <Form.Group controlId="addMajor">
         <Form.Control
+          ref={majorInput}
           name="major"
           type="text"
           placeholder="전공"

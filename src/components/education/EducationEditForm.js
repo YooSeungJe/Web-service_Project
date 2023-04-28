@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import * as Api from '../../api';
 
@@ -8,9 +8,16 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
   const [graduationTypeCode, setGraduationTypeCode] = useState(
     education.graduationTypeCode
   );
+  const schoolNameInput = useRef();
+  const majorInput = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (schoolName.length < 1) {
+      schoolNameInput.current.focus();
+    } else if (major.length < 1) {
+      majorInput.current.focus();
+    }
 
     const _id = education._id;
 
@@ -30,6 +37,7 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
     <Form onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Control
+          ref={schoolNameInput}
           type="text"
           placeholder="학력"
           value={schoolName}
@@ -38,6 +46,7 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
       </Form.Group>
       <Form.Group>
         <Form.Control
+          ref={majorInput}
           type="text"
           placeholder="전공"
           value={major}
