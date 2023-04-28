@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 
 import { ProjectsContext } from "./Projects";
 
-function ProjectAddForm({setIsAdding}) {
+function ProjectAddForm({ portfolioOwnerId, setIsAdding}) {
     const { setProjects } = useContext(ProjectsContext);
     const [title, setTitle] = useState(""); // 프로젝트 제목
     const [description, setDescription] = useState(""); // 프로젝트 상세내용
@@ -28,7 +28,7 @@ function ProjectAddForm({setIsAdding}) {
           endDate,
         });
     
-        const res = await Api.get("project");
+        const res = await Api.get(`project/${portfolioOwnerId}`);
         setProjects(res.data);
         setIsAdding(false);
       };
