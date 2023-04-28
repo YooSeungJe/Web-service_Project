@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Row, Col } from 'react-bootstrap';
+import { Card, Button, Col } from 'react-bootstrap';
 import * as Api from '../../api';
 
 function EducationCard({
@@ -24,22 +24,25 @@ function EducationCard({
   };
 
   return (
-    <Card>
-      <Row>
-        <Col>{education.schoolName}</Col>
-      </Row>
-      <Row>
-        <Col>{education.major}</Col>
-      </Row>
-      <Row>
-        <Col>{education.graduationTypeCode}</Col>
-      </Row>
-      {isEditable && (
-        <Col>
-          <Button onClick={() => setEdit((change) => !change)}>편집</Button>
-          <Button onClick={handleDelete}>삭제</Button>
-        </Col>
-      )}
+    <Card bg="light" text="dark" border="info">
+      <Card.Body style={{ width: '40rem' }}>
+        <Card.Title>{education.schoolName}</Card.Title>
+        <Card.Text>{education.major}</Card.Text>
+        <Card.Text>{education.graduationTypeCode}</Card.Text>
+        {isEditable && (
+          <Col>
+            <Button
+              variant="primary"
+              onClick={() => setEdit((change) => !change)}
+            >
+              편집
+            </Button>
+            <Button variant="secondary" onClick={handleDelete}>
+              삭제
+            </Button>
+          </Col>
+        )}
+      </Card.Body>
     </Card>
   );
 }
