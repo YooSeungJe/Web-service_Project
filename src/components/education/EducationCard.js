@@ -24,7 +24,7 @@ function EducationCard({
   };
 
   return (
-    <Card bg="light" text="dark" border="info">
+    <Card bg='light' text='dark' border='info'>
       <Card.Body style={{ width: '40rem' }}>
         <Card.Title>{education.schoolName}</Card.Title>
         <Card.Text>{education.major}</Card.Text>
@@ -32,12 +32,12 @@ function EducationCard({
         {isEditable && (
           <Col>
             <Button
-              variant="primary"
+              variant='primary'
               onClick={() => setEdit((change) => !change)}
             >
               편집
             </Button>
-            <Button variant="secondary" onClick={handleDelete}>
+            <Button variant='secondary' onClick={handleDelete}>
               삭제
             </Button>
           </Col>
