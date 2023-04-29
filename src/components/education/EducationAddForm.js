@@ -26,6 +26,8 @@ function EducationAddForm({ userId, setAdding, setEducations }) {
     const res = await Api.get(`education/${userId}`);
     setEducations(res.data);
     setAdding(false);
+
+    console.log(schoolName, major);
   };
 
   return (

@@ -17,20 +17,22 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
       schoolNameInput.current.focus();
     } else if (major.length < 1) {
       majorInput.current.focus();
+    } else {
+      const _id = education._id;
+
+      await Api.patch('education', {
+        _id,
+        schoolName,
+        major,
+        graduationTypeCode,
+      });
+
+      const res = await Api.get(`education/${userId}`);
+      setEducations(res.data);
+      setEdit(false);
     }
 
-    const _id = education._id;
-
-    await Api.put('education', {
-      _id,
-      schoolName,
-      major,
-      graduationTypeCode,
-    });
-
-    const res = await Api.get(`education/${userId}`);
-    setEducations(res.data);
-    setEdit(false);
+    console.log(schoolName, major);
   };
 
   return (
