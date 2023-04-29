@@ -1,20 +1,91 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Col, Row, Form, Button } from 'react-bootstrap';
-
+import styled from 'styled-components';
 import * as Api from '../../api';
 import { DispatchContext } from '../../App';
 
+const Container = styled.div`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+`;
+
+const Box = styled.div`
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+`;
+
+const Heading = styled.h2`
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+`;
+
+const FormGroup = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
+const Label = styled.label`
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+`;
+
+const Input = styled.input`
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+`;
+
+const Button = styled.button`
+  background-color: #3498db;
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+`;
+
+const SecondaryButton = styled(Button)`
+  background-color: transparent;
+  color: #3498db;
+  border: 1px solid #3498db;
+
+  &:hover {
+    background-color: #3498db;
+    color: white;
+  }
+`;
 function LoginForm() {
   const navigate = useNavigate();
   const dispatch = useContext(DispatchContext);
 
-  //useState로 email 상태를 생성함.
   const [email, setEmail] = useState('');
-  //useState로 password 상태를 생성함.
   const [password, setPassword] = useState('');
 
-  //이메일이 abc@example.com 형태인지 regex를 이용해 확인함.
   const validateEmail = (email) => {
     return email
       .toLowerCase()
@@ -23,36 +94,29 @@ function LoginForm() {
       );
   };
 
-  //위 validateEmail 함수를 통해 이메일 형태 적합 여부를 확인함.
   const isEmailValid = validateEmail(email);
-  // 비밀번호가 4글자 이상인지 여부를 확인함.
   const isPasswordValid = password.length >= 4;
-  //
-  // 이메일과 비밀번호 조건이 동시에 만족되는지 확인함.
   const isFormValid = isEmailValid && isPasswordValid;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // "user/login" 엔드포인트로 post요청함.
       const res = await Api.post('user/login', {
         email,
         password,
       });
-      // 유저 정보는 response의 data임.
+
       const user = res.data;
-      // JWT 토큰은 유저 정보의 token임.
       const jwtToken = user.token;
-      // sessionStorage에 "userToken"이라는 키로 JWT 토큰을 저장함.
+
       sessionStorage.setItem('userToken', jwtToken);
-      // dispatch 함수를 이용해 로그인 성공 상태로 만듦.
+
       dispatch({
         type: 'LOGIN_SUCCESS',
         payload: user,
       });
 
-      // 기본 페이지로 이동함.
       navigate('/', { replace: true });
     } catch (err) {
       console.log('로그인에 실패하였습니다.\n', err);
@@ -61,57 +125,44 @@ function LoginForm() {
 
   return (
     <Container>
-      <Row className='justify-content-md-center mt-5'>
-        <Col lg={8}>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId='loginEmail'>
-              <Form.Label>이메일 주소</Form.Label>
-              <Form.Control
-                type='email'
-                autoComplete='on'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {!isEmailValid && (
-                <Form.Text className='text-success'>
-                  이메일 형식이 올바르지 않습니다.
-                </Form.Text>
-              )}
-            </Form.Group>
+      <Box>
+        <Heading>로그인</Heading>
+        <form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Label>이메일 주소</Label>
+            <Input
+              type='email'
+              autoComplete='on'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {!isEmailValid && (
+              <ErrorMessage>이메일 형식이 올바르지 않습니다.</ErrorMessage>
+            )}
+          </FormGroup>
 
-            <Form.Group controlId='loginPassword' className='mt-3'>
-              <Form.Label>비밀번호</Form.Label>
-              <Form.Control
-                type='password'
-                autoComplete='on'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {!isPasswordValid && (
-                <Form.Text className='text-success'>
-                  비밀번호는 4글자 이상입니다.
-                </Form.Text>
-              )}
-            </Form.Group>
+          <FormGroup>
+            <Label>비밀번호</Label>
+            <Input
+              type='password'
+              autoComplete='on'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {!isPasswordValid && (
+              <ErrorMessage>비밀번호는 4글자 이상입니다.</ErrorMessage>
+            )}
+          </FormGroup>
 
-            <Form.Group as={Row} className='mt-3 text-center'>
-              <Col sm={{ span: 20 }}>
-                <Button variant='primary' type='submit' disabled={!isFormValid}>
-                  로그인
-                </Button>
-              </Col>
-            </Form.Group>
+          <Button type='submit' disabled={!isFormValid}>
+            로그인
+          </Button>
 
-            <Form.Group as={Row} className='mt-3 text-center'>
-              <Col sm={{ span: 20 }}>
-                <Button variant='light' onClick={() => navigate('/register')}>
-                  회원가입하기
-                </Button>
-              </Col>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
+          <SecondaryButton type='button' onClick={() => navigate('/register')}>
+            회원가입하기
+          </SecondaryButton>
+        </form>
+      </Box>
     </Container>
   );
 }
