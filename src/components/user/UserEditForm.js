@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, Card, Col, Row } from "react-bootstrap";
 import * as Api from "../../api";
 
@@ -9,6 +9,17 @@ function UserEditForm({ user, setIsEditing, setUser }) {
   const [email, setEmail] = useState(user.email);
   //useState로 description 상태를 생성함.
   const [description, setDescription] = useState(user.description);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(()=>{
+    if(password === confirmPassword){
+      setDisabled(false);
+    }else{
+      setDisabled(true);
+    }
+  },[password, confirmPassword])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +29,7 @@ function UserEditForm({ user, setIsEditing, setUser }) {
       name,
       email,
       description,
+      password,
     });
     // 유저 정보는 response의 data임.
     const updatedUser = res.data;
@@ -50,7 +62,7 @@ function UserEditForm({ user, setIsEditing, setUser }) {
             />
           </Form.Group>
 
-          <Form.Group controlId="userEditDescription">
+          <Form.Group controlId="userEditDescription" className="mb-3">
             <Form.Control
               type="text"
               placeholder="정보, 인사말"
@@ -59,9 +71,27 @@ function UserEditForm({ user, setIsEditing, setUser }) {
             />
           </Form.Group>
 
+          <Form.Group controlId="userEditPassword">
+            <Form.Control
+              type="password"
+              placeholder="변경할 비밀번호를 입력하세요"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="userEditConfirmPassword">
+            <Form.Control
+              type="password"
+              placeholder="비밀번호를 한번 더 입력하세요"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value) }
+            />
+          </Form.Group>
+
           <Form.Group as={Row} className="mt-3 text-center">
             <Col sm={{ span: 20 }}>
-              <Button variant="primary" type="submit" className="me-3">
+              <Button variant="primary" type="submit" className="me-3" disabled={disabled}>
                 확인
               </Button>
               <Button variant="secondary" onClick={() => setIsEditing(false)}>
