@@ -1,124 +1,142 @@
-import React, { useState, useEffect } from 'react';
-import { get, post, put, delete as del } from '../../api';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import AwardForm from './AwardForm';
-import AwardsList from './AwardsList';
+import React, { useEffect, useState } from 'react';
+import { Box, Typography, Grid } from '@mui/material';
+import { get, post, patch, delete as del } from '../../api';
+import AwardCard from './AwardCard';
+import CreateAwardButton from './CreateAwardButton';
+import CreateAwardDialog from './CreateAwardDialog';
+import UpdateAwardDialog from './UpdateAwardDialog';
 
-const AwardList = () => {
+const AwardList = ({ portfolioOwnerId, isEditable }) => {
   const [awards, setAwards] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [year, setYear] = useState('');
-  const [showForm, setShowForm] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false);
+  const [newAward, setNewAward] = useState({
+    title: '',
+    description: '',
+    year: '',
+  });
 
+  const [selectedAwardId, setSelectedAwardId] = useState(null);
+  const [updateOpen, setUpdateOpen] = useState(false);
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
-        const response = await get('awards');
+        const response = await get(`awards/${portfolioOwnerId}`);
+        console.log(portfolioOwnerId);
         setAwards(response.data);
-        setLoading(false);
       } catch (error) {
         console.error('Error fetching awards:', error);
-        setLoading(false);
       }
-    }
+    };
 
     fetchData();
-  }, []);
+  }, [portfolioOwnerId]);
 
-  const handleCreate = async (e) => {
-    e.preventDefault();
+  const handleOpenCreate = () => {
+    setCreateOpen(true);
+  };
+
+  const handleCloseCreate = () => {
+    setCreateOpen(false);
+  };
+
+  const handleChangeCreate = (event) => {
+    setNewAward({ ...newAward, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async () => {
     try {
-      const newAward = { title, description, year };
+      await post('awards', newAward);
+      const response = await get(`awards/${portfolioOwnerId}`);
+      setAwards(response.data);
+      setCreateOpen(false);
 
-      const response = await post('awards', newAward);
-      if (response.status === 201) {
-        setAwards([...awards, newAward]);
-        setTitle('');
-        setDescription('');
-        setYear('');
-        setShowForm(false); // Hide the form after submitting
-      }
+      setNewAward({ title: '', description: '', year: '' });
+      handleCloseCreate();
     } catch (error) {
-      console.error('Error creating new award:', error);
+      console.error('Error creating award:', error);
     }
   };
 
-  const handleShowForm = () => {
-    setShowForm(true);
+  const handleOpenUpdate = (id) => {
+    setSelectedAwardId(id);
+    console.log('Update clicked for award:', id);
+    // Open the update dialog
+    setUpdateOpen(true);
   };
 
-  const handleCancel = () => {
-    setShowForm(false);
+  const handleUpdateClose = () => {
+    setUpdateOpen(false);
+    setSelectedAwardId(null);
+    setNewAward({ title: '', description: '', year: '' });
   };
 
-  const handleDelete = async (id) => {
+  const handleOpenDelete = (id) => {
+    console.log('Delete clicked for award:', id);
+  };
+  const handleUpdateSubmit = async (id, updatedAward) => {
     try {
-      const response = await del(`awards/${id}`);
-      if (response.status === 204) {
-        setAwards(awards.filter((award) => award.id !== id));
-      }
-    } catch (error) {
-      console.error('Error deleting award:', error);
-    }
-  };
-
-  const handleUpdate = async (id, updatedAward) => {
-    try {
-      const response = await put('awards', {
-        id,
-        ...updatedAward,
-      });
-      if (response.status === 200) {
-        const updatedAwards = awards.map((award) =>
-          award.id === id ? response.data : award
-        );
-        setAwards(updatedAwards);
-      }
+      await patch(`awards/${id}`, updatedAward);
+      const response = await get(`awards/${portfolioOwnerId}`);
+      setAwards(response.data);
+      handleUpdateClose();
     } catch (error) {
       console.error('Error updating award:', error);
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const handleDeleteConfirm = async (id) => {
+    try {
+      await del(`awards/${id}`);
+      setAwards((prevAwards) => prevAwards.filter((award) => award.id !== id));
+      handleCloseDelete();
+    } catch (error) {
+      console.error('Error deleting award:', error);
+    }
+  };
+
+  const handleCloseDelete = () => {
+    console.log('Closing delete dialog');
+  };
 
   return (
-    <Container maxWidth='sm'>
-      <Box my={4}>
-        <Typography variant='h4' component='h1' gutterBottom>
-          Award List
-        </Typography>
-        <AwardsList
-          awards={awards}
-          setAwards={setAwards}
-          onDelete={handleDelete}
-          onUpdate={handleUpdate}
-        />
-        {!showForm && (
-          <Button onClick={handleShowForm} variant='contained' color='primary'>
-            Create
-          </Button>
-        )}
-        {showForm && (
-          <AwardForm
-            title={title}
-            setTitle={setTitle}
-            description={description}
-            setDescription={setDescription}
-            year={year}
-            setYear={setYear}
-            handleCreate={handleCreate}
-            handleCancel={handleCancel}
-          />
-        )}
+    <Box>
+      <Typography variant='h4'>Awards</Typography>
+      {awards.length === 0 && (
+        <Typography variant='body1'>No awards found.</Typography>
+      )}
+      {awards.length > 0 && (
+        <Grid container spacing={2}>
+          {awards.map((award) => (
+            <Grid item key={award.id} xs={12} sm={6} md={4}>
+              <AwardCard
+                key={award.id}
+                award={award}
+                handleOpenUpdate={handleOpenUpdate}
+                handleOpenDelete={handleOpenDelete}
+                handleDeleteConfirm={handleDeleteConfirm}
+                isEditable={isEditable}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      )}
+      <Box mt={2}>
+        <CreateAwardButton onClick={handleOpenCreate} isEditable={isEditable} />
       </Box>
-    </Container>
+      <CreateAwardDialog
+        open={createOpen}
+        onClose={handleCloseCreate}
+        newAward={newAward}
+        handleChange={handleChangeCreate}
+        handleSubmit={handleSubmit}
+      />
+      <UpdateAwardDialog
+        open={updateOpen}
+        onClose={handleUpdateClose}
+        award={awards.find((award) => award.id === selectedAwardId)}
+        handleSubmit={handleUpdateSubmit}
+      />
+    </Box>
   );
 };
 
