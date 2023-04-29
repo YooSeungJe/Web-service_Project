@@ -2,10 +2,11 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Col, Row } from 'react-bootstrap';
 import Educations from './education/Educations';
-
+import Projects from './projects/Projects';
 import { UserStateContext } from '../App';
 import * as Api from '../api';
 import User from './user/User';
+import AwardList from './award/AwardList';
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ function Portfolio() {
   return (
     <Container fluid>
       <Row>
-        <Col md="3" lg="3">
+        <Col md='3' lg='3'>
           <User
             portfolioOwnerId={portfolioOwner.id}
             isEditable={portfolioOwner.id === userState.user?.id}
@@ -67,7 +68,12 @@ function Portfolio() {
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
             />
-            학력 목록, 수상이력 목록, 프로젝트 목록, 자격증 목록 만들기
+            <Projects
+              portfolioOwnerId={portfolioOwner.id}
+              isEditable={portfolioOwner.id === userState.user?.id}
+            />
+
+            <AwardList />
           </div>
         </Col>
       </Row>

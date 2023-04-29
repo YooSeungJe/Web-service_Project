@@ -40,8 +40,8 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
       <Form.Group>
         <Form.Control
           ref={schoolNameInput}
-          type="text"
-          placeholder="학력"
+          type='text'
+          placeholder='학력'
           value={schoolName}
           onChange={(e) => setSchoolName(e.target.value)}
         />
@@ -49,18 +49,18 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
       <Form.Group>
         <Form.Control
           ref={majorInput}
-          type="text"
-          placeholder="전공"
+          type='text'
+          placeholder='전공'
           value={major}
           onChange={(e) => setMajor(e.target.value)}
         />
       </Form.Group>
       <Form.Group>
         <Form.Check
-          name="graduationTypeCode"
-          type="radio"
-          label="재학중"
-          value="재학중"
+          name='graduationTypeCode'
+          type='radio'
+          label='재학중'
+          value='재학중'
           onChange={(e) => {
             setGraduationTypeCode(e.target.value);
           }}
@@ -68,10 +68,10 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
           checked={graduationTypeCode === '재학중'}
         />
         <Form.Check
-          name="graduationTypeCode"
-          type="radio"
-          label="학사졸업"
-          value="학사졸업"
+          name='graduationTypeCode'
+          type='radio'
+          label='학사졸업'
+          value='학사졸업'
           onChange={(e) => {
             setGraduationTypeCode(e.target.value);
           }}
@@ -79,10 +79,10 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
           checked={graduationTypeCode === '학사졸업'}
         />
         <Form.Check
-          name="graduationTypeCode"
-          type="radio"
-          label="석사졸업"
-          value="석사졸업"
+          name='graduationTypeCode'
+          type='radio'
+          label='석사졸업'
+          value='석사졸업'
           onChange={(e) => {
             setGraduationTypeCode(e.target.value);
           }}
@@ -90,10 +90,10 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
           checked={graduationTypeCode === '석사졸업'}
         />
         <Form.Check
-          name="graduationTypeCode"
-          type="radio"
-          label="박사졸업"
-          value="박사졸업"
+          name='graduationTypeCode'
+          type='radio'
+          label='박사졸업'
+          value='박사졸업'
           onChange={(e) => {
             setGraduationTypeCode(e.target.value);
           }}
@@ -102,7 +102,7 @@ function EducationEditForm({ education, setEducations, setEdit, userId }) {
         />
       </Form.Group>
       <Form.Group>
-        <Button type="submit">확인</Button>
+        <Button type='submit'>확인</Button>
         <Button onClick={() => setEdit(false)}>취소</Button>
       </Form.Group>
     </Form>
