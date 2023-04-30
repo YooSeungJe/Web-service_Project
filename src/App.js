@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import * as Api from './api';
 import { loginReducer } from './reducer';
+import './App.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -66,7 +67,9 @@ function App() {
             <Route path="/network" element={<Network />} />
             <Route path="*" element={<Portfolio />} />
           </Routes>
-          <Footer />
+          <div id="wrapper">
+            <Footer id="footer" />
+          </div>
         </Router>
       </UserStateContext.Provider>
     </DispatchContext.Provider>

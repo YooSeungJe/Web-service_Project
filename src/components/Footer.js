@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const Foot = styled.div`
+  width: 100vw;
   align-items: left;
-  background-color: #fefae0;
+  background-color: #e9edc98c;
   padding: 1rem;
 `;
 
