@@ -21,8 +21,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
     const fetchData = async () => {
       try {
         const response = await get(`awards/${portfolioOwnerId}`);
-        console.log(portfolioOwnerId);
-        setAwards(response.data);
+        setAwards(response.data.awards);
       } catch (error) {
         console.error('Error fetching awards:', error);
       }
@@ -47,7 +46,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
     try {
       await post('awards', newAward);
       const response = await get(`awards/${portfolioOwnerId}`);
-      setAwards(response.data);
+      setAwards(response.data.awards);
       setCreateOpen(false);
 
       setNewAward({ title: '', description: '', year: '' });
@@ -57,9 +56,9 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
     }
   };
 
-  const handleOpenUpdate = (id) => {
-    setSelectedAwardId(id);
-    console.log('Update clicked for award:', id);
+  const handleOpenUpdate = (_id) => {
+    setSelectedAwardId(_id);
+    console.log('Update clicked for award:', _id);
     // Open the update dialog
     setUpdateOpen(true);
   };
@@ -70,24 +69,27 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
     setNewAward({ title: '', description: '', year: '' });
   };
 
-  const handleOpenDelete = (id) => {
-    console.log('Delete clicked for award:', id);
+  const handleOpenDelete = (_id) => {
+    console.log('Delete clicked for award:', _id);
   };
-  const handleUpdateSubmit = async (id, updatedAward) => {
+
+  const handleUpdateSubmit = async (_id, updatedAward) => {
     try {
-      await patch(`awards/${id}`, updatedAward);
+      await patch(`awards/${_id}`, updatedAward);
       const response = await get(`awards/${portfolioOwnerId}`);
-      setAwards(response.data);
+      setAwards(response.data.awards);
       handleUpdateClose();
     } catch (error) {
       console.error('Error updating award:', error);
     }
   };
 
-  const handleDeleteConfirm = async (id) => {
+  const handleDeleteConfirm = async (_id) => {
     try {
-      await del(`awards/${id}`);
-      setAwards((prevAwards) => prevAwards.filter((award) => award.id !== id));
+      await del(`awards/${_id}`);
+      setAwards((prevAwards) =>
+        prevAwards.filter((award) => award._id !== _id)
+      );
       handleCloseDelete();
     } catch (error) {
       console.error('Error deleting award:', error);
@@ -105,7 +107,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
         <Typography variant='body1'>No awards found.</Typography>
       )}
       {awards.length > 0 && (
-        <Grid container spacing={2}>
+        <Grid container spacing={2} key='award-grid'>
           {awards.map((award) => (
             <Grid item key={award.id} xs={12} sm={6} md={4}>
               <AwardCard
@@ -133,7 +135,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
       <UpdateAwardDialog
         open={updateOpen}
         onClose={handleUpdateClose}
-        award={awards.find((award) => award.id === selectedAwardId)}
+        award={awards.find((award) => award._id === selectedAwardId)}
         handleSubmit={handleUpdateSubmit}
       />
     </Box>

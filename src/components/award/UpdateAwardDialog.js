@@ -33,7 +33,7 @@ const UpdateAwardDialog = ({ open, onClose, award, handleSubmit }) => {
   };
 
   const handleUpdate = () => {
-    handleSubmit(award.id, updatedAward);
+    handleSubmit(award._id, updatedAward);
     onClose();
   };
 

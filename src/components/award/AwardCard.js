@@ -32,8 +32,8 @@ const AwardCard = ({
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (
             <UpdateAwardButton
-              onClick={() => handleOpenUpdate(award.id)}
-              id={award.id}
+              onClick={() => handleOpenUpdate(award._id)}
+              id={award._id}
             />
           )}
           {isEditable && <DeleteAwardButton onClick={handleDeleteOpen} />}
@@ -42,8 +42,9 @@ const AwardCard = ({
       <DeleteAwardDialog
         open={deleteOpen}
         onClose={handleDeleteClose}
-        handleDeleteConfirm={handleDeleteConfirm}
-        awardId={award.id}
+        // handleDeleteConfirm={handleDeleteConfirm}
+        handleDeleteConfirm={() => handleDeleteConfirm(award._id)}
+        awardId={award._id}
         awardTitle={award.title}
       />
     </Card>

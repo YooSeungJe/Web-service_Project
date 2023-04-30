@@ -15,8 +15,20 @@ const CreateAwardDialog = ({
   handleChange,
   handleSubmit,
 }) => {
+  const [yearError, setYearError] = useState(false);
+
   const handleClose = () => {
     onClose();
+  };
+
+  const handleYearChange = (event) => {
+    const yearValue = event.target.value;
+    if (isNaN(yearValue)) {
+      setYearError(true);
+    } else {
+      setYearError(false);
+    }
+    handleChange(event);
   };
 
   return (
@@ -49,12 +61,14 @@ const CreateAwardDialog = ({
           label='Year'
           name='year'
           value={newAward.year}
-          onChange={handleChange}
+          onChange={handleYearChange}
           fullWidth
           margin='normal'
           InputLabelProps={{
             shrink: true,
           }}
+          error={yearError}
+          helperText={yearError ? 'Year must be a number' : ''}
         />
       </DialogContent>
       <DialogActions>
