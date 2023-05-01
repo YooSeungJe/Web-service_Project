@@ -16,14 +16,16 @@ const AwardCard = ({
 
   const [deleteOpen, setDeleteOpen] = useState(false);
 
-  const handleDeleteOpen = () => {
-    setDeleteOpen(true);
-  };
+  // const handleDeleteOpen = () => {
+  //   setDeleteOpen((prevState) => !prevState);
+  // };
 
-  const handleDeleteClose = () => {
-    setDeleteOpen(false);
+  // const handleDeleteClose = () => {
+  //   setDeleteOpen((prevState) => !prevState);
+  // };
+  const handleDeleteButton = () => {
+    setDeleteOpen((prevState) => !prevState);
   };
-
   return (
     <Card>
       <CardHeader title={title} subheader={year} />
@@ -36,13 +38,14 @@ const AwardCard = ({
               id={award._id}
             />
           )}
-          {isEditable && <DeleteAwardButton onClick={handleDeleteOpen} />}
+          {/* {isEditable && <DeleteAwardButton onClick={handleDeleteOpen} />} */}
+          {isEditable && <DeleteAwardButton onClick={handleDeleteButton} />}
         </Box>
       </CardActions>
       <DeleteAwardDialog
         open={deleteOpen}
-        onClose={handleDeleteClose}
-        // handleDeleteConfirm={handleDeleteConfirm}
+        // onClose={handleDeleteClose}
+        onClose={handleDeleteButton}
         handleDeleteConfirm={() => handleDeleteConfirm(award._id)}
         awardId={award._id}
         awardTitle={award.title}

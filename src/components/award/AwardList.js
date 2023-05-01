@@ -90,6 +90,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
       setAwards((prevAwards) =>
         prevAwards.filter((award) => award._id !== _id)
       );
+      setSelectedAwardId(null);
       handleCloseDelete();
     } catch (error) {
       console.error('Error deleting award:', error);
@@ -97,7 +98,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   const handleCloseDelete = () => {
-    console.log('Closing delete dialog');
+    setSelectedAwardId(null);
   };
 
   return (
@@ -109,9 +110,9 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
       {awards.length > 0 && (
         <Grid container spacing={2} key='award-grid'>
           {awards.map((award) => (
-            <Grid item key={award.id} xs={12} sm={6} md={4}>
+            <Grid item key={award._id} xs={12} sm={6} md={4}>
               <AwardCard
-                key={award.id}
+                key={award._id}
                 award={award}
                 handleOpenUpdate={handleOpenUpdate}
                 handleOpenDelete={handleOpenDelete}
@@ -131,6 +132,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
         newAward={newAward}
         handleChange={handleChangeCreate}
         handleSubmit={handleSubmit}
+        setNewAward={setNewAward}
       />
       <UpdateAwardDialog
         open={updateOpen}
