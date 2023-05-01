@@ -1,9 +1,7 @@
-.main-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+#wrapper {
+  min-height: calc(100vh - 10rem); /* footer 높이를 빼준다. */
 }
-
-.inner-container {
-  flex: 1;
+#footer {
+  height: 10rem; /* footer 높이 */
+  background: yellow;
 }
