@@ -12,6 +12,8 @@ import Network from './components/user/Network';
 import RegisterForm from './components/user/RegisterForm';
 import Portfolio from './components/Portfolio';
 
+import MySwaggerUI from './SwaggerUI';
+
 export const UserStateContext = createContext(null);
 export const DispatchContext = createContext(null);
 
@@ -60,15 +62,16 @@ function App() {
         <Router>
           <Header />
           <Routes>
-            <Route path="/" exact element={<Portfolio />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<RegisterForm />} />
-            <Route path="/users/:userId" element={<Portfolio />} />
-            <Route path="/network" element={<Network />} />
-            <Route path="*" element={<Portfolio />} />
+            <Route path='/' exact element={<Portfolio />} />
+            <Route path='/login' element={<LoginForm />} />
+            <Route path='/register' element={<RegisterForm />} />
+            <Route path='/users/:userId' element={<Portfolio />} />
+            <Route path='/network' element={<Network />} />
+            <Route path='/swagger' element={<MySwaggerUI />} />
+            <Route path='*' element={<Portfolio />} />
           </Routes>
-          <div id="wrapper">
-            <Footer id="footer" />
+          <div id='wrapper'>
+            <Footer id='footer' />
           </div>
         </Router>
       </UserStateContext.Provider>
