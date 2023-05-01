@@ -87,6 +87,10 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // validation
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
+
   useEffect(() => {
     if (userState.user) {
       navigate('/', { replace: true });
@@ -143,8 +147,9 @@ function LoginForm() {
               autoComplete='on'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onBlur={() => setEmailTouched(true)}
             />
-            {!isEmailValid && (
+            {!isEmailValid && emailTouched && (
               <ErrorMessage>이메일 형식이 올바르지 않습니다.</ErrorMessage>
             )}
           </FormGroup>
@@ -156,8 +161,9 @@ function LoginForm() {
               autoComplete='on'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onBlur={() => setPasswordTouched(true)}
             />
-            {!isPasswordValid && (
+            {!isPasswordValid && passwordTouched && (
               <ErrorMessage>비밀번호는 4글자 이상입니다.</ErrorMessage>
             )}
           </FormGroup>
