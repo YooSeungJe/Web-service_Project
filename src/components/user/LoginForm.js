@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Api from '../../api';
-import { DispatchContext } from '../../App';
+import { DispatchContext, UserStateContext } from '../../App';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -81,10 +81,18 @@ const SecondaryButton = styled(Button)`
 `;
 function LoginForm() {
   const navigate = useNavigate();
+  const userState = useContext(UserStateContext);
   const dispatch = useContext(DispatchContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (userState.user) {
+      navigate('/', { replace: true });
+      return;
+    }
+  }, [userState]);
 
   const validateEmail = (email) => {
     return email
