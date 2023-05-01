@@ -38,14 +38,13 @@ function UserEditForm({ user, setIsEditing, setUser }) {
     setIsEditing(false);
   };
   
-  // 비밀번호가 4글자 이상인지 여부를 확인함.
+  // 비밀번호를 변경하지 않거나 할 경우 4글자 이상인지 여부를 확인함.
   const isPasswordValid = password.length >= 4 || !password;
-  console.log(isPasswordValid);
   // 비밀번호와 확인용 비밀번호가 일치하는지 여부를 확인함.
   const isPasswordSame = password === confirmPassword;
   // 이름이 2글자 이상인지 여부를 확인함.
   const isNameValid = name.length >= 2;
-  // 위 4개 조건이 모두 동시에 만족되는지 여부를 확인함.
+  // 위 3개 조건이 모두 동시에 만족되는지 여부를 확인함.
   const isFormValid = isPasswordValid && isPasswordSame && isNameValid;
 
   return (
