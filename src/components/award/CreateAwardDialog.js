@@ -14,10 +14,12 @@ const CreateAwardDialog = ({
   newAward,
   handleChange,
   handleSubmit,
+  setNewAward,
 }) => {
   const [yearError, setYearError] = useState(false);
 
   const handleClose = () => {
+    setNewAward({ title: '', description: '', year: '' });
     onClose();
   };
 

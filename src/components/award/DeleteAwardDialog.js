@@ -17,6 +17,7 @@ const DeleteAwardDialog = ({
 }) => {
   const handleConfirmDelete = () => {
     handleDeleteConfirm(awardId);
+    onClose();
   };
 
   return (
@@ -29,8 +30,8 @@ const DeleteAwardDialog = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        {/* <Button onClick={handleConfirmDelete} color='error'> */}
-        <Button onClick={() => handleDeleteConfirm()} color='error'>
+        <Button onClick={handleConfirmDelete} color='error'>
+          {/* <Button onClick={() => handleDeleteConfirm()} color='error'> */}
           Delete
         </Button>
       </DialogActions>
