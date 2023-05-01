@@ -6,8 +6,6 @@ function Education({ education, setEducations, isEditable, userId }) {
   const [edit, setEdit] = useState(false);
   return (
     <>
-      {console.log(edit)}
-      {console.log(education._id)}
       {edit ? (
         <EducationEditForm
           userId={userId}

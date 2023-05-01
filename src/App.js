@@ -58,17 +58,19 @@ function App() {
     <DispatchContext.Provider value={dispatch}>
       <UserStateContext.Provider value={userState}>
         <Router>
-          <Header />
-          <Routes>
-            <Route path="/" exact element={<Portfolio />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<RegisterForm />} />
-            <Route path="/users/:userId" element={<Portfolio />} />
-            <Route path="/network" element={<Network />} />
-            <Route path="*" element={<Portfolio />} />
-          </Routes>
-          <div id="wrapper">
-            <Footer id="footer" />
+          <div className="main-container">
+            <Header />
+            <div className="inner-container">
+              <Routes>
+                <Route path="/" exact element={<Portfolio />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/register" element={<RegisterForm />} />
+                <Route path="/users/:userId" element={<Portfolio />} />
+                <Route path="/network" element={<Network />} />
+                <Route path="*" element={<Portfolio />} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
         </Router>
       </UserStateContext.Provider>
