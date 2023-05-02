@@ -1,10 +1,11 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
-
+import './Network.css'
 import * as Api from "../../api";
 import UserCard from "./UserCard";
 import { UserStateContext } from "../../App";
+
 
 function Network() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ function Network() {
   }, [userState, navigate]);
 
   return (
+    <div className="back">
     <Container fluid>
       <Row xs="auto" className="jusify-content-center">
         {users.map((user) => (
@@ -30,7 +32,9 @@ function Network() {
         ))}
       </Row>
     </Container>
+    </div>
   );
 }
 
 export default Network;
+
