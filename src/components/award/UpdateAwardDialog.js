@@ -39,7 +39,7 @@ const UpdateAwardDialog = ({ open, onClose, award, handleSubmit }) => {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Edit Award</DialogTitle>
+      <DialogTitle>수상 내역 수정</DialogTitle>
       <DialogContent>
         <TextField
           margin='normal'
@@ -67,8 +67,8 @@ const UpdateAwardDialog = ({ open, onClose, award, handleSubmit }) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleUpdate}>Update</Button>
+        <Button onClick={onClose}>취소하기</Button>
+        <Button onClick={handleUpdate}>수정하기</Button>
       </DialogActions>
     </Dialog>
   );
