@@ -4,7 +4,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 import { UserStateContext } from '../App';
 import * as Api from '../api';
 import User from './user/User';
-
+import Comments from './comment/Comments'
 import EducationList from './education/EducationList';
 import ProjectList from './project/ProjectList';
 import AwardList from './award/AwardList';
@@ -63,6 +63,10 @@ function Portfolio() {
             <User
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
+            />
+            <Comments
+              portfolioOwnerId={portfolioOwner.id}
+              isEditable={true}     // 일단 테스트를 위해 모든 상황에도 사용할 수 있도록 설정
             />
           </Col>
           <Col>
