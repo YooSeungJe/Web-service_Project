@@ -75,6 +75,10 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleUpdateSubmit = async (_id, updatedAward) => {
     try {
+      console.log(`updatedAward : ${updatedAward}`);
+      console.log(`updatedAward.title : ${updatedAward.title}`);
+      console.log(`_id : ${_id}`);
+      console.log(`portfolioOwnerId : ${portfolioOwnerId}`);
       await patch(`awards/${_id}`, updatedAward);
       const response = await get(`awards/${portfolioOwnerId}`);
       setAwards(response.data.awards);
@@ -103,12 +107,12 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <Box>
-      <Typography variant='h4'>Awards</Typography>
+      <Typography variant="h4">Awards</Typography>
       {awards.length === 0 && (
-        <Typography variant='body1'>No awards found.</Typography>
+        <Typography variant="body1">No awards found.</Typography>
       )}
       {awards.length > 0 && (
-        <Grid container spacing={2} key='award-grid'>
+        <Grid container spacing={2} key="award-grid">
           {awards.map((award) => (
             <Grid item key={award._id} xs={12} sm={6} md={4}>
               <AwardCard
