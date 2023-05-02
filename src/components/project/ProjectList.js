@@ -16,11 +16,6 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
     endDate: new Date(),
   });
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString();
-  };
-
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [updateOpen, setUpdateOpen] = useState(false);
   useEffect(() => {
