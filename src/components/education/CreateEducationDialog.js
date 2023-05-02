@@ -29,7 +29,7 @@ const CreateEducationDialog = ({
       <DialogTitle>Create Education</DialogTitle>
       <DialogContent>
         <TextField
-          label="Education"
+          label="School Name"
           name="schoolName"
           value={newEducation.schoolName}
           onChange={handleChange}
