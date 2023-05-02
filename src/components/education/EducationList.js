@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Grid } from '@mui/material';
-import { get, post, patch, delete as del } from '../../api';
+import { get, post, put, patch, delete as del } from '../../api';
 import EducationCard from './EducationCard';
 import CreateEducationButton from './CreateEducationButton';
 import CreateEducationDialog from './CreateEducationDialog.js';
 import UpdateEducationDialog from './UpdateEducationDialog';
+import { ConstructionOutlined } from '@mui/icons-material';
 
 const EducationList = ({ portfolioOwnerId, isEditable }) => {
   const [educations, setEducations] = useState([]);
@@ -78,11 +79,17 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleUpdateSubmit = async (_id, updatedEducation) => {
     try {
-      await patch(`education/${_id}`, updatedEducation);
+      await put(`education/${_id}`, updatedEducation);
       const response = await get(`education/${portfolioOwnerId}`);
-      setEducations(response.data.educations);
+      setEducations(response.data);
       handleUpdateClose();
     } catch (error) {
+      console.log(`updatedEducation : ${updatedEducation}`);
+      console.log(
+        `updatedEducation.schoolName : ${updatedEducation.schoolName}`
+      );
+      console.log(`_id : ${_id}`);
+      console.log(`portfolioOwnerId : ${portfolioOwnerId}`);
       console.error('Error updating education:', error);
     }
   };

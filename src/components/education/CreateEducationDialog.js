@@ -29,7 +29,7 @@ const CreateEducationDialog = ({
       <DialogTitle>Create Education</DialogTitle>
       <DialogContent>
         <TextField
-          label="Education"
+          label="School Name"
           name="schoolName"
           value={newEducation.schoolName}
           onChange={handleChange}
@@ -51,8 +51,10 @@ const CreateEducationDialog = ({
           }}
         />
         <RadioGroup
+          name="graduationTypeCode"
           value={newEducation.graduationTypeCode}
           onChange={handleChange}
+          row
         >
           <FormControlLabel value="재학중" control={<Radio />} label="재학중" />
           <FormControlLabel
