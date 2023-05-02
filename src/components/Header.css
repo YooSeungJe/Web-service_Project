@@ -13,14 +13,13 @@
 
 nav {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: flex-end;
     align-items: center;
     background-color: #E9EDC9;
     padding: 1rem;
     font-size: 1rem;
-   
     
-
 }
 
 
@@ -30,6 +29,7 @@ nav {
     font-size: 22px;
     transition: all 0.2s linear;
     font-family: 'Nunito', sans-serif;
+    display: block;
 }
 
 .mybtn:hover {
@@ -43,6 +43,7 @@ nav {
     font-size: 22px;
     font-family: 'Nunito', sans-serif;
     transition: all 0.2s linear;
+    display: block;
 }
 
 .netbtn:hover {
@@ -59,6 +60,7 @@ nav {
     font-size: 22px;
     font-family: 'Nunito', sans-serif;
     transition: all 0.2s linear;
+    display: block;
 }
 
 .outbtn:hover {
@@ -66,7 +68,14 @@ nav {
 }
 
 .bar {
-    margin-left: 1250px;
+    /* margin-left: 1250px; */
+    display: flex;
+    align-items: center;
+}
+
+.bar > a {
+    margin-left: 10px;
+    text-decoration: none;
 }
 
 button {
