@@ -1,11 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Col, Row } from 'react-bootstrap';
-import Educations from './education/Educations';
-import Projects from './projects/Projects';
 import { UserStateContext } from '../App';
 import * as Api from '../api';
 import User from './user/User';
+
+import EducationList from './education/EducationList';
+import ProjectList from './project/ProjectList';
 import AwardList from './award/AwardList';
 import CertificateList from './certificate/CertificateList';
 
@@ -55,36 +56,38 @@ function Portfolio() {
   }
 
   return (
-    <Container fluid>
-      <Row>
-        <Col md='3' lg='3'>
-          <User
-            portfolioOwnerId={portfolioOwner.id}
-            isEditable={portfolioOwner.id === userState.user?.id}
-          />
-        </Col>
-        <Col>
-          <div style={{ textAlign: 'center' }}>
-            <Educations
+    <div className="portfolio">
+      <Container fluid>
+        <Row>
+          <Col md="3" lg="3">
+            <User
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
             />
-            <Projects
-              portfolioOwnerId={portfolioOwner.id}
-              isEditable={portfolioOwner.id === userState.user?.id}
-            />
-            <CertificateList
-              portfolioOwnerId={portfolioOwner.id}
-              isEditable={portfolioOwner.id === userState.user?.id}
-            />
-            <AwardList
-              portfolioOwnerId={portfolioOwner.id}
-              isEditable={portfolioOwner.id === userState.user?.id}
-            />
-          </div>
-        </Col>
-      </Row>
-    </Container>
+          </Col>
+          <Col>
+            <div style={{ textAlign: 'center' }}>
+              <EducationList
+                portfolioOwnerId={portfolioOwner.id}
+                isEditable={portfolioOwner.id === userState.user?.id}
+              />
+              <ProjectList
+                portfolioOwnerId={portfolioOwner.id}
+                isEditable={portfolioOwner.id === userState.user?.id}
+              />
+              <CertificateList
+                portfolioOwnerId={portfolioOwner.id}
+                isEditable={portfolioOwner.id === userState.user?.id}
+              />
+              <AwardList
+                portfolioOwnerId={portfolioOwner.id}
+                isEditable={portfolioOwner.id === userState.user?.id}
+              />
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

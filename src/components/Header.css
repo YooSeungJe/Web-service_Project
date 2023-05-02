@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'ChosunGu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
+
+nav {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #E9EDC9;
+    padding: 1rem;
+    font-size: 1rem;
+    
+}
+
+.mybtn {
+    color: #617A55;
+    font-size: 22px;
+    transition: all 0.2s linear;
+    font-family: 'Nunito', sans-serif;
+    display: block;
+}
+
+.mybtn:hover {
+  transform: scale(1.07);
+}
+
+.netbtn {
+    color:#617A55;
+    font-size: 22px;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.2s linear;
+    display: block;
+}
+
+.netbtn:hover {
+  transform: scale(1.07);
+}
+
+.out {
+  margin-left: 39px;
+}
+
+.outbtn {
+    color: red;
+    font-size: 22px;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.2s linear;
+    display: block;
+}
+
+.outbtn:hover {
+  transform: scale(1.07);
+}
+
+.bar {
+    /* margin-left: 1250px; */
+    display: flex;
+    align-items: center;
+}
+
+.bar > a {
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+}
