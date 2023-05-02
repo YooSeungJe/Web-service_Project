@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Foot = styled.div`
-  width: 100vw;
+  width: 100%;
   align-items: left;
   background-color: #e9edc98c;
   padding: 1rem;

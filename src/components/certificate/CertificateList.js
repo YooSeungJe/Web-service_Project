@@ -127,9 +127,9 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <Box>
-      <Typography variant='h4'>Certificates</Typography>
+      <Typography variant="h4">Certificates</Typography>
       {certificates.length === 0 && (
-        <Typography variant='body1'>No certificates found.</Typography>
+        <Typography variant="body1">No certificates found.</Typography>
       )}
       {certificates.length > 0 && (
         <Grid container spacing={2}>

@@ -2,29 +2,58 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Api from '../../api';
+
+
+import './LoginForm.css'
+
+
 import { DispatchContext, UserStateContext } from '../../App';
+
 
 const Container = styled.div`
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background-color : #FEFAE0;
+  margin-top:-70px;
+  
 `;
 
-const Box = styled.div`
-  background-color: white;
+const LeftBox = styled.div`
+  background-color: #02343F;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 7px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  
+  margin-top:100px;
+  box-sizing:content-box;
+  height:550px;
+  
+  
+  
+`;
+
+
+const RightBox = styled.div`
+  background-color: #E9EDC9 ;
+  padding: 2rem;
+  border-radius: 7px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 370px;
+  margin-top:100px;
+  box-sizing:content-box;
+  height:550px;
+  
 `;
+
 
 const Heading = styled.h2`
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2rem;
+  
 `;
 
 const FormGroup = styled.div`
@@ -35,6 +64,7 @@ const Label = styled.label`
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
+  
 `;
 
 const Input = styled.input`
@@ -44,17 +74,18 @@ const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
+  
 `;
 
 const ErrorMessage = styled.p`
-  color: red;
+  color: #FE6244;
   font-size: 0.875rem;
   margin-top: 0.25rem;
 `;
 
 const Button = styled.button`
-  background-color: #3498db;
-  color: white;
+  
+  margin-top:30px;
   font-size: 1rem;
   padding: 0.75rem 1rem;
   border-radius: 5px;
@@ -65,18 +96,18 @@ const Button = styled.button`
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
-    background-color: #2980b9;
+    background-color: #A4D0A4;
   }
 `;
 
 const SecondaryButton = styled(Button)`
-  background-color: transparent;
-  color: #3498db;
-  border: 1px solid #3498db;
-
+  
+  color: #02343F;
+  margin-top:9px;
+  
   &:hover {
-    background-color: #3498db;
-    color: white;
+    background-color: #F0EDCC;
+    
   }
 `;
 function LoginForm() {
@@ -137,12 +168,17 @@ function LoginForm() {
 
   return (
     <Container>
-      <Box>
-        <Heading>로그인</Heading>
+      <LeftBox>
+        <Heading className='left-head'>Portfolio Sharing Service</Heading>
+        <Heading className='team'>Team 10</Heading>
+      </LeftBox>
+      <RightBox>
+        <Heading className='right-head'>Sign in</Heading>
         <form onSubmit={handleSubmit}>
           <FormGroup>
-            <Label>이메일 주소</Label>
+            <Label>✉️E-mail</Label>
             <Input
+              
               type='email'
               autoComplete='on'
               value={email}
@@ -155,7 +191,7 @@ function LoginForm() {
           </FormGroup>
 
           <FormGroup>
-            <Label>비밀번호</Label>
+            <Label>🗝️Password</Label>
             <Input
               type='password'
               autoComplete='on'
@@ -168,16 +204,21 @@ function LoginForm() {
             )}
           </FormGroup>
 
-          <Button type='submit' disabled={!isFormValid}>
-            로그인
+          <Button className='in' type='submit' disabled={!isFormValid}>
+            Sign In
           </Button>
 
-          <SecondaryButton type='button' onClick={() => navigate('/register')}>
-            회원가입하기
+          <SecondaryButton className='up' type='button' onClick={() => navigate('/register')}>
+            Sign Up
           </SecondaryButton>
         </form>
-      </Box>
+      </RightBox>
+      
+      
     </Container>
+
+
+    
   );
 }
 
