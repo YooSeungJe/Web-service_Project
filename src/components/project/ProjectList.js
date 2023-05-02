@@ -72,7 +72,12 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
   const handleUpdateClose = () => {
     setUpdateOpen(false);
     setSelectedProjectId(null);
-    setNewProject({ title: '', description: '', startDate: '', endDate: '' });
+    setNewProject({
+      title: '',
+      description: '',
+      startDate: new Date(),
+      endDate: new Date(),
+    });
   };
 
   const handleOpenDelete = (_id) => {

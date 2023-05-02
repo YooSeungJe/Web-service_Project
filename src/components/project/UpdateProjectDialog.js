@@ -61,16 +61,18 @@ const UpdateProjectDialog = ({ open, onClose, project, handleSubmit }) => {
           onChange={handleChange}
         />
         <DatePicker
-          data-name="startDate"
+          name="startDate"
           value={updatedProject.startDate}
           selected={updatedProject.startDate}
           onChange={handleChange}
+          dateFormat="yyyy.MM.dd"
         />
         <DatePicker
-          data-name="endDate"
+          name="endDate"
           value={updatedProject.endDate}
           selected={updatedProject.endDate}
           onChange={handleChange}
+          dateFormat="yyyy.MM.dd"
         />
       </DialogContent>
       <DialogActions>
