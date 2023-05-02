@@ -51,8 +51,10 @@ const CreateEducationDialog = ({
           }}
         />
         <RadioGroup
+          name="graduationTypeCode"
           value={newEducation.graduationTypeCode}
           onChange={handleChange}
+          row
         >
           <FormControlLabel value="재학중" control={<Radio />} label="재학중" />
           <FormControlLabel

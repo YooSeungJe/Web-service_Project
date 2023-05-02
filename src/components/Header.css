@@ -1,83 +1,68 @@
 @font-face {
-    font-family: 'ChosunGu';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'ChosunGu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
 
-
-
-
-
-
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #E9EDC9;
-    padding: 1rem;
-    font-size: 1rem;
-   
-    
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e9edc9;
+  padding: 1rem;
+  font-size: 1rem;
 }
 
-
-
 .mybtn {
-    color: #617A55;
-    font-size: 22px;
-    transition: all 0.2s linear;
-    font-family: 'Nunito', sans-serif;
+  color: #617a55;
+  font-size: 22px;
+  transition: all 0.2s linear;
+  font-family: 'Nunito', sans-serif;
 }
 
 .mybtn:hover {
-    transform: scale(1.07);
+  transform: scale(1.07);
 }
 
-
-
 .netbtn {
-    color:#617A55;
-    font-size: 22px;
-    font-family: 'Nunito', sans-serif;
-    transition: all 0.2s linear;
+  color: #617a55;
+  font-size: 22px;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s linear;
 }
 
 .netbtn:hover {
-    transform: scale(1.07);
+  transform: scale(1.07);
 }
 
 .out {
-    margin-left: 39px;
-    
+  margin-left: 39px;
 }
 
 .outbtn {
-    color: red;
-    font-size: 22px;
-    font-family: 'Nunito', sans-serif;
-    transition: all 0.2s linear;
+  color: red;
+  font-size: 22px;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s linear;
 }
 
 .outbtn:hover {
-    transform: scale(1.07);
+  transform: scale(1.07);
 }
 
 .bar {
-    margin-left: 1250px;
+  margin-left: 1250px;
 }
 
 button {
-    background-color: transparent;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 1rem;
-    
-
-
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
 }
