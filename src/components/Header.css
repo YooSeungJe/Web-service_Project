@@ -1,15 +1,11 @@
 @font-face {
-    font-family: 'ChosunGu';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'ChosunGu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
-
-
-
-
-
 
 nav {
     display: flex;
@@ -22,8 +18,6 @@ nav {
     
 }
 
-
-
 .mybtn {
     color: #617A55;
     font-size: 22px;
@@ -33,10 +27,8 @@ nav {
 }
 
 .mybtn:hover {
-    transform: scale(1.07);
+  transform: scale(1.07);
 }
-
-
 
 .netbtn {
     color:#617A55;
@@ -47,12 +39,11 @@ nav {
 }
 
 .netbtn:hover {
-    transform: scale(1.07);
+  transform: scale(1.07);
 }
 
 .out {
-    margin-left: 39px;
-    
+  margin-left: 39px;
 }
 
 .outbtn {
@@ -64,7 +55,7 @@ nav {
 }
 
 .outbtn:hover {
-    transform: scale(1.07);
+  transform: scale(1.07);
 }
 
 .bar {
@@ -79,14 +70,11 @@ nav {
 }
 
 button {
-    background-color: transparent;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 1rem;
-    
-
-
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
 }
