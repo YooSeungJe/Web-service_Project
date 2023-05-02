@@ -1,0 +1,27 @@
+.back {
+  background-color: #e9edc9;
+}
+
+/* Network.module.css */
+
+.cardWrapper {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 576px) {
+  .cardWrapper {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .cardWrapper {
+    width: 33.33%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cardWrapper {
+    width: 25%;
+  }
+}
