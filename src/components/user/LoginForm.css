@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&display=swap');
+@font-face {
+    font-family: 'ChosunGu';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
+
+
+
+.left-head {
+    font-family: 'Nunito', sans-serif;
+    color: #FAEDCD;
+    margin-top: 120px;
+    
+    text-align: center;
+    text-transform: uppercase;
+    background-image: linear-gradient(
+    -225deg,
+    #C7E9B0 0%,
+    #CCD5AE 10%,
+    #FAEDCD 50%,
+    #FEFAE0 100%
+  );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: 50px;
+}
+
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+.team {
+    color: #FFEAD2;
+    margin-top: 170px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 25px;
+}
+
+.right-head {
+    color: #02343F;
+    font-family: 'Nunito', sans-serif;
+} 
+
+Label {
+    color: #02343F;
+    font-family: 'Nunito', sans-serif;
+}
+
+.in {
+   background-color: #02343F;
+   color: #F0EDCC;
+   font-family: 'Nunito', sans-serif;
+}
+
+.up {
+    border-color: #F0EDCC;
+    font-family: 'Nunito', sans-serif;
+    border:solid;
+    border-color: #02343F;
+    border-width: thin;
+    background-color: #FEFAE0;
+}
+
+Input {
+    background-color : #FEFAE0;
+  
+}
+
+img {
+    height: 300px;
+    
+   
+}
