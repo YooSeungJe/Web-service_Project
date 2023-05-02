@@ -11,27 +11,21 @@ import {
 const DeleteCertificateDialog = ({
   open,
   onClose,
-  handleDeleteConfirm,
-  certificateId,
-  certificateName,
+  onConfirmDelete,
+  certificate,
 }) => {
-  const handleConfirmDelete = () => {
-    handleDeleteConfirm(certificateId);
-  };
-
+  console.log('check', certificate);
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Delete Certificate</DialogTitle>
       <DialogContent>
-        <Typography variant='body1'>
-          Are you sure you want to delete the certificate "{certificateName}"?
+        <Typography>
+          {`Are you sure you want to delete the certification "${certificate.certificationName}" ?`}
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} variant='outlined'>
-          Cancel
-        </Button>
-        <Button onClick={handleConfirmDelete} variant='contained' color='error'>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onConfirmDelete} variant='contained' color='error'>
           Delete
         </Button>
       </DialogActions>
