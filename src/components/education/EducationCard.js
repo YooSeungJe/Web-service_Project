@@ -1,50 +1,57 @@
-import React from 'react';
-import { Card, Button, Col } from 'react-bootstrap';
-import * as Api from '../../api';
+import React, { useState } from 'react';
+import { Card, CardHeader, CardContent, CardActions, Box } from '@mui/material';
+import UpdateEducationButton from './UpdateEducationButton';
+import DeleteEducationButton from './DeleteEducationButton.js';
+import DeleteEducationDialog from './DeleteEducationDialog';
 
-function EducationCard({
+const EducationCard = ({
   education,
-  setEducations,
-  setEdit,
+  handleOpenUpdate,
+  handleOpenDelete,
+  handleDeleteConfirm,
   isEditable,
-  userId,
-}) {
-  const _id = education._id;
+  currentUserId,
+}) => {
+  const { schoolName, major, graduationTypeCode } = education;
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
-    await Api.delete('education', _id);
-    try {
-      const res = await Api.get(`education/${userId}`);
-      setEducations(res.data);
-    } catch (err) {
-      setEducations([]);
-    }
+  // const handleDeleteOpen = () => {
+  //   setDeleteOpen((prevState) => !prevState);
+  // };
+
+  // const handleDeleteClose = () => {
+  //   setDeleteOpen((prevState) => !prevState);
+  // };
+  const handleDeleteButton = () => {
+    setDeleteOpen((prevState) => !prevState);
   };
-
   return (
-    <Card bg='light' text='dark' border='info'>
-      <Card.Body style={{ width: '40rem' }}>
-        <Card.Title>{education.schoolName}</Card.Title>
-        <Card.Text>{education.major}</Card.Text>
-        <Card.Text>{education.graduationTypeCode}</Card.Text>
-        {isEditable && (
-          <Col>
-            <Button
-              variant='primary'
-              onClick={() => setEdit((change) => !change)}
-            >
-              편집
-            </Button>
-            <Button variant='secondary' onClick={handleDelete}>
-              삭제
-            </Button>
-          </Col>
-        )}
-      </Card.Body>
+    <Card>
+      <CardHeader title={schoolName} subheader={graduationTypeCode} />
+      <CardContent>{major}</CardContent>
+      <CardActions disableSpacing>
+        <Box sx={{ ml: 'auto' }}>
+          {isEditable && (
+            <UpdateEducationButton
+              onClick={() => handleOpenUpdate(education._id)}
+              id={education._id}
+            />
+          )}
+          {/* {isEditable && <DeleteEducationButton onClick={handleDeleteOpen} />} */}
+          {isEditable && <DeleteEducationButton onClick={handleDeleteButton} />}
+        </Box>
+      </CardActions>
+      <DeleteEducationDialog
+        open={deleteOpen}
+        // onClose={handleDeleteClose}
+        onClose={handleDeleteButton}
+        handleDeleteConfirm={() => handleDeleteConfirm(education._id)}
+        educationId={education._id}
+        educationTitle={education.title}
+      />
     </Card>
   );
-}
+};
 
-export default React.memo(EducationCard);
+export default EducationCard;
