@@ -35,7 +35,7 @@ function Projects({ portfolioOwnerId, isEditable }) {
             />
           )}
           {isEditable && (
-            <Row className='text-center mt-4 mb-3'>
+            <Row className="text-center mt-4 mb-3">
               <Col sm={{ span: 20 }}>
                 <Button onClick={() => setIsAdding(true)}>+</Button>
               </Col>

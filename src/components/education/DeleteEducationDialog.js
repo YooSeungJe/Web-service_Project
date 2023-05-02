@@ -8,30 +8,30 @@ import {
   Typography,
 } from '@mui/material';
 
-const DeleteCertificateDialog = ({
+const DeleteEducationDialog = ({
   open,
   onClose,
   handleDeleteConfirm,
-  certificateId,
-  certificateName,
+  educationId,
+  educationTitle,
 }) => {
   const handleConfirmDelete = () => {
-    handleDeleteConfirm(certificateId);
+    handleDeleteConfirm(educationId);
+    onClose();
   };
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Delete Certificate</DialogTitle>
+      <DialogTitle>Delete Education</DialogTitle>
       <DialogContent>
         <Typography variant="body1">
-          Are you sure you want to delete the certificate "{certificateName}"?
+          Are you sure you want to delete the education "{educationTitle}"?
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} variant="outlined">
-          Cancel
-        </Button>
-        <Button onClick={handleConfirmDelete} variant="contained" color="error">
+        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={handleConfirmDelete} color="error">
+          {/* <Button onClick={() => handleDeleteConfirm()} color='error'> */}
           Delete
         </Button>
       </DialogActions>
@@ -39,4 +39,4 @@ const DeleteCertificateDialog = ({
   );
 };
 
-export default DeleteCertificateDialog;
+export default DeleteEducationDialog;
