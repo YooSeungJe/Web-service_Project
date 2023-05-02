@@ -1,0 +1,8 @@
+#wrapper {
+  min-height: calc(100vh - 10rem); /* footer 높이를 빼준다. */
+  background-color: #E9EDC9;
+}
+#footer {
+  height: 10rem; /* footer 높이 */
+  background: yellow;
+}

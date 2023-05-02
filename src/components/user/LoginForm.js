@@ -1,20 +1,134 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { Container, Col, Row, Form, Button } from "react-bootstrap";
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import * as Api from '../../api';
 
-import * as Api from "../../api";
-import { DispatchContext } from "../../App";
 
+import './LoginForm.css'
+
+
+import { DispatchContext, UserStateContext } from '../../App';
+
+
+const Container = styled.div`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color : #FEFAE0;
+  margin-top:-70px;
+  
+`;
+
+const LeftBox = styled.div`
+  background-color: #02343F;
+  padding: 2rem;
+  border-radius: 7px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  
+  margin-top:100px;
+  box-sizing:content-box;
+  height:550px;
+  
+  
+  
+`;
+
+
+const RightBox = styled.div`
+  background-color: #E9EDC9 ;
+  padding: 2rem;
+  border-radius: 7px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 370px;
+  margin-top:100px;
+  box-sizing:content-box;
+  height:550px;
+  
+`;
+
+
+const Heading = styled.h2`
+  text-align: center;
+  margin-bottom: 2rem;
+  
+`;
+
+const FormGroup = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
+const Label = styled.label`
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+  
+`;
+
+const Input = styled.input`
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  
+`;
+
+const ErrorMessage = styled.p`
+  color: #FE6244;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+`;
+
+const Button = styled.button`
+  
+  margin-top:30px;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #A4D0A4;
+  }
+`;
+
+const SecondaryButton = styled(Button)`
+  
+  color: #02343F;
+  margin-top:9px;
+  
+  &:hover {
+    background-color: #F0EDCC;
+    
+  }
+`;
 function LoginForm() {
   const navigate = useNavigate();
+  const userState = useContext(UserStateContext);
   const dispatch = useContext(DispatchContext);
 
-  //useState로 email 상태를 생성함.
-  const [email, setEmail] = useState("");
-  //useState로 password 상태를 생성함.
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  //이메일이 abc@example.com 형태인지 regex를 이용해 확인함.
+  // validation
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [passwordTouched, setPasswordTouched] = useState(false);
+
+  useEffect(() => {
+    if (userState.user) {
+      navigate('/', { replace: true });
+      return;
+    }
+  }, [userState]);
+
   const validateEmail = (email) => {
     return email
       .toLowerCase()
@@ -23,96 +137,88 @@ function LoginForm() {
       );
   };
 
-  //위 validateEmail 함수를 통해 이메일 형태 적합 여부를 확인함.
   const isEmailValid = validateEmail(email);
-  // 비밀번호가 4글자 이상인지 여부를 확인함.
   const isPasswordValid = password.length >= 4;
-  //
-  // 이메일과 비밀번호 조건이 동시에 만족되는지 확인함.
   const isFormValid = isEmailValid && isPasswordValid;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // "user/login" 엔드포인트로 post요청함.
-      const res = await Api.post("user/login", {
+      const res = await Api.post('user/login', {
         email,
         password,
       });
-      // 유저 정보는 response의 data임.
+
       const user = res.data;
-      // JWT 토큰은 유저 정보의 token임.
       const jwtToken = user.token;
-      // sessionStorage에 "userToken"이라는 키로 JWT 토큰을 저장함.
-      sessionStorage.setItem("userToken", jwtToken);
-      // dispatch 함수를 이용해 로그인 성공 상태로 만듦.
+
+      sessionStorage.setItem('userToken', jwtToken);
+
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: 'LOGIN_SUCCESS',
         payload: user,
       });
 
-      // 기본 페이지로 이동함.
-      navigate("/", { replace: true });
+      navigate('/', { replace: true });
     } catch (err) {
-      console.log("로그인에 실패하였습니다.\n", err);
+      console.log('로그인에 실패하였습니다.\n', err);
     }
   };
 
   return (
     <Container>
-      <Row className="justify-content-md-center mt-5">
-        <Col lg={8}>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="loginEmail">
-              <Form.Label>이메일 주소</Form.Label>
-              <Form.Control
-                type="email"
-                autoComplete="on"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {!isEmailValid && (
-                <Form.Text className="text-success">
-                  이메일 형식이 올바르지 않습니다.
-                </Form.Text>
-              )}
-            </Form.Group>
+      <LeftBox>
+        <Heading className='left-head'>Portfolio Sharing Service</Heading>
+        <Heading className='team'>Team 10</Heading>
+      </LeftBox>
+      <RightBox>
+        <Heading className='right-head'>Sign in</Heading>
+        <form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Label>✉️E-mail</Label>
+            <Input
+              
+              type='email'
+              autoComplete='on'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={() => setEmailTouched(true)}
+            />
+            {!isEmailValid && emailTouched && (
+              <ErrorMessage>이메일 형식이 올바르지 않습니다.</ErrorMessage>
+            )}
+          </FormGroup>
 
-            <Form.Group controlId="loginPassword" className="mt-3">
-              <Form.Label>비밀번호</Form.Label>
-              <Form.Control
-                type="password"
-                autoComplete="on"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {!isPasswordValid && (
-                <Form.Text className="text-success">
-                  비밀번호는 4글자 이상입니다.
-                </Form.Text>
-              )}
-            </Form.Group>
+          <FormGroup>
+            <Label>🗝️Password</Label>
+            <Input
+              type='password'
+              autoComplete='on'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onBlur={() => setPasswordTouched(true)}
+            />
+            {!isPasswordValid && passwordTouched && (
+              <ErrorMessage>비밀번호는 4글자 이상입니다.</ErrorMessage>
+            )}
+          </FormGroup>
 
-            <Form.Group as={Row} className="mt-3 text-center">
-              <Col sm={{ span: 20 }}>
-                <Button variant="primary" type="submit" disabled={!isFormValid}>
-                  로그인
-                </Button>
-              </Col>
-            </Form.Group>
+          <Button className='in' type='submit' disabled={!isFormValid}>
+            Sign In
+          </Button>
 
-            <Form.Group as={Row} className="mt-3 text-center">
-              <Col sm={{ span: 20 }}>
-                <Button variant="light" onClick={() => navigate("/register")}>
-                  회원가입하기
-                </Button>
-              </Col>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
+          <SecondaryButton className='up' type='button' onClick={() => navigate('/register')}>
+            Sign Up
+          </SecondaryButton>
+        </form>
+      </RightBox>
+      
+      
     </Container>
+
+
+    
   );
 }
 
