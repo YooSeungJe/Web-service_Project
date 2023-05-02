@@ -5,7 +5,7 @@ const CreateAwardButton = ({ onClick, isEditable }) => {
   return isEditable ? (
     <Box textAlign='center'>
       <Button variant='contained' color='primary' onClick={onClick}>
-        Create
+        수상 내역 추가하기
       </Button>
     </Box>
   ) : null;

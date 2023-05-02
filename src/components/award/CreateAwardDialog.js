@@ -75,10 +75,10 @@ const CreateAwardDialog = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={handleSubmit} variant='contained' color='primary'>
-          Create
+          추가하기
         </Button>
         <Button onClick={handleClose} variant='outlined' color='secondary'>
-          Cancel
+          취소하기
         </Button>
       </DialogActions>
     </Dialog>

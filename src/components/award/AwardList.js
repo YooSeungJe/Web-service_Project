@@ -59,7 +59,6 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
   const handleOpenUpdate = (_id) => {
     setSelectedAwardId(_id);
     console.log('Update clicked for award:', _id);
-    // Open the update dialog
     setUpdateOpen(true);
   };
 

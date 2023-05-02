@@ -1,13 +1,27 @@
-import React from 'react';
-import { Box, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import CreateCertificateDialog from './CreateCertificateDialog';
 
-const CreateCertificateButton = ({ onClick }) => {
+const CreateCertificateButton = ({ onClick, onSubmit }) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Box textAlign='center'>
-      <Button variant='contained' color='primary' onClick={onClick}>
-        Add Certificate
-      </Button>
-    </Box>
+    <>
+      <Button onClick={handleOpen}>Create Certificate</Button>
+      <CreateCertificateDialog
+        open={open}
+        onClose={handleClose}
+        onSubmit={onSubmit}
+      />
+    </>
   );
 };
 

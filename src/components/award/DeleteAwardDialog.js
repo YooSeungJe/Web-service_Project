@@ -22,16 +22,15 @@ const DeleteAwardDialog = ({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Delete Award</DialogTitle>
+      <DialogTitle>수상 내역 삭제</DialogTitle>
       <DialogContent>
         <Typography variant='body1'>
-          Are you sure you want to delete the award "{awardTitle}"?
+          정말로 이 수상 내역을 삭제하시겠어요? "{awardTitle}"?
         </Typography>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
         <Button onClick={handleConfirmDelete} color='error'>
-          {/* <Button onClick={() => handleDeleteConfirm()} color='error'> */}
           Delete
         </Button>
       </DialogActions>
