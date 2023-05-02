@@ -56,6 +56,7 @@ function Portfolio() {
   }
 
   return (
+    <div className='portfolio'>
     <Container fluid>
       <Row>
         <Col md="3" lg="3">
@@ -86,6 +87,7 @@ function Portfolio() {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 }
 
