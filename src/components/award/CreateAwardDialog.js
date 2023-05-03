@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -15,7 +15,11 @@ const CreateAwardDialog = ({
   handleChange,
   handleSubmit,
   setNewAward,
+  checkEmpty,
 }) => {
+  const titleInput = useRef();
+  const descriptionInput = useRef();
+
   const [yearError, setYearError] = useState(false);
 
   const handleClose = () => {
@@ -38,34 +42,38 @@ const CreateAwardDialog = ({
       <DialogTitle>Create Award</DialogTitle>
       <DialogContent>
         <TextField
-          label='Title'
-          name='title'
+          ref={titleInput}
+          label="Title"
+          name="title"
           value={newAward.title}
           onChange={handleChange}
           fullWidth
-          margin='normal'
+          margin="normal"
+          placeholder="제목을 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
         />
         <TextField
-          label='Description'
-          name='description'
+          ref={descriptionInput}
+          label="Description"
+          name="description"
           value={newAward.description}
           onChange={handleChange}
           fullWidth
-          margin='normal'
+          margin="normal"
+          placeholder="내용을 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
         />
         <TextField
-          label='Year'
-          name='year'
+          label="Year"
+          name="year"
           value={newAward.year}
           onChange={handleYearChange}
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
@@ -74,11 +82,18 @@ const CreateAwardDialog = ({
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleSubmit} variant='contained' color='primary'>
-          추가하기
-        </Button>
-        <Button onClick={handleClose} variant='outlined' color='secondary'>
+        <Button onClick={handleClose} variant="outlined" color="secondary">
           취소하기
+        </Button>
+        <Button
+          onClick={() => {
+            checkEmpty(newAward, titleInput, descriptionInput) &&
+              handleSubmit();
+          }}
+          variant="contained"
+          color="primary"
+        >
+          추가하기
         </Button>
       </DialogActions>
     </Dialog>

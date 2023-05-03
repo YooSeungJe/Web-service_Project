@@ -18,6 +18,23 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
 
   const [selectedEducationId, setSelectedEducationId] = useState(null);
   const [updateOpen, setUpdateOpen] = useState(false);
+
+  const checkEmpty = (ref, input1, input2) => {
+    if (ref.schoolName.length === 0) {
+      input1.current.querySelector('input').focus();
+      input1.current.querySelector('input').placeholder =
+        '한글자 이상을 입력해주세요.';
+      input1.current.querySelector('input').style.color = 'red';
+      return false;
+    } else if (ref.major.length === 0) {
+      input2.current.querySelector('input').focus();
+      input2.current.querySelector('input').placeholder =
+        '한글자 이상을 입력해주세요.';
+      input2.current.querySelector('input').style.color = 'red';
+      return false;
+    } else return true;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -146,6 +163,7 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
         handleChange={handleChangeCreate}
         handleSubmit={handleSubmit}
         setNewEducation={setNewEducation}
+        checkEmpty={checkEmpty}
       />
       <UpdateEducationDialog
         open={updateOpen}
@@ -154,6 +172,7 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
           (education) => education._id === selectedEducationId
         )}
         handleSubmit={handleUpdateSubmit}
+        checkEmpty={checkEmpty}
       />
     </Box>
   );

@@ -54,30 +54,30 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
         <DialogContent>
           <TextField
             autoFocus
-            margin='dense'
-            label='Certification Name'
-            name='certificationName'
-            type='text'
+            margin="dense"
+            label="Certification Name"
+            name="certificationName"
+            type="text"
             fullWidth
             required
             value={certificationName}
             onChange={(event) => setCertificationName(event.target.value)}
           />
           <TextField
-            margin='dense'
-            label='Certification Number'
-            name='certificationNumber'
-            type='text'
+            margin="dense"
+            label="Certification Number"
+            name="certificationNumber"
+            type="text"
             fullWidth
             required
             value={certificationNumber}
             onChange={(event) => setCertificationNumber(event.target.value)}
           />
           <TextField
-            margin='dense'
-            label='Issuance Date'
-            name='issuanceDate'
-            type='date'
+            margin="dense"
+            label="Issuance Date"
+            name="issuanceDate"
+            type="date"
             fullWidth
             required
             value={issuanceDate}
@@ -93,10 +93,10 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
           />
 
           <TextField
-            margin='dense'
-            label='Issuing Authority'
-            name='issuingAuthority'
-            type='text'
+            margin="dense"
+            label="Issuing Authority"
+            name="issuingAuthority"
+            type="text"
             fullWidth
             required
             value={issuingAuthority}
@@ -105,7 +105,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDialogClose}>Cancel</Button>
-          <Button type='submit'>Create</Button>
+          <Button type="submit">Create</Button>
         </DialogActions>
       </form>
     </Dialog>

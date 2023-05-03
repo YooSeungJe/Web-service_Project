@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -11,12 +11,21 @@ import {
   Radio,
 } from '@mui/material';
 
-const UpdateEducationDialog = ({ open, onClose, education, handleSubmit }) => {
+const UpdateEducationDialog = ({
+  open,
+  onClose,
+  education,
+  handleSubmit,
+  checkEmpty,
+}) => {
   const [updatedEducation, setUpdatedEducation] = useState({
     schoolName: '',
     major: '',
     graduationTypeCode: '',
   });
+
+  const schoolNameInput = useRef();
+  const majorInput = useRef();
 
   useEffect(() => {
     if (education) {
@@ -47,18 +56,22 @@ const UpdateEducationDialog = ({ open, onClose, education, handleSubmit }) => {
       <DialogTitle>Edit Education</DialogTitle>
       <DialogContent>
         <TextField
+          ref={schoolNameInput}
           margin="normal"
           fullWidth
           label="Education"
           name="schoolName"
+          placeholder=""
           value={updatedEducation.schoolName}
           onChange={handleChange}
         />
         <TextField
+          ref={majorInput}
           margin="normal"
           fullWidth
           label="Major"
           name="major"
+          placeholder=""
           value={updatedEducation.major}
           onChange={handleChange}
         />
@@ -96,7 +109,14 @@ const UpdateEducationDialog = ({ open, onClose, education, handleSubmit }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleUpdate}>Update</Button>
+        <Button
+          onClick={() => {
+            checkEmpty(updatedEducation, schoolNameInput, majorInput) &&
+              handleUpdate();
+          }}
+        >
+          Update
+        </Button>
       </DialogActions>
     </Dialog>
   );

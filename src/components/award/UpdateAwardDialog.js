@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -8,12 +8,21 @@ import {
   TextField,
 } from '@mui/material';
 
-const UpdateAwardDialog = ({ open, onClose, award, handleSubmit }) => {
+const UpdateAwardDialog = ({
+  open,
+  onClose,
+  award,
+  handleSubmit,
+  checkEmpty,
+}) => {
   const [updatedAward, setUpdatedAward] = useState({
     title: '',
     description: '',
     year: '',
   });
+
+  const titleInput = useRef();
+  const descriptionInput = useRef();
 
   useEffect(() => {
     if (award) {
@@ -42,33 +51,42 @@ const UpdateAwardDialog = ({ open, onClose, award, handleSubmit }) => {
       <DialogTitle>수상 내역 수정</DialogTitle>
       <DialogContent>
         <TextField
-          margin='normal'
+          ref={titleInput}
+          label="Title"
+          name="title"
+          margin="normal"
           fullWidth
-          label='Title'
-          name='title'
           value={updatedAward.title}
           onChange={handleChange}
         />
         <TextField
-          margin='normal'
+          ref={descriptionInput}
+          label="Description"
+          name="description"
+          margin="normal"
           fullWidth
-          label='Description'
-          name='description'
           value={updatedAward.description}
           onChange={handleChange}
         />
         <TextField
-          margin='normal'
+          margin="normal"
           fullWidth
-          label='Year'
-          name='year'
+          label="Year"
+          name="year"
           value={updatedAward.year}
           onChange={handleChange}
         />
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>취소하기</Button>
-        <Button onClick={handleUpdate}>수정하기</Button>
+        <Button
+          onClick={() => {
+            checkEmpty(updatedAward, titleInput, descriptionInput) &&
+              handleUpdate();
+          }}
+        >
+          수정하기
+        </Button>
       </DialogActions>
     </Dialog>
   );
