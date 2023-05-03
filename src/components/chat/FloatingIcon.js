@@ -8,11 +8,13 @@ import { UserStateContext } from '../../App';
 
 const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
   const [showChatBox, setShowChatBox] = useState(false);
+  const [hasStartedChat, setHasStartedChat] = useState(false);
   const userState = useContext(UserStateContext);
   const senderId = userState.user.id;
 
   const handleClick = () => {
     setShowChatBox((prevShowChatBox) => !prevShowChatBox);
+    setHasStartedChat(true);
   };
 
   return (
@@ -22,12 +24,14 @@ const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
         className='floating-icon'
         onClick={handleClick}
       />
+
       {showChatBox && (
         <ChatBox
           show={showChatBox}
           handleClose={() => setShowChatBox(false)}
           senderId={senderId}
           receiverId={receiverId}
+          isMyPortfolio={isMyPortfolio}
         />
       )}
     </div>

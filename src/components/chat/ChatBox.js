@@ -3,7 +3,13 @@ import { Form, Button } from 'react-bootstrap';
 import io from 'socket.io-client';
 import './ChatBox.css';
 
-const ChatBox = ({ show, handleClose, senderId, receiverId }) => {
+const ChatBox = ({
+  show,
+  handleClose,
+  senderId,
+  receiverId,
+  isMyPortfolio,
+}) => {
   const [message, setMessage] = useState('');
   const [socket, setSocket] = useState(null);
   const [chatList, setChatList] = useState([]);
@@ -68,12 +74,14 @@ const ChatBox = ({ show, handleClose, senderId, receiverId }) => {
           </>
         ) : (
           <div className='start-chat-container'>
-            <button
-              className='start-chat-button'
-              onClick={() => setIsChatActive(true)}
-            >
-              채팅 시작하기
-            </button>
+            {!isMyPortfolio && (
+              <button
+                className='start-chat-button'
+                onClick={() => setIsChatActive(true)}
+              >
+                채팅 시작하기
+              </button>
+            )}
           </div>
         )}
       </div>
