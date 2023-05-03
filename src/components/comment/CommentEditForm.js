@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import * as Api from '../../api';
+import { UserStateContext } from '../../App';
 
 function CommentEditForm({ comment, setComments, setEdit, portfolioOwnerId }) {
   const [content, setContent] = useState(comment.content);
   const [name, setName] = useState(comment.name);
+  const userState = useContext(UserStateContext);
 
   const contentInput = useRef();
   const nameInput = useRef();
@@ -28,21 +30,11 @@ function CommentEditForm({ comment, setComments, setEdit, portfolioOwnerId }) {
       setComments(res.data);
       setEdit(false);
     }
-
-    console.log(content, name);
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Control
-          ref={nameInput}
-          type='text'
-          placeholder=''
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </Form.Group>
+      <div>{comment.name}</div>
       <Form.Group>
         <Form.Control
           ref={contentInput}

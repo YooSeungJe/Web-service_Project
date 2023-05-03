@@ -66,7 +66,6 @@ function Portfolio() {
             />
             <Comments
               portfolioOwnerId={portfolioOwner.id}
-              isEditable={true}     // 일단 테스트를 위해 모든 상황에도 사용할 수 있도록 설정
             />
           </Col>
           <Col>
