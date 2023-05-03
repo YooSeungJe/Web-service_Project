@@ -58,13 +58,13 @@ const CreateProjectDialog = ({
           }}
         />
         <DatePicker
-          value={newProject.startDate}
+          value={newStartDate}
           selected={newStartDate}
           onChange={setNewStartDate}
           dateFormat="yyyy.MM.dd"
         />
         <DatePicker
-          value={newProject.endDate}
+          value={newEndDate}
           selected={newEndDate}
           onChange={setNewEndDate}
           dateFormat="yyyy.MM.dd"
