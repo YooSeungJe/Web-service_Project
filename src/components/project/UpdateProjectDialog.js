@@ -79,6 +79,7 @@ const UpdateProjectDialog = ({ open, onClose, project, handleSubmit }) => {
           selected={updatedEndDate}
           onChange={(date) => setUpdatedEndDate(date)}
           dateFormat="yyyy.MM.dd"
+          minDate={new Date(updatedStartDate)}
         />
       </DialogContent>
       <DialogActions>

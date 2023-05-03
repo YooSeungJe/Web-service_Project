@@ -68,6 +68,7 @@ const CreateProjectDialog = ({
           selected={newEndDate}
           onChange={setNewEndDate}
           dateFormat="yyyy.MM.dd"
+          minDate={new Date(newStartDate)}
         />
       </DialogContent>
       <DialogActions>

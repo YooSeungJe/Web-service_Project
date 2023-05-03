@@ -18,6 +18,14 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
 
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [updateOpen, setUpdateOpen] = useState(false);
+
+  const dayInMs = 86400000; // 1일을 밀리초로 계산한 값
+
+  const dateDiff = Math.floor(
+    (new Date(newEndDate).getTime() - new Date(newStartDate).getTime()) /
+      dayInMs
+  );
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,6 +56,10 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleSubmit = async () => {
     try {
+      if (dateDiff < 0) {
+        alert('기간이 역순입니다. 다시 확인해주세요.');
+        return;
+      }
       await post('project', {
         ...newProject,
         startDate: newStartDate,
@@ -93,6 +105,10 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleUpdateSubmit = async (_id, updatedProject) => {
     try {
+      if (dateDiff < 0) {
+        alert('기간이 역순입니다. 다시 확인해주세요.');
+        return;
+      }
       await patch(`project/${_id}`, updatedProject);
       const response = await get(`project/${portfolioOwnerId}`);
       setProjects(response.data);
