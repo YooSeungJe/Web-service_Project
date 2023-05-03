@@ -1,9 +1,12 @@
-#wrapper {
-  min-height: calc(100vh - 10rem); /* footer 높이를 빼준다. */
-  background-color: #E9EDC9;
+html,
+body {
+  background-color: #fefae0;
 }
 
-
+#wrapper {
+  min-height: calc(100vh - 10rem); /* footer 높이를 빼준다. */
+  background-color: #e9edc9;
+}
 
 #footer {
   height: 10rem; /* footer 높이 */

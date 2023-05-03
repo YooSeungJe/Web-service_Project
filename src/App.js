@@ -61,6 +61,7 @@ function App() {
       <UserStateContext.Provider value={userState}>
         <Router>
           <Header />
+          {console.log(userState)}
           <div id="wrapper">
             <Routes>
               <Route path="/" exact element={<Portfolio />} />
@@ -72,7 +73,7 @@ function App() {
               <Route path="*" element={<Portfolio />} />
             </Routes>
           </div>
-          <Footer id="footer" />
+          {userState.user && <Footer id="footer" />}
         </Router>
       </UserStateContext.Provider>
     </DispatchContext.Provider>

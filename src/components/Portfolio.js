@@ -4,11 +4,13 @@ import { Container, Col, Row } from 'react-bootstrap';
 import { UserStateContext } from '../App';
 import * as Api from '../api';
 import User from './user/User';
-import Comments from './comment/Comments'
+import Comments from './comment/Comments';
 import EducationList from './education/EducationList';
 import ProjectList from './project/ProjectList';
 import AwardList from './award/AwardList';
 import CertificateList from './certificate/CertificateList';
+
+import './Portfolio.scss';
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -56,33 +58,35 @@ function Portfolio() {
   }
 
   return (
-    <div className='portfolio'>
+    <div id="portfolio">
       <Container fluid>
         <Row>
-          <Col md='3' lg='3'>
+          <Col md="3" lg="3">
             <User
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
             />
-            <Comments
-              portfolioOwnerId={portfolioOwner.id}
-            />
+            <Comments portfolioOwnerId={portfolioOwner.id} />
           </Col>
           <Col>
             <div style={{ textAlign: 'center' }}>
               <EducationList
+                className="list"
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
               <ProjectList
+                className="list"
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
               <CertificateList
+                className="list"
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
               <AwardList
+                className="list"
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
