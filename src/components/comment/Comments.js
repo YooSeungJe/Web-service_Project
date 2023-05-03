@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Button } from 'react-bootstrap';
-import Comment from './Comment';
-import CommentAddForm from './CommentAddForm';
-import * as Api from '../../api';
+import React, { useState, useEffect } from "react";
+import { Card, Button } from "react-bootstrap";
+import Comment from "./Comment";
+import CommentAddForm from "./CommentAddForm";
+import * as Api from "../../api";
 
 function Comments({ portfolioOwnerId, isEditable }) {
   const [comments, setComments] = useState([]);
@@ -15,9 +15,9 @@ function Comments({ portfolioOwnerId, isEditable }) {
   }, [portfolioOwnerId]);
 
   return (
-    <Card className='mb-2 ms-3 mr-5' style={{ width: '18rem' }}>
+    <Card className="mb-2 ms-3 mr-5" style={{ width: "18rem" }}>
       <Card.Body>
-        <Card.Title>댓글</Card.Title>
+        <Card.Title>Comments</Card.Title>
         {comments.map((comment) => (
           <Comment
             portfolioOwnerId={portfolioOwnerId}
@@ -34,7 +34,11 @@ function Comments({ portfolioOwnerId, isEditable }) {
             setAdding={setAdding}
           />
         )}
-        {isEditable && <Button variant='secondary' size='sm' onClick={() => setAdding(true)}>+</Button>}
+        {isEditable && (
+          <Button variant="secondary" size="sm" onClick={() => setAdding(true)}>
+            +
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );

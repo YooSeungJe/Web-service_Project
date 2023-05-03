@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Button } from '@mui/material';
-import CreateCertificateDialog from './CreateCertificateDialog';
+import React, { useState } from "react";
+import { Button } from "@mui/material";
+import CreateCertificateDialog from "./CreateCertificateDialog";
 
 const CreateCertificateButton = ({ onClick, onSubmit }) => {
   const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ const CreateCertificateButton = ({ onClick, onSubmit }) => {
 
   return (
     <>
-      <Button onClick={handleOpen}>Create Certificate</Button>
+      <Button onClick={handleOpen}>Create</Button>
       <CreateCertificateDialog
         open={open}
         onClose={handleClose}
