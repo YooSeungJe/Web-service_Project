@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Foot = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ const FootTitle = styled.div`
 
 const FootItem = styled.div`
   display: inline-block;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 `;
 
 function Footer() {
@@ -28,6 +28,9 @@ function Footer() {
       <FootItem>주소 | 대한민국 사랑시 고백구 행복동 14-72</FootItem>
       <br />
       <FootItem>전화 | 02-0000-0000 문의 | 1@elice.kr</FootItem>
+      <br />
+      <br />
+      <FootItem>Copyright 2023. 잊지마 기억해. All rights reserved.</FootItem>
     </Foot>
   );
 }
