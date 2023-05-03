@@ -16,38 +16,18 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
 
     await Api.post(`comment/${portfolioOwnerId}`, {
       content,
-<<<<<<< HEAD
-      name: userState.user.name
-=======
-      name,
->>>>>>> mercon
+      name: userState.user.name,
     });
 
     const res = await Api.get(`comment/${portfolioOwnerId}`);
     setComments(res.data);
     setAdding(false);
-<<<<<<< HEAD
-=======
-    console.log(res.data);
->>>>>>> mercon
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-<<<<<<< HEAD
-      <Form.Group controlId="addName">
-        <div>{userState.user.name}</div>
-=======
       <Form.Group controlId='addName'>
-        <Form.Control
-          ref={nameInput}
-          name='name'
-          type='text'
-          placeholder='이름'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
->>>>>>> mercon
+        <div>{userState.user.name}</div>
       </Form.Group>
       <Form.Group controlId='addContent'>
         <Form.Control

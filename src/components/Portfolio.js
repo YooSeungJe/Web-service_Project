@@ -59,42 +59,35 @@ function Portfolio() {
   }
 
   return (
-    <div id="portfolio">
+    <div id='portfolio'>
       <Container fluid>
         <Row>
-          <Col md="3" lg="3">
+          <Col md='3' lg='3'>
             <User
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
             />
-<<<<<<< HEAD
             <Comments portfolioOwnerId={portfolioOwner.id} />
-=======
-            <Comments
-              portfolioOwnerId={portfolioOwner.id}
-              isEditable={true} // 일단 테스트를 위해 모든 상황에도 사용할 수 있도록 설정
-            />
->>>>>>> mercon
           </Col>
           <Col>
             <div style={{ textAlign: 'center' }}>
               <EducationList
-                className="list"
+                className='list'
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
               <ProjectList
-                className="list"
+                className='list'
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
               <CertificateList
-                className="list"
+                className='list'
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
               <AwardList
-                className="list"
+                className='list'
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />

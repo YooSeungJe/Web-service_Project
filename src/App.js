@@ -61,12 +61,8 @@ function App() {
       <UserStateContext.Provider value={userState}>
         <Router>
           <Header />
-<<<<<<< HEAD
           {console.log(userState)}
-          <div id="wrapper">
-=======
           <div id='wrapper'>
->>>>>>> mercon
             <Routes>
               <Route path='/' exact element={<Portfolio />} />
               <Route path='/login' element={<LoginForm />} />
@@ -77,11 +73,7 @@ function App() {
               <Route path='*' element={<Portfolio />} />
             </Routes>
           </div>
-<<<<<<< HEAD
-          {userState.user && <Footer id="footer" />}
-=======
-          <Footer id='footer' />
->>>>>>> mercon
+          {userState.user && <Footer id='footer' />}
         </Router>
       </UserStateContext.Provider>
     </DispatchContext.Provider>

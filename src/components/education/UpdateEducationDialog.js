@@ -56,36 +56,22 @@ const UpdateEducationDialog = ({
       <DialogTitle>Edit Education</DialogTitle>
       <DialogContent>
         <TextField
-<<<<<<< HEAD
           ref={schoolNameInput}
-          margin="normal"
-          fullWidth
-          label="Education"
-          name="schoolName"
-          placeholder=""
-=======
           margin='normal'
           fullWidth
           label='Education'
           name='schoolName'
->>>>>>> mercon
+          placeholder=''
           value={updatedEducation.schoolName}
           onChange={handleChange}
         />
         <TextField
-<<<<<<< HEAD
           ref={majorInput}
-          margin="normal"
-          fullWidth
-          label="Major"
-          name="major"
-          placeholder=""
-=======
           margin='normal'
           fullWidth
           label='Major'
           name='major'
->>>>>>> mercon
+          placeholder=''
           value={updatedEducation.major}
           onChange={handleChange}
         />
