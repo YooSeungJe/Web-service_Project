@@ -1,15 +1,18 @@
+import { useContext, useState } from 'react';
 import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import * as Api from '../../api';
+import { UserStateContext } from '../../App';
 
 function CommentCard({
   comment,
   setComments,
   setEdit,
-  isEditable,
   portfolioOwnerId,
 }) {
   const _id = comment._id;
+  const userState = useContext(UserStateContext);
+  const [isMatch, setIsMatch] = useState(false)
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -23,12 +26,13 @@ function CommentCard({
     }
   };
 
+
   return (
     <Card>
       <Card.Body style={{ width: '40rem' }}>
         <Card.Title>{comment.name}</Card.Title>
         <Card.Text>{comment.content}</Card.Text>
-        {isEditable && (
+        {comment.userId === userState.user?.id && (
           <Col>
             <Button
               variant='outline-secondary'
