@@ -1,29 +1,25 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import * as Api from '../../api';
-import { UserStateContext } from '../../App';
 
 function CommentEditForm({ comment, setComments, setEdit, portfolioOwnerId }) {
   const [content, setContent] = useState(comment.content);
-  const [name, setName] = useState(comment.name);
-  const userState = useContext(UserStateContext);
+
 
   const contentInput = useRef();
-  const nameInput = useRef();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (content.length < 1) {
       contentInput.current.focus();
-    } else if (name.length < 1) {
-      nameInput.current.focus();
     } else {
       const _id = comment._id;
 
       await Api.put(`comment/${portfolioOwnerId}/${_id}`, {
         _id,
         content,
-        name
+        name: comment.name
       });
 
       const res = await Api.get(`comment/${portfolioOwnerId}`);
