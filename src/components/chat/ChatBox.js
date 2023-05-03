@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import io from 'socket.io-client';
 import './ChatBox.css';
 
@@ -7,6 +7,7 @@ const ChatBox = ({ show, handleClose, senderId, receiverId }) => {
   const [message, setMessage] = useState('');
   const [socket, setSocket] = useState(null);
   const [chatList, setChatList] = useState([]);
+  const [isChatActive, setIsChatActive] = useState(false);
 
   useEffect(() => {
     const newSocket = io(process.env.REACT_APP_SERVER_URL);
@@ -38,12 +39,43 @@ const ChatBox = ({ show, handleClose, senderId, receiverId }) => {
           <h5>Chat</h5>
           <button onClick={handleClose}>&times;</button>
         </div>
-        <div className='chat-box-body'>
-          <ul>{/* ... */}</ul>
-        </div>
-        <div className='chat-box-footer'>
-          <Form onSubmit={handleSubmit}>{/* ... */}</Form>
-        </div>
+        {isChatActive ? (
+          <>
+            <div className='chat-box-body'>
+              <ul>
+                {chatList.map((chat, index) => (
+                  <li key={index} className='chat-message'>
+                    {chat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className='chat-box-footer'>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter message'
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
+                  />
+                </Form.Group>
+                <Button variant='primary' type='submit'>
+                  Send
+                </Button>
+              </Form>
+            </div>
+          </>
+        ) : (
+          <div className='start-chat-container'>
+            <button
+              className='start-chat-button'
+              onClick={() => setIsChatActive(true)}
+            >
+              채팅 시작하기
+            </button>
+          </div>
+        )}
       </div>
     )
   );

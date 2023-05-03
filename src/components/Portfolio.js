@@ -10,7 +10,6 @@ import ProjectList from './project/ProjectList';
 import AwardList from './award/AwardList';
 import CertificateList from './certificate/CertificateList';
 import FloatingIcon from './chat/FloatingIcon';
-import ChatBox from './chat/ChatBox';
 
 import './Portfolio.scss';
 
@@ -19,7 +18,6 @@ function Portfolio() {
   const params = useParams();
   const [portfolioOwner, setPortfolioOwner] = useState(null);
   const [isFetchCompleted, setIsFetchCompleted] = useState(false);
-  const [showChat, setShowChat] = useState(false);
   const userState = useContext(UserStateContext);
 
   const fetchPortfolioOwner = async (ownerId) => {
@@ -91,15 +89,10 @@ function Portfolio() {
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
-              <FloatingIcon receiverId={portfolioOwner.id} />
-              {showChat && (
-                <ChatBox
-                  show={showChat}
-                  handleClose={() => setShowChat(false)}
-                  senderId={userState.user.id}
-                  receiverId={portfolioOwner.id}
-                />
-              )}
+              <FloatingIcon
+                receiverId={portfolioOwner.id}
+                isMyPortfolio={portfolioOwner.id === userState.user?.id}
+              />
             </div>
           </Col>
         </Row>
