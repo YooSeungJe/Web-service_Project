@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import * as Api from '../../api';
@@ -12,7 +12,6 @@ function CommentCard({
 }) {
   const _id = comment._id;
   const userState = useContext(UserStateContext);
-  const [isMatch, setIsMatch] = useState(false)
 
   const handleDelete = async (e) => {
     e.preventDefault();
