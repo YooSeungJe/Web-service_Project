@@ -53,7 +53,11 @@ function App() {
   }, []);
 
   if (!isFetchCompleted) {
-    return 'loading...';
+    return (
+      <>
+        <h1 className="loading">loading...</h1>
+      </>
+    );
   }
 
   return (

@@ -54,7 +54,7 @@ function Portfolio() {
   }, [params, userState, navigate]);
 
   if (!isFetchCompleted) {
-    return 'loading...';
+    return <div className="loading">loading...</div>;
   }
 
   return (

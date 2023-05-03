@@ -4,15 +4,29 @@ body {
 }
 
 #wrapper {
-  min-height: calc(100vh - 10rem); /* footer 높이를 빼준다. */
+  min-height: calc(100vh - 10rem);
   background-color: #e9edc9;
 }
 
 #footer {
-  height: 10rem; /* footer 높이 */
+  height: 10rem;
   background: yellow;
 }
 
 .loading {
+  position: fixed;
   width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
