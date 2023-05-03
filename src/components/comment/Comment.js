@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import CommentEditForm from './CommentEditForm';
 import CommentCard from './CommentCard';
 
+import '../components.css';
+
 function Comment({ comment, setComments, isEditable, portfolioOwnerId }) {
   const [edit, setEdit] = useState(false);
   return (

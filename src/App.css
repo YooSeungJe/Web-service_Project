@@ -12,3 +12,7 @@ body {
   height: 10rem; /* footer 높이 */
   background: yellow;
 }
+
+.loading {
+  width: 100%;
+}
