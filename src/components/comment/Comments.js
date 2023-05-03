@@ -33,8 +33,16 @@ function Comments({ portfolioOwnerId }) {
             setAdding={setAdding}
           />
         )}
+<<<<<<< HEAD
         <Button variant='secondary' size='sm' onClick={() => 
           setAdding(true)}>+</Button>
+=======
+        {isEditable && (
+          <Button variant='secondary' size='sm' onClick={() => setAdding(true)}>
+            +
+          </Button>
+        )}
+>>>>>>> mercon
       </Card.Body>
     </Card>
   );

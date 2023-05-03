@@ -56,53 +56,67 @@ const UpdateEducationDialog = ({
       <DialogTitle>Edit Education</DialogTitle>
       <DialogContent>
         <TextField
+<<<<<<< HEAD
           ref={schoolNameInput}
           margin="normal"
           fullWidth
           label="Education"
           name="schoolName"
           placeholder=""
+=======
+          margin='normal'
+          fullWidth
+          label='Education'
+          name='schoolName'
+>>>>>>> mercon
           value={updatedEducation.schoolName}
           onChange={handleChange}
         />
         <TextField
+<<<<<<< HEAD
           ref={majorInput}
           margin="normal"
           fullWidth
           label="Major"
           name="major"
           placeholder=""
+=======
+          margin='normal'
+          fullWidth
+          label='Major'
+          name='major'
+>>>>>>> mercon
           value={updatedEducation.major}
           onChange={handleChange}
         />
         <RadioGroup
-          name="graduationTypeCode"
+          name='graduationTypeCode'
           value={updatedEducation.graduationTypeCode}
           onChange={handleChange}
           row
         >
           <FormControlLabel
-            value="재학중"
+            value='재학중'
             control={<Radio />}
-            label="재학중"
+            label='재학중'
             checked={updatedEducation.graduationTypeCode === '재학중'}
           />
           <FormControlLabel
-            value="학사졸업"
+            value='학사졸업'
             control={<Radio />}
-            label="학사졸업"
+            label='학사졸업'
             checked={updatedEducation.graduationTypeCode === '학사졸업'}
           />
           <FormControlLabel
-            value="석사졸업"
+            value='석사졸업'
             control={<Radio />}
-            label="석사졸업"
+            label='석사졸업'
             checked={updatedEducation.graduationTypeCode === '석사졸업'}
           />
           <FormControlLabel
-            value="박사졸업"
+            value='박사졸업'
             control={<Radio />}
-            label="박사졸업"
+            label='박사졸업'
             checked={updatedEducation.graduationTypeCode === '박사졸업'}
           />
         </RadioGroup>

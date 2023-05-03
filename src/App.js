@@ -61,19 +61,27 @@ function App() {
       <UserStateContext.Provider value={userState}>
         <Router>
           <Header />
+<<<<<<< HEAD
           {console.log(userState)}
           <div id="wrapper">
+=======
+          <div id='wrapper'>
+>>>>>>> mercon
             <Routes>
-              <Route path="/" exact element={<Portfolio />} />
-              <Route path="/login" element={<LoginForm />} />
-              <Route path="/register" element={<RegisterForm />} />
-              <Route path="/users/:userId" element={<Portfolio />} />
-              <Route path="/network" element={<Network />} />
-              <Route path="/swagger" element={<MySwaggerUI />} />
-              <Route path="*" element={<Portfolio />} />
+              <Route path='/' exact element={<Portfolio />} />
+              <Route path='/login' element={<LoginForm />} />
+              <Route path='/register' element={<RegisterForm />} />
+              <Route path='/users/:userId' element={<Portfolio />} />
+              <Route path='/network' element={<Network />} />
+              <Route path='/swagger' element={<MySwaggerUI />} />
+              <Route path='*' element={<Portfolio />} />
             </Routes>
           </div>
+<<<<<<< HEAD
           {userState.user && <Footer id="footer" />}
+=======
+          <Footer id='footer' />
+>>>>>>> mercon
         </Router>
       </UserStateContext.Provider>
     </DispatchContext.Provider>
