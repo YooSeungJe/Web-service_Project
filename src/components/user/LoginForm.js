@@ -63,6 +63,7 @@ function LoginForm() {
       navigate('/', { replace: true });
     } catch (err) {
       console.log('로그인에 실패하였습니다.\n', err);
+      alert('존재하지 않는 아이디입니다')
     }
   };
 
