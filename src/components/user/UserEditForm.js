@@ -3,6 +3,7 @@ import { Button, Form, Card, Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import * as Api from '../../api';
 import { useNavigate } from 'react-router-dom';
+import UploadImage from '../image/UploadImage';
 
 const FormText = styled.small`
   display: block;
@@ -73,6 +74,10 @@ function UserEditForm({ user, setIsEditing, setUser }) {
     <Card className='mb-2'>
       <Card.Body>
         <Form onSubmit={handleSubmit}>
+          <UploadImage
+            userId={user.id}
+            dataId={user.id}
+          />
           <Form.Group controlId='useEditName' className='mb-3'>
             <Form.Control
               type='text'

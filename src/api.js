@@ -51,12 +51,12 @@ async function post(endpoint, data) {
     });
 }
 
-async function upload(endpoint, data) {
+async function upload(endpoint, formData) {
   console.log(`%cUPLOAD 요청: ${serverUrl + endpoint}`, 'color: #296aba;');
-  console.log(`%cUPLOAD 요청 데이터: ${data}`, 'color: #296aba;');
+  console.log(`%cUPLOAD 요청 데이터: ${formData}`, 'color: #296aba;');
 
   return axios
-    .post(serverUrl + endpoint, data, {
+    .put(serverUrl + endpoint, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         Authorization: `Bearer ${sessionStorage.getItem('userToken')}`,
@@ -67,6 +67,7 @@ async function upload(endpoint, data) {
       throw error;
     });
 }
+
 async function patch(endpoint, data) {
   // JSON.stringify 함수: Javascript 객체를 JSON 형태로 변환함.
   // 예시: {name: "Kim"} => {"name": "Kim"}

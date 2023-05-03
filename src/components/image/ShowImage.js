@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import * as Api from '../../api';
+import './ShowImage.css';
 
-const ShowImage = ({ userId, dataId }) => {
+const ShowImage = ({ userId, dataId, imageKey = 0 }) => {
     const [ image, setImage ] = useState({});
-    useEffect(() => {
+    useMemo(() => {
         const fetchData = async () => {
           const param = `${userId}/${dataId}`;
-          const imageData = await Api.get('image', param);
-          setImage(imageData.data);
-          console.log(image);
+          try{
+            const imageData = await Api.get('image', param);
+            setImage(imageData.data);
+          }catch(e){
+            setImage(null)
+          }
         };
         fetchData();
-    
-      }, [userId, dataId]);
-      if (!image) {
+      }, [userId, dataId, imageKey]);
+
+      if (image) {
         return (
-            <img src='http://placekitten.com/200/200' alt='랜덤 고양이 사진 (http://placekitten.com API 사용)'/> 
+          <img src={`data:${image.contentType};base64,${image.data}`} />
+        );
+      }else{
+        return (
+          <img src='http://placekitten.com/200/200' alt='랜덤 고양이 사진 (http://placekitten.com API 사용)'/> 
         )
       }
-      return (
-        <>
-          <img src={`data:${image.contentType};base64,${image.data}`} />
-        </>
-      );
 };
 
 export default ShowImage;

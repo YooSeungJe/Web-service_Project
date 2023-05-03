@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Button, Col } from 'react-bootstrap';
 import styles from './UserCard.module.css';
+import ShowImage from '../image/ShowImage';
 
 function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
   const navigate = useNavigate();
@@ -8,10 +9,9 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
     <Card className={`${styles.card} mb-2 ms-3 mr-5`}>
       <Card.Body>
         <Row className='justify-content-md-center'>
-          <Card.Img
-            className={styles.image}
-            src='http://placekitten.com/200/200'
-            alt='랜덤 고양이 사진 (http://placekitten.com API 사용)'
+          <ShowImage
+            userId={user?.id}
+            dataId={user?.id}
           />
         </Row>
         <Card.Title className={`${styles.title}`}>{user?.name}</Card.Title>
