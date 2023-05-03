@@ -48,7 +48,7 @@ const EducationCard = ({
         onClose={handleDeleteButton}
         handleDeleteConfirm={() => handleDeleteConfirm(education._id)}
         educationId={education._id}
-        educationTitle={education.title}
+        educationTitle={education.schoolName}
       />
     </Card>
   );

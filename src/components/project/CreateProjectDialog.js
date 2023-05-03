@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -20,7 +20,11 @@ const CreateProjectDialog = ({
   setNewProject,
   setNewStartDate,
   setNewEndDate,
+  checkEmpty,
 }) => {
+  const titleInput = useRef();
+  const descriptionInput = useRef();
+
   const handleClose = () => {
     setNewProject({
       title: '',
@@ -36,23 +40,27 @@ const CreateProjectDialog = ({
       <DialogTitle>Create Project</DialogTitle>
       <DialogContent>
         <TextField
+          ref={titleInput}
           label="Title"
           name="title"
           value={newProject.title}
           onChange={handleChange}
           fullWidth
           margin="normal"
+          placeholder="프로젝트 제목을 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
         />
         <TextField
+          ref={descriptionInput}
           label="Description"
           name="description"
           value={newProject.description}
           onChange={handleChange}
           fullWidth
           margin="normal"
+          placeholder="프로젝트 설명을 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
@@ -71,12 +79,20 @@ const CreateProjectDialog = ({
           minDate={new Date(newStartDate)}
         />
       </DialogContent>
+
       <DialogActions>
-        <Button onClick={handleSubmit} variant="contained" color="primary">
-          Create
-        </Button>
         <Button onClick={handleClose} variant="outlined" color="secondary">
           Cancel
+        </Button>
+        <Button
+          onClick={() => {
+            checkEmpty(newProject, titleInput, descriptionInput) &&
+              handleSubmit();
+          }}
+          variant="contained"
+          color="primary"
+        >
+          Create
         </Button>
       </DialogActions>
     </Dialog>

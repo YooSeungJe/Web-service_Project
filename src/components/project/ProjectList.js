@@ -26,6 +26,22 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
       dayInMs
   );
 
+  const checkEmpty = (ref, input1, input2) => {
+    if (ref.title.length === 0) {
+      input1.current.querySelector('input').focus();
+      input1.current.querySelector('input').placeholder =
+        '한글자 이상을 입력해주세요.';
+      input1.current.querySelector('input').style.color = 'red';
+      return false;
+    } else if (ref.description.length === 0) {
+      input2.current.querySelector('input').focus();
+      input2.current.querySelector('input').placeholder =
+        '한글자 이상을 입력해주세요.';
+      input2.current.querySelector('input').style.color = 'red';
+      return false;
+    } else return true;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -174,12 +190,14 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
         setNewProject={setNewProject}
         setNewStartDate={setNewStartDate}
         setNewEndDate={setNewEndDate}
+        checkEmpty={checkEmpty}
       />
       <UpdateProjectDialog
         open={updateOpen}
         onClose={handleUpdateClose}
         project={projects.find((project) => project._id === selectedProjectId)}
         handleSubmit={handleUpdateSubmit}
+        checkEmpty={checkEmpty}
       />
     </Box>
   );

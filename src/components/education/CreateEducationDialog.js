@@ -19,6 +19,7 @@ const CreateEducationDialog = ({
   handleChange,
   handleSubmit,
   setNewEducation,
+  checkEmpty,
 }) => {
   const handleClose = () => {
     setNewEducation({ schoolName: '', major: '', graduationTypeCode: '' });
@@ -27,22 +28,6 @@ const CreateEducationDialog = ({
 
   const schoolNameInput = useRef();
   const majorInput = useRef();
-
-  const checkEmpty = () => {
-    if (newEducation.schoolName.length === 0) {
-      schoolNameInput.current.querySelector('input').focus();
-      schoolNameInput.current.querySelector('input').placeholder =
-        '한글자 이상을 입력해주세요.';
-      schoolNameInput.current.querySelector('input').style.color = 'red';
-      return false;
-    } else if (newEducation.major.length === 0) {
-      majorInput.current.querySelector('input').focus();
-      majorInput.current.querySelector('input').placeholder =
-        '한글자 이상을 입력해주세요.';
-      majorInput.current.querySelector('input').style.color = 'red';
-      return false;
-    } else return true;
-  };
 
   return (
     <Dialog open={open} onClose={handleClose}>
@@ -99,17 +84,18 @@ const CreateEducationDialog = ({
         </RadioGroup>
       </DialogContent>
       <DialogActions>
+        <Button onClick={handleClose} variant="outlined" color="secondary">
+          Cancel
+        </Button>
         <Button
           onClick={() => {
-            checkEmpty() && handleSubmit();
+            checkEmpty(newEducation, schoolNameInput, majorInput) &&
+              handleSubmit();
           }}
           variant="contained"
           color="primary"
         >
           Create
-        </Button>
-        <Button onClick={handleClose} variant="outlined" color="secondary">
-          Cancel
         </Button>
       </DialogActions>
     </Dialog>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -9,13 +9,22 @@ import {
 } from '@mui/material';
 import DatePicker from 'react-datepicker';
 
-const UpdateProjectDialog = ({ open, onClose, project, handleSubmit }) => {
+const UpdateProjectDialog = ({
+  open,
+  onClose,
+  project,
+  handleSubmit,
+  checkEmpty,
+}) => {
   const [updatedProject, setUpdatedProject] = useState({
     title: '',
     description: '',
   });
   const [updatedStartDate, setUpdatedStartDate] = useState(new Date());
   const [updatedEndDate, setUpdatedEndDate] = useState(new Date());
+
+  const titleInput = useRef();
+  const descriptionInput = useRef();
 
   useEffect(() => {
     if (project) {
@@ -53,18 +62,22 @@ const UpdateProjectDialog = ({ open, onClose, project, handleSubmit }) => {
       <DialogTitle>Edit Project</DialogTitle>
       <DialogContent>
         <TextField
-          margin="normal"
-          fullWidth
+          ref={titleInput}
           label="Title"
           name="title"
+          margin="normal"
+          placeholder=""
+          fullWidth
           value={updatedProject.title}
           onChange={handleChange}
         />
         <TextField
-          margin="normal"
-          fullWidth
+          ref={descriptionInput}
           label="Description"
           name="description"
+          margin="normal"
+          placeholder=""
+          fullWidth
           value={updatedProject.description}
           onChange={handleChange}
         />
@@ -84,7 +97,14 @@ const UpdateProjectDialog = ({ open, onClose, project, handleSubmit }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleUpdate}>Update</Button>
+        <Button
+          onClick={() => {
+            checkEmpty(updatedProject, titleInput, descriptionInput) &&
+              handleUpdate();
+          }}
+        >
+          Update
+        </Button>
       </DialogActions>
     </Dialog>
   );
