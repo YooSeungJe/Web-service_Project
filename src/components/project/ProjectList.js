@@ -12,9 +12,9 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
   const [newProject, setNewProject] = useState({
     title: '',
     description: '',
-    startDate: new Date(),
-    endDate: new Date(),
   });
+  const [newStartDate, setNewStartDate] = useState(new Date());
+  const [newEndDate, setNewEndDate] = useState(new Date());
 
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [updateOpen, setUpdateOpen] = useState(false);
@@ -40,12 +40,19 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   const handleChangeCreate = (event) => {
-    setNewProject({ ...newProject, [event.target.name]: event.target.value });
+    setNewProject({
+      ...newProject,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleSubmit = async () => {
     try {
-      await post('project', newProject);
+      await post('project', {
+        ...newProject,
+        startDate: newStartDate,
+        endDate: newEndDate,
+      });
       const response = await get(`project/${portfolioOwnerId}`);
       setProjects(response.data);
       setCreateOpen(false);
@@ -53,9 +60,9 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
       setNewProject({
         title: '',
         description: '',
-        startDate: new Date(),
-        endDate: new Date(),
       });
+      setNewStartDate(new Date());
+      setNewEndDate(new Date());
       handleCloseCreate();
     } catch (error) {
       console.error('Error creating project:', error);
@@ -72,7 +79,12 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
   const handleUpdateClose = () => {
     setUpdateOpen(false);
     setSelectedProjectId(null);
-    setNewProject({ title: '', description: '', startDate: '', endDate: '' });
+    setNewProject({
+      title: '',
+      description: '',
+    });
+    setNewStartDate(new Date());
+    setNewEndDate(new Date());
   };
 
   const handleOpenDelete = (_id) => {
@@ -81,10 +93,6 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleUpdateSubmit = async (_id, updatedProject) => {
     try {
-      console.log(`updatedProject : ${updatedProject}`);
-      console.log(`updatedProject.title : ${updatedProject.title}`);
-      console.log(`_id : ${_id}`);
-      console.log(`portfolioOwnerId : ${portfolioOwnerId}`);
       await patch(`project/${_id}`, updatedProject);
       const response = await get(`project/${portfolioOwnerId}`);
       setProjects(response.data);
@@ -143,9 +151,13 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
         open={createOpen}
         onClose={handleCloseCreate}
         newProject={newProject}
+        newStartDate={newStartDate}
+        newEndDate={newEndDate}
         handleChange={handleChangeCreate}
         handleSubmit={handleSubmit}
         setNewProject={setNewProject}
+        setNewStartDate={setNewStartDate}
+        setNewEndDate={setNewEndDate}
       />
       <UpdateProjectDialog
         open={updateOpen}

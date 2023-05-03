@@ -16,13 +16,6 @@ const AwardCard = ({
 
   const [deleteOpen, setDeleteOpen] = useState(false);
 
-  // const handleDeleteOpen = () => {
-  //   setDeleteOpen((prevState) => !prevState);
-  // };
-
-  // const handleDeleteClose = () => {
-  //   setDeleteOpen((prevState) => !prevState);
-  // };
   const handleDeleteButton = () => {
     setDeleteOpen((prevState) => !prevState);
   };
@@ -38,13 +31,11 @@ const AwardCard = ({
               id={award._id}
             />
           )}
-          {/* {isEditable && <DeleteAwardButton onClick={handleDeleteOpen} />} */}
           {isEditable && <DeleteAwardButton onClick={handleDeleteButton} />}
         </Box>
       </CardActions>
       <DeleteAwardDialog
         open={deleteOpen}
-        // onClose={handleDeleteClose}
         onClose={handleDeleteButton}
         handleDeleteConfirm={() => handleDeleteConfirm(award._id)}
         awardId={award._id}

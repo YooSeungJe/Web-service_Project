@@ -11,9 +11,73 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
 
+.body {
+    
+    background-color : #FEFAE0;
+}
 
+.container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:-70px;
+    
+}
+
+.left-box {
+    background-color: #02343F;
+    padding: 2rem;
+    border-radius: 7px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    
+    margin-top:100px;
+    box-sizing:content-box;
+    height:550px;
+}
+
+.right-box {
+    background-color: #E9EDC9 ;
+    padding: 2rem;
+    border-radius: 7px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 370px;
+    margin-top:100px;
+    box-sizing:content-box;
+    height:550px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.error-message {
+    color: #FE6244;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
 
 .left-head {
+    text-align: center;
+    margin-bottom: 2rem;
+
     font-family: 'Nunito', sans-serif;
     color: #FAEDCD;
     margin-top: 120px;
@@ -47,6 +111,9 @@
   }
 
 .team {
+    text-align: center;
+    margin-bottom: 2rem;
+
     color: #FFEAD2;
     margin-top: 170px;
     font-family: 'Nunito', sans-serif;
@@ -54,6 +121,8 @@
 }
 
 .right-head {
+    text-align: center;
+    margin-bottom: 2rem;
     color: #02343F;
     font-family: 'Nunito', sans-serif;
 } 
@@ -64,12 +133,33 @@ Label {
 }
 
 .in {
-   background-color: #02343F;
-   color: #F0EDCC;
-   font-family: 'Nunito', sans-serif;
+    margin-top:30px;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    background-color: #02343F;
+    color: #F0EDCC;
+    font-family: 'Nunito', sans-serif;
+   
+}
+
+.in:hover {
+    background-color: #A4D0A4;
 }
 
 .up {
+    color: #02343F;
+    margin-top:9px;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    width: 100%;
     border-color: #F0EDCC;
     font-family: 'Nunito', sans-serif;
     border:solid;
@@ -78,13 +168,18 @@ Label {
     background-color: #FEFAE0;
 }
 
-Input {
+.up:hover {
+    background-color: #F0EDCC;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
     background-color : #FEFAE0;
   
 }
 
-img {
-    height: 300px;
-    
-   
-}
