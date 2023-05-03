@@ -7,6 +7,8 @@ function Footer() {
       <br />
       <div className="footerItem">대표 | 박민수</div>
       <br />
+      <div className="footerItem">상임이사 | Chat GPT</div>
+      <br />
       <div className="footerItem">
         주소 | 대한민국 사랑시 고백구 행복동 14-72
       </div>
