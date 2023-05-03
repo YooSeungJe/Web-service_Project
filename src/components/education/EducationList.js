@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Grid } from '@mui/material';
-import { get, post, put, patch, delete as del } from '../../api';
+import { get, post, patch, delete as del } from '../../api';
 import EducationCard from './EducationCard';
 import CreateEducationButton from './CreateEducationButton';
 import CreateEducationDialog from './CreateEducationDialog.js';
@@ -79,7 +79,7 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleUpdateSubmit = async (_id, updatedEducation) => {
     try {
-      await put(`education/${_id}`, updatedEducation);
+      await patch(`education/${_id}`, updatedEducation);
       const response = await get(`education/${portfolioOwnerId}`);
       setEducations(response.data);
       handleUpdateClose();
