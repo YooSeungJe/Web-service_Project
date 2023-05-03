@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Card, Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import * as Api from '../../api';
-import { useNavigate, useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const FormText = styled.small`
   display: block;
