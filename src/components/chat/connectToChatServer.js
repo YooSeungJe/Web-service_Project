@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const SERVER_URL = 'http://localhost:5001'; // Replace with your chat server URL
+const SERVER_URL = 'http://localhost:5001';
 
 const connectToChatServer = (currentUser, onNewMessageReceived) => {
   const socket = io.connect(SERVER_URL);

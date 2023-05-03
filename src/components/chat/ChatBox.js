@@ -5,25 +5,19 @@ import io from 'socket.io-client';
 const ChatBox = ({ show, handleClose, senderId, receiverId }) => {
   const [message, setMessage] = useState('');
   const [socket, setSocket] = useState(null);
-  const [chatList, setChatList] = useState([]); // only declare chatList once as a state variable
+  const [chatList, setChatList] = useState([]);
 
   useEffect(() => {
-    // create WebSocket connection
     const newSocket = io(process.env.REACT_APP_SERVER_URL);
 
-    // join chat room
     newSocket.emit('joinRoom', { senderId, receiverId });
 
-    // listen for new messages
     newSocket.on('newMessage', (newMessage) => {
-      // update chat list
       setChatList((prevChatList) => [...prevChatList, newMessage]);
     });
 
-    // store socket instance
     setSocket(newSocket);
 
-    // close socket connection when component unmounts
     return () => {
       newSocket.close();
     };
@@ -31,7 +25,7 @@ const ChatBox = ({ show, handleClose, senderId, receiverId }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // send message to server
+
     socket.emit('chatMessage', { senderId, receiverId, message });
     setMessage('');
   };
