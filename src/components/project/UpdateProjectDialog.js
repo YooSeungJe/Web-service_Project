@@ -13,18 +13,22 @@ const UpdateProjectDialog = ({ open, onClose, project, handleSubmit }) => {
   const [updatedProject, setUpdatedProject] = useState({
     title: '',
     description: '',
-    startDate: new Date(),
-    endDate: new Date(),
   });
+  const [updatedStartDate, setUpdatedStartDate] = useState(new Date());
+  const [updatedEndDate, setUpdatedEndDate] = useState(new Date());
 
   useEffect(() => {
     if (project) {
       setUpdatedProject({
         title: project.title,
         description: project.description,
-        startDate: project.startDate,
-        endDate: project.endDate,
       });
+      console.log(`project.startDate : ${project.startDate}`);
+      console.log(`project.endDate : ${project.endDate}`);
+      setUpdatedStartDate(new Date());
+      setUpdatedEndDate(new Date());
+      console.log(`updatedStartDate : ${updatedStartDate}`);
+      console.log(`updatedEndDate : ${updatedEndDate}`);
     }
   }, [project]);
 
@@ -36,7 +40,11 @@ const UpdateProjectDialog = ({ open, onClose, project, handleSubmit }) => {
   };
 
   const handleUpdate = () => {
-    handleSubmit(project._id, updatedProject);
+    handleSubmit(project._id, {
+      ...updatedProject,
+      startDate: updatedStartDate,
+      endDate: updatedEndDate,
+    });
     onClose();
   };
 
@@ -61,17 +69,15 @@ const UpdateProjectDialog = ({ open, onClose, project, handleSubmit }) => {
           onChange={handleChange}
         />
         <DatePicker
-          name="startDate"
-          value={updatedProject.startDate}
-          selected={updatedProject.startDate}
-          onChange={handleChange}
+          value={updatedProject.StartDate}
+          selected={updatedStartDate}
+          onChange={(date) => setUpdatedStartDate(date)}
           dateFormat="yyyy.MM.dd"
         />
         <DatePicker
-          name="endDate"
-          value={updatedProject.endDate}
-          selected={updatedProject.endDate}
-          onChange={handleChange}
+          value={updatedProject.EndDate}
+          selected={updatedEndDate}
+          onChange={(date) => setUpdatedEndDate(date)}
           dateFormat="yyyy.MM.dd"
         />
       </DialogContent>
