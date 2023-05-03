@@ -34,7 +34,11 @@ function Comments({ portfolioOwnerId, isEditable }) {
             setAdding={setAdding}
           />
         )}
-        {isEditable && <Button variant='secondary' size='sm' onClick={() => setAdding(true)}>+</Button>}
+        {isEditable && (
+          <Button variant='secondary' size='sm' onClick={() => setAdding(true)}>
+            +
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );
