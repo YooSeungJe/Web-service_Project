@@ -8,29 +8,30 @@ import {
   Typography,
 } from '@mui/material';
 
-const DeleteAwardDialog = ({
+const DeleteProjectDialog = ({
   open,
   onClose,
   handleDeleteConfirm,
-  awardId,
-  awardTitle,
+  projectId,
+  projectTitle,
 }) => {
   const handleConfirmDelete = () => {
-    handleDeleteConfirm(awardId);
+    handleDeleteConfirm(projectId);
     onClose();
   };
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>수상 내역 삭제</DialogTitle>
+      <DialogTitle>Delete Project</DialogTitle>
       <DialogContent>
-        <Typography variant='body1'>
-          정말로 이 수상 내역을 삭제하시겠어요? "{awardTitle}"?
+        <Typography variant="body1">
+          Are you sure you want to delete the project "{projectTitle}"?
         </Typography>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleConfirmDelete} color='error'>
+        <Button onClick={handleConfirmDelete} color="error">
+          {/* <Button onClick={() => handleDeleteConfirm()} color='error'> */}
           Delete
         </Button>
       </DialogActions>
@@ -38,4 +39,4 @@ const DeleteAwardDialog = ({
   );
 };
 
-export default DeleteAwardDialog;
+export default DeleteProjectDialog;

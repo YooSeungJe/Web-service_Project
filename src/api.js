@@ -39,12 +39,17 @@ async function post(endpoint, data) {
   console.log(`%cPOST 요청: ${serverUrl + endpoint}`, 'color: #296aba;');
   console.log(`%cPOST 요청 데이터: ${bodyData}`, 'color: #296aba;');
 
-  return axios.post(serverUrl + endpoint, bodyData, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('userToken')}`,
-    },
-  });
+  return axios
+    .post(serverUrl + endpoint, bodyData, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${sessionStorage.getItem('userToken')}`,
+      },
+    })
+    .catch((error) => {
+      console.error('Error in POST request:', error);
+      throw error;
+    });
 }
 
 async function patch(endpoint, data) {

@@ -29,6 +29,8 @@ const UpdateEducationDialog = ({ open, onClose, education, handleSubmit }) => {
   }, [education]);
 
   const handleChange = (event) => {
+    console.log(updatedEducation); //확인용
+    console.log(education); //확인용
     setUpdatedEducation({
       ...updatedEducation,
       [event.target.name]: event.target.value,
@@ -61,24 +63,34 @@ const UpdateEducationDialog = ({ open, onClose, education, handleSubmit }) => {
           onChange={handleChange}
         />
         <RadioGroup
+          name="graduationTypeCode"
           value={updatedEducation.graduationTypeCode}
           onChange={handleChange}
+          row
         >
-          <FormControlLabel value="재학중" control={<Radio />} label="재학중" />
+          <FormControlLabel
+            value="재학중"
+            control={<Radio />}
+            label="재학중"
+            checked={updatedEducation.graduationTypeCode === '재학중'}
+          />
           <FormControlLabel
             value="학사졸업"
             control={<Radio />}
             label="학사졸업"
+            checked={updatedEducation.graduationTypeCode === '학사졸업'}
           />
           <FormControlLabel
             value="석사졸업"
             control={<Radio />}
             label="석사졸업"
+            checked={updatedEducation.graduationTypeCode === '석사졸업'}
           />
           <FormControlLabel
             value="박사졸업"
             control={<Radio />}
             label="박사졸업"
+            checked={updatedEducation.graduationTypeCode === '박사졸업'}
           />
         </RadioGroup>
       </DialogContent>

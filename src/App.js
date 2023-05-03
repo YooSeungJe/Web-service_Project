@@ -62,7 +62,7 @@ function App() {
         <Router>
           <Header />
           <div id="wrapper">
-            <Routes id="root">
+            <Routes>
               <Route path="/" exact element={<Portfolio />} />
               <Route path="/login" element={<LoginForm />} />
               <Route path="/register" element={<RegisterForm />} />
