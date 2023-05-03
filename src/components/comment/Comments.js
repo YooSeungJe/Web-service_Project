@@ -5,7 +5,7 @@ import CommentAddForm from './CommentAddForm';
 import * as Api from '../../api';
 
 function Comments({ portfolioOwnerId }) {
-  const [comments, setComments] = useState([]); 
+  const [comments, setComments] = useState([]);
   const [adding, setAdding] = useState(false);
 
   useEffect(() => {
@@ -33,8 +33,9 @@ function Comments({ portfolioOwnerId }) {
             setAdding={setAdding}
           />
         )}
-        <Button variant='secondary' size='sm' onClick={() => 
-          setAdding(true)}>+</Button>
+        <Button variant='secondary' size='sm' onClick={() => setAdding(true)}>
+          +
+        </Button>
       </Card.Body>
     </Card>
   );

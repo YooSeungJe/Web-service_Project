@@ -66,18 +66,18 @@ function App() {
         <Router>
           <Header />
           {console.log(userState)}
-          <div id="wrapper">
+          <div id='wrapper'>
             <Routes>
-              <Route path="/" exact element={<Portfolio />} />
-              <Route path="/login" element={<LoginForm />} />
-              <Route path="/register" element={<RegisterForm />} />
-              <Route path="/users/:userId" element={<Portfolio />} />
-              <Route path="/network" element={<Network />} />
-              <Route path="/swagger" element={<MySwaggerUI />} />
-              <Route path="*" element={<Portfolio />} />
+              <Route path='/' exact element={<Portfolio />} />
+              <Route path='/login' element={<LoginForm />} />
+              <Route path='/register' element={<RegisterForm />} />
+              <Route path='/users/:userId' element={<Portfolio />} />
+              <Route path='/network' element={<Network />} />
+              <Route path='/swagger' element={<MySwaggerUI />} />
+              <Route path='*' element={<Portfolio />} />
             </Routes>
           </div>
-          {userState.user && <Footer id="footer" />}
+          {userState.user && <Footer id='footer' />}
         </Router>
       </UserStateContext.Provider>
     </DispatchContext.Provider>

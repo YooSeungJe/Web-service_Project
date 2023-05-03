@@ -16,7 +16,7 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
 
     await Api.post(`comment/${portfolioOwnerId}`, {
       content,
-      name: userState.user.name
+      name: userState.user.name,
     });
 
     const res = await Api.get(`comment/${portfolioOwnerId}`);
@@ -26,26 +26,28 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="addName">
+      <Form.Group controlId='addName'>
         <div>{userState.user.name}</div>
       </Form.Group>
-      <Form.Group controlId="addContent">
+      <Form.Group controlId='addContent'>
         <Form.Control
           ref={contentInput}
-          name="content"
-          type="text"
-          placeholder="댓글 내용"
+          name='content'
+          type='text'
+          placeholder='댓글 내용'
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
       </Form.Group>
       <Form.Group>
-        <Button variant='outline-secondary'
-              size='sm' type="submit">
+        <Button variant='outline-secondary' size='sm' type='submit'>
           확인
         </Button>
-        <Button variant='outline-danger'
-                  size='sm' onClick={() => setAdding(false)}>
+        <Button
+          variant='outline-danger'
+          size='sm'
+          onClick={() => setAdding(false)}
+        >
           취소
         </Button>
       </Form.Group>
