@@ -16,9 +16,18 @@ const FloatingIcon = ({ receiverId }) => {
       <FontAwesomeIcon
         icon={faComments}
         className='floating-icon'
-        onClick={() => setShowChatBox(!showChatBox)}
+        onClick={() => {
+          setShowChatBox((prevShowChatBox) => !prevShowChatBox);
+        }}
       />
-      {showChatBox && <ChatBox senderId={senderId} receiverId={receiverId} />}
+      {showChatBox && (
+        <ChatBox
+          show={showChatBox}
+          handleClose={() => setShowChatBox(false)}
+          senderId={senderId}
+          receiverId={receiverId}
+        />
+      )}
     </div>
   );
 };

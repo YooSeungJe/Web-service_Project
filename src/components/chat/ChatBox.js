@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import io from 'socket.io-client';
+import './ChatBox.css';
 
 const ChatBox = ({ show, handleClose, senderId, receiverId }) => {
   const [message, setMessage] = useState('');
@@ -31,31 +32,20 @@ const ChatBox = ({ show, handleClose, senderId, receiverId }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Chat</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <ul>
-          {chatList.map((chat, index) => (
-            <li key={index}>{chat}</li>
-          ))}
-        </ul>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Control
-              type='text'
-              placeholder='Enter message'
-              value={message}
-              onChange={(event) => setMessage(event.target.value)}
-            />
-          </Form.Group>
-          <Button variant='primary' type='submit'>
-            Send
-          </Button>
-        </Form>
-      </Modal.Body>
-    </Modal>
+    show && (
+      <div className='chat-box'>
+        <div className='chat-box-header'>
+          <h5>Chat</h5>
+          <button onClick={handleClose}>&times;</button>
+        </div>
+        <div className='chat-box-body'>
+          <ul>{/* ... */}</ul>
+        </div>
+        <div className='chat-box-footer'>
+          <Form onSubmit={handleSubmit}>{/* ... */}</Form>
+        </div>
+      </div>
+    )
   );
 };
 
