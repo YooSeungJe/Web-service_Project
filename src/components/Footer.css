@@ -1,0 +1,16 @@
+#footer {
+  width: 100%;
+  align-items: left;
+  background-color: #e9edc98c;
+  padding: 1rem;
+}
+
+.footerTitle {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.footerItem {
+  display: inline-block;
+  font-size: 0.7rem;
+}
