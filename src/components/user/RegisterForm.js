@@ -59,7 +59,7 @@ function RegisterForm() {
       <div className='container'>
         <form className='form-wrapper' onSubmit={handleSubmit}>
           <div className='form-group'>
-            <label className='label' htmlFor='registerEmail'>이메일 주소</label>
+            <label className='labeling' htmlFor='registerEmail'>이메일 주소</label>
             <input
               className='input'
               id='registerEmail'
@@ -69,12 +69,12 @@ function RegisterForm() {
               onChange={(e) => setEmail(e.target.value)}
             />
             {!isEmailValid && (
-              <small className='form-text'>이메일 형식이 올바르지 않습니다.</small>
+              <p className='설명'>이메일 형식이 올바르지 않습니다.</p>
             )}
           </div>
 
           <div className='form-group'>
-            <label className='label' htmlFor='registerPassword'>비밀번호</label>
+            <label className='labeling' htmlFor='registerPassword'>비밀번호</label>
             <input
               className='input'
               id='registerPassword'
@@ -84,12 +84,12 @@ function RegisterForm() {
               onChange={(e) => setPassword(e.target.value)}
             />
             {!isPasswordValid && (
-              <small className='form-text'>비밀번호는 4글자 이상으로 설정해 주세요.</small>
+              <p className='설명'>비밀번호는 4글자 이상으로 설정해 주세요.</p>
             )}
           </div>
 
           <div className='form-group'>
-            <label className='label' htmlFor='registerConfirmPassword'>비밀번호 재확인</label>
+            <label className='labeling' htmlFor='registerConfirmPassword'>비밀번호 재확인</label>
             <input
               className='input'
               id='registerConfirmPassword'
@@ -99,12 +99,12 @@ function RegisterForm() {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             {!isPasswordSame && (
-              <small className='form-text'>비밀번호가 일치하지 않습니다.</small>
+              <p className='설명'>비밀번호가 일치하지 않습니다.</p>
             )}
           </div>
 
           <div className='form-group'>
-            <label className='label' htmlFor='registerName'>이름</label>
+            <label className='labeling' htmlFor='registerName'>이름</label>
             <input
               className='input'
               id='registerName'
@@ -114,7 +114,7 @@ function RegisterForm() {
               onChange={(e) => setName(e.target.value)}
             />
             {!isNameValid && (
-              <small className='form-text'>이름은 2글자 이상으로 설정해 주세요.</small>
+              <p className='설명'>이름은 2글자 이상으로 설정해 주세요.</p>
             )}
           </div>
 

@@ -31,11 +31,12 @@
     margin-bottom: 1rem;
 }
 
-.label {
+.labeling {
     display: block;
     font-size: 1rem;
     margin-bottom: 0.5rem;
     font-family: 'ChosunGu';
+    font-weight: bold;
 }
 
 .input {
@@ -55,11 +56,12 @@
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.form-text {
+.설명 {
     display: block;
-    color: #dc3545;
+    color: red;
     margin-top: 0.25rem;
     font-family: 'ChosunGu';
+    font-size: 0.9rem;
 }
 
 .회원 {
@@ -72,7 +74,7 @@
     margin-bottom: 0.5rem;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-
+    font-weight: bold;
     background-color: #02343F;
     color: #F0EDCC;
     font-family: 'ChosunGu';
@@ -96,6 +98,7 @@
     border-color: #02343F;
     border-width: thin;
     background-color: #FEFAE0;
+    font-weight: bold;
 }
 
 .로그인:hover {
