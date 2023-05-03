@@ -57,6 +57,9 @@ function Portfolio() {
   if (!isFetchCompleted) {
     return 'loading...';
   }
+  const handleClick = () => {
+    setShowChat((prevShowChat) => !prevShowChat);
+  };
 
   return (
     <div id='portfolio'>
@@ -91,13 +94,16 @@ function Portfolio() {
                 portfolioOwnerId={portfolioOwner.id}
                 isEditable={portfolioOwner.id === userState.user?.id}
               />
-              <FloatingIcon setShowChat={setShowChat} />
+              <FloatingIcon
+                receiverId={portfolioOwner.id}
+                handleClick={handleClick}
+              />
               {showChat && (
                 <ChatBox
                   show={showChat}
                   handleClose={() => setShowChat(false)}
-                  senderId={userState.user.id} // set the sender id to the current user id
-                  receiverId={portfolioOwner.id} // set the receiver id to the portfolio owner id
+                  senderId={userState.user.id}
+                  receiverId={portfolioOwner.id}
                 />
               )}
             </div>

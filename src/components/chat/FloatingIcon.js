@@ -6,7 +6,7 @@ import ChatBox from './ChatBox';
 
 import { UserStateContext } from '../../App';
 
-const FloatingIcon = ({ receiverId }) => {
+const FloatingIcon = ({ receiverId, handleClick }) => {
   const [showChatBox, setShowChatBox] = useState(false);
   const userState = useContext(UserStateContext);
   const senderId = userState.user.id;
@@ -16,9 +16,19 @@ const FloatingIcon = ({ receiverId }) => {
       <FontAwesomeIcon
         icon={faComments}
         className='floating-icon'
-        onClick={() => setShowChatBox(!showChatBox)}
+        onClick={() => {
+          setShowChatBox((prevShowChatBox) => !prevShowChatBox);
+          handleClick && handleClick();
+        }}
       />
-      {showChatBox && <ChatBox senderId={senderId} receiverId={receiverId} />}
+      {showChatBox && (
+        <ChatBox
+          show={showChatBox}
+          handleClose={() => setShowChatBox(false)}
+          senderId={senderId}
+          receiverId={receiverId}
+        />
+      )}
     </div>
   );
 };
