@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -6,8 +6,8 @@ import {
   TextField,
   DialogActions,
   Button,
-} from '@mui/material';
-import DatePicker from 'react-datepicker';
+} from "@mui/material";
+import DatePicker from "react-datepicker";
 
 const CreateProjectDialog = ({
   open,
@@ -27,8 +27,8 @@ const CreateProjectDialog = ({
 
   const handleClose = () => {
     setNewProject({
-      title: '',
-      description: '',
+      title: "",
+      description: "",
     });
     setNewStartDate(new Date());
     setNewEndDate(new Date());

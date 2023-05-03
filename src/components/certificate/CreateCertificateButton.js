@@ -15,7 +15,9 @@ const CreateCertificateButton = ({ onClick, onSubmit }) => {
 
   return (
     <>
-      <Button onClick={handleOpen}>Create</Button>
+      <Button variant="contained" color="primary" onClick={handleOpen}>
+        Create
+      </Button>
       <CreateCertificateDialog
         open={open}
         onClose={handleClose}
