@@ -13,17 +13,21 @@ const CreateProjectDialog = ({
   open,
   onClose,
   newProject,
+  newStartDate,
+  newEndDate,
   handleChange,
   handleSubmit,
   setNewProject,
+  setNewStartDate,
+  setNewEndDate,
 }) => {
   const handleClose = () => {
     setNewProject({
       title: '',
       description: '',
-      startDate: new Date(),
-      endDate: new Date(),
     });
+    setNewStartDate(new Date());
+    setNewEndDate(new Date());
     onClose();
   };
 
@@ -54,17 +58,15 @@ const CreateProjectDialog = ({
           }}
         />
         <DatePicker
-          name="startDate"
           value={newProject.startDate}
-          selected={newProject.startDate}
-          onChange={handleChange}
+          selected={newStartDate}
+          onChange={setNewStartDate}
           dateFormat="yyyy.MM.dd"
         />
         <DatePicker
-          name="endDate"
           value={newProject.endDate}
-          selected={newProject.endDate}
-          onChange={handleChange}
+          selected={newEndDate}
+          onChange={setNewEndDate}
           dateFormat="yyyy.MM.dd"
         />
       </DialogContent>
