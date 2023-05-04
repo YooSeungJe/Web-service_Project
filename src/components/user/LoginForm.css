@@ -179,12 +179,8 @@ input {
   font-size: 1rem;
   background-color: #fefae0;
 }
-<<<<<<< HEAD
-=======
 
 .error {
-    color: #FE6244;
-    font-size: 15px;
+  color: #fe6244;
+  font-size: 15px;
 }
-
->>>>>>> d772d1bd7cc1ee835e16c4f2665baac647522da6
