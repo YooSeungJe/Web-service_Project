@@ -21,12 +21,12 @@ function CommentCard({ comment, setComments, setEdit, portfolioOwnerId }) {
   };
 
   return (
-    <Card style={{width:'16.7rem'}}>
-      <Card.Body style={{ width: '40rem' }}>
+    <Card style={{width:'270px',marginBottom:'5px'}}>
+      <Card.Body>
         <Card.Title>{comment.name}</Card.Title>
         <Card.Text>{comment.content}</Card.Text>
         {comment.userId === userState.user?.id && (
-          <Col style={{marginLeft:'145px'}}>
+          <Col>
             <Button
               variant="outline-secondary"
               size="sm"

@@ -31,6 +31,7 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
       </Form.Group>
       <Form.Group controlId='addContent'>
         <Form.Control
+          style={{marginBottom:'3px'}}
           ref={contentInput}
           name='content'
           type='text'
@@ -39,7 +40,7 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
           onChange={(e) => setContent(e.target.value)}
         />
       </Form.Group>
-      <Form.Group style={{marginTop:'2px',marginLeft:'168px'}}>
+      <Form.Group>
         <Button  variant='outline-primary' size='sm' type='submit'>
           확인
         </Button>
