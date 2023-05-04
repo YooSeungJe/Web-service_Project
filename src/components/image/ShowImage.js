@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Api from '../../api';
 import './ShowImage.css';
 import ProgressiveImage from "react-progressive-graceful-image";
@@ -6,9 +6,9 @@ import ProgressiveImage from "react-progressive-graceful-image";
 import loading from '../../image/loading.gif';
 import profile from '../../image/profile.png';
 
-const ShowImage = ({ userId, dataId, imageKey = 0 }) => {
+const ShowImage = ({ userId, dataId, imageKey}) => {
   const [ image, setImage ] = useState(null);
-  useMemo(() => {
+  useEffect(() => {
       const fetchData = async () => {
         const param = `${userId}/${dataId}`;
         const imageData = await Api.get('image', param);
