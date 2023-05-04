@@ -7,6 +7,7 @@ import {
   DialogTitle,
   TextField,
 } from '@mui/material';
+
 const UpdateCertificateDialog = ({
   open,
   onClose,
@@ -38,26 +39,26 @@ const UpdateCertificateDialog = ({
       <DialogContent>
         <TextField
           autoFocus
-          margin='dense'
-          label='Certification Name'
-          name='certificationName'
+          margin="dense"
+          label="Certification Name"
+          name="certificationName"
           value={updatedCertificate.certificationName}
           fullWidth
           onChange={handleInputChange}
         />
         <TextField
-          margin='dense'
-          label='Certification Number'
-          name='certificationNumber'
+          margin="dense"
+          label="Certification Number"
+          name="certificationNumber"
           value={updatedCertificate.certificationNumber}
           fullWidth
           onChange={handleInputChange}
         />
         <TextField
-          margin='dense'
-          label='Issuance Date'
-          type='date'
-          name='issuanceDate'
+          margin="dense"
+          label="Issuance Date"
+          type="date"
+          name="issuanceDate"
           value={new Date(certificate.issuanceDate).toISOString().slice(0, 10)}
           InputLabelProps={{
             shrink: true,
@@ -69,9 +70,9 @@ const UpdateCertificateDialog = ({
           onChange={handleInputChange}
         />
         <TextField
-          margin='dense'
-          label='Issuing Authority'
-          name='issuingAuthority'
+          margin="dense"
+          label="Issuing Authority"
+          name="issuingAuthority"
           value={updatedCertificate.issuingAuthority}
           fullWidth
           onChange={handleInputChange}
@@ -79,7 +80,7 @@ const UpdateCertificateDialog = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleUpdateClick} color='primary'>
+        <Button onClick={handleUpdateClick} color="primary">
           Update
         </Button>
       </DialogActions>
@@ -87,10 +88,4 @@ const UpdateCertificateDialog = ({
   );
 };
 
-const UpdateCertificateButton = ({ onClick }) => (
-  <Button onClick={onClick} size='small'>
-    Update
-  </Button>
-);
-
-export { UpdateCertificateButton, UpdateCertificateDialog };
+export default UpdateCertificateDialog;

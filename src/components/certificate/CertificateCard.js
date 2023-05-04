@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardActions, Box } from '@mui/material';
 import DeleteCertificateButton from './DeleteCertificateButton';
 import DeleteCertificateDialog from './DeleteCertificateDialog';
-import { UpdateCertificateButton } from './UpdateCertificate';
+import UpdateCertificateButton from './UpdateCertificateButton';
 
 import '../components.css';
 
