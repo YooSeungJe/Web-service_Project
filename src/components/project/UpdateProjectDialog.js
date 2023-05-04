@@ -34,8 +34,8 @@ const UpdateProjectDialog = ({
       });
       console.log(`project.startDate : ${project.startDate}`);
       console.log(`project.endDate : ${project.endDate}`);
-      setUpdatedStartDate(new Date());
-      setUpdatedEndDate(new Date());
+      setUpdatedStartDate(new Date(project.startDate));
+      setUpdatedEndDate(new Date(project.endDate));
       console.log(`updatedStartDate : ${updatedStartDate}`);
       console.log(`updatedEndDate : ${updatedEndDate}`);
     }
