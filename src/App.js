@@ -23,9 +23,12 @@ const theme = createTheme({
   typography: {
     h4: {
       fontFamily: 'ChosunGu',
+      fontWeight: 'bold',
+      color: '#495942',
     },
     h5: {
       fontFamily: 'ChosunGu',
+      fontWeight: 'bold',
     },
     body1: {
       fontFamily: 'ChosunGu',

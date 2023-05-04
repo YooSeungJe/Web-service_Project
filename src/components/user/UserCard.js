@@ -8,11 +8,8 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
   return (
     <Card className={`${styles.card} mb-2 ms-3 mr-5`}>
       <Card.Body>
-        <Row className='justify-content-md-center'>
-          <ShowImage
-            userId={user?.id}
-            dataId={user?.id}
-          />
+        <Row className="justify-content-md-center">
+          <ShowImage userId={user?.id} dataId={user?.id} />
         </Row>
         <Card.Title className={`${styles.title}`}>{user?.name}</Card.Title>
         <Card.Subtitle className={`${styles.subtitle} ${styles.email}`}>
@@ -28,8 +25,8 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
               <Col sm={{ span: 20 }}>
                 <Button
                   className={`${styles.button} ${styles.editButton}`}
-                  variant='outline-info'
-                  size='sm'
+                  variant="outline-info"
+                  size="sm"
                   onClick={() => setIsEditing(true)}
                 >
                   편집
@@ -42,7 +39,7 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
         {isNetwork && (
           <Card.Link
             className={`${styles.link} ${styles.networkLink} mt-3`}
-            href='#'
+            href="#"
             onClick={() => {
               console.log(`Clicked user ID: ${user.id}`);
               navigate(`/users/${user.id}`);

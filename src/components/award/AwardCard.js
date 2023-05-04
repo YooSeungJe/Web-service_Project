@@ -22,9 +22,9 @@ const AwardCard = ({
     setDeleteOpen((prevState) => !prevState);
   };
   return (
-    <Card className="card">
+    <Card className="modelCard">
       <CardHeader variant="h5" title={title} subheader={year} />
-      <CardContent variant="body1">{description}</CardContent>
+      <CardContent sx={{ fontFamily: 'ChosunGu' }}>{description}</CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (

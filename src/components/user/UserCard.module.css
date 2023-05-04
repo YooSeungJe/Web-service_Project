@@ -1,4 +1,14 @@
+@font-face {
+  font-family: 'ChosunGu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
+
 .card {
+  width: 300px;
   border: none;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -12,6 +22,7 @@
 }
 
 .title {
+  font-family: 'ChosunGu';
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 8px;
@@ -26,6 +37,7 @@
 }
 
 .text {
+  font-family: 'ChosunGu';
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
@@ -54,12 +66,14 @@
 }
 
 .link {
+  font-family: 'ChosunGu';
   font-size: 14px;
   font-weight: 600;
   color: #007bff;
 }
 
 .description {
+  font-family: 'ChosunGu';
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
@@ -68,6 +82,7 @@
 }
 
 .occupation {
+  font-family: 'ChosunGu';
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 8px;
@@ -75,6 +90,7 @@
 }
 
 .email {
+  font-family: 'ChosunGu';
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 16px;
@@ -86,6 +102,7 @@
 }
 
 .networkLink {
+  font-family: 'ChosunGu';
   font-size: 14px;
   font-weight: 600;
   color: #007bff;

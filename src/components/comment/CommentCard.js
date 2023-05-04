@@ -4,6 +4,8 @@ import { Card, Button, Col } from 'react-bootstrap';
 import * as Api from '../../api';
 import { UserStateContext } from '../../App';
 
+import '../components.css';
+
 function CommentCard({ comment, setComments, setEdit, portfolioOwnerId }) {
   const _id = comment._id;
   const userState = useContext(UserStateContext);
@@ -21,12 +23,12 @@ function CommentCard({ comment, setComments, setEdit, portfolioOwnerId }) {
   };
 
   return (
-    <Card style={{width:'16.7rem'}}>
+    <Card style={{ width: '16.7rem' }}>
       <Card.Body style={{ width: '40rem' }}>
         <Card.Title variant="h5">{comment.name}</Card.Title>
-        <Card.Text variant="body1">{comment.content}</Card.Text>
+        <Card.Text>{comment.content}</Card.Text>
         {comment.userId === userState.user?.id && (
-          <Col style={{marginLeft:'145px'}}>
+          <Col style={{ marginLeft: '145px' }}>
             <Button
               variant="outline-secondary"
               size="sm"
@@ -34,7 +36,12 @@ function CommentCard({ comment, setComments, setEdit, portfolioOwnerId }) {
             >
               편집
             </Button>
-            <Button  style={{marginLeft:'5px'}} variant="outline-danger" size="sm" onClick={handleDelete}>
+            <Button
+              style={{ marginLeft: '5px' }}
+              variant="outline-danger"
+              size="sm"
+              onClick={handleDelete}
+            >
               삭제
             </Button>
           </Col>

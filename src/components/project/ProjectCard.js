@@ -34,13 +34,13 @@ const ProjectCard = ({
     setDeleteOpen((prevState) => !prevState);
   };
   return (
-    <Card className="card">
+    <Card className="modelCard">
       <CardHeader
-        className="title"
+        variant="h5"
         title={title}
         subheader={`${formatDate(startDate)} ~ ${formatDate(endDate)}`}
       />
-      <CardContent className="content">{description}</CardContent>
+      <CardContent sx={{ fontFamily: 'ChosunGu' }}>{description}</CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (

@@ -31,13 +31,13 @@ const CertificateCard = ({
   };
 
   return (
-    <Card className="card">
+    <Card className="modelCard">
       <CardHeader
-        variants="h5"
+        variant="h5"
         title={certificate.certificationName}
         subheader={certificate.issuingAuthority}
       />
-      <CardContent>
+      <CardContent sx={{ fontFamily: 'ChosunGu' }}>
         <p>Certification Number: {certificate.certificationNumber}</p>
         <p>
           Issuance Date:{' '}
