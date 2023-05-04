@@ -122,16 +122,12 @@ const ChatBox = ({
       );
     });
 
-    if (hasChatHistory) {
-      fetchChatHistory(senderId, receiverId).then((chatHistory) => {
-        if (chatHistory) {
-          setPrevChatList(chatHistory.messages);
-          setIsChatActive(chatHistory.messages.length > 0); // Only set isChatActive if there is chat history
-        }
-      });
-    } else {
-      setIsChatActive(false);
-    }
+    fetchChatHistory(senderId, receiverId).then((chatHistory) => {
+      if (chatHistory) {
+        setPrevChatList(chatHistory.messages);
+        setIsChatActive(chatHistory.messages.length > 0);
+      }
+    });
 
     setSocket(newSocket);
     if (isMyPortfolio) {
@@ -140,7 +136,8 @@ const ChatBox = ({
     return () => {
       newSocket.close();
     };
-  }, [senderId, receiverId, hasChatHistory, isMyPortfolio]);
+    // }, [senderId, receiverId, hasChatHistory, isMyPortfolio]);
+  }, [senderId, receiverId, isMyPortfolio]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -158,15 +155,13 @@ const ChatBox = ({
       await socket.emit('createChatRoom', { senderId, receiverId });
       setChatRoomCreated(true);
     }
-    // Don't set isChatActive or render the chat box here
-    // Instead, wait for fetchChatHistory to complete
+
     fetchChatHistory(senderId, receiverId).then((chatHistory) => {
       if (chatHistory) {
         setPrevChatList(chatHistory.messages);
       }
-      setIsChatActive(true); // Set isChatActive and render the chat box here
+      setIsChatActive(true);
     });
-    // Add a message to the chat list to prevent the chat box from disappearing immediately
     setChatList([{ message: '새로운 채팅이 시작되었습니다.' }]);
   };
 
