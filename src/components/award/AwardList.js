@@ -21,19 +21,20 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
   const [updateOpen, setUpdateOpen] = useState(false);
 
   const checkEmpty = (ref, input1, input2) => {
-    if (ref.title.length === 0) {
-      input1.current.querySelector('input').focus();
-      input1.current.querySelector('input').placeholder =
-        '한글자 이상을 입력해주세요.';
-      input1.current.querySelector('input').style.color = 'red';
-      return false;
-    } else if (ref.description.length === 0) {
-      input2.current.querySelector('input').focus();
-      input2.current.querySelector('input').placeholder =
-        '한글자 이상을 입력해주세요.';
-      input2.current.querySelector('input').style.color = 'red';
-      return false;
-    } else return true;
+    switch (true) {
+      case ref.title.length === 0:
+        input1.current.querySelector('input').focus();
+        input1.current.querySelector('input').placeholder =
+          '한글자 이상을 입력해주세요';
+        return false;
+      case ref.description.length === 0:
+        input2.current.querySelector('input').focus();
+        input2.current.querySelector('input').placeholder =
+          '한글자 이상을 입력해주세요';
+        return false;
+      default:
+        return true;
+    }
   };
 
   useEffect(() => {
