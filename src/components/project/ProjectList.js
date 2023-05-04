@@ -6,6 +6,8 @@ import CreateProjectButton from './CreateProjectButton';
 import CreateProjectDialog from './CreateProjectDialog';
 import UpdateProjectDialog from './UpdateProjectDialog';
 
+import '../components.css';
+
 const ProjectList = ({ portfolioOwnerId, isEditable }) => {
   const [projects, setProjects] = useState([]);
   const [createOpen, setCreateOpen] = useState(false);
@@ -153,7 +155,9 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <Box>
-      <Typography variant="h4">Projects</Typography>
+      <Typography className="modelTitle" variant="h4">
+        Projects
+      </Typography>
       {projects.length === 0 && (
         <Typography variant="body1">No projects found.</Typography>
       )}

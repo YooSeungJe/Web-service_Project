@@ -13,8 +13,7 @@ function Footer() {
       <br />
       <div className="footerItem">전화 | 02-0000-0000 문의 | 1@elice.kr</div>
       <br />
-      <br />
-      <div className="footerItem">
+      <div className="footerCopyright">
         Copyright 2023. 잊지마 기억해. All rights reserved.
       </div>
     </div>

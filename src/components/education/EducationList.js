@@ -7,6 +7,8 @@ import CreateEducationDialog from './CreateEducationDialog.js';
 import UpdateEducationDialog from './UpdateEducationDialog';
 import { ConstructionOutlined } from '@mui/icons-material';
 
+import '../components.css';
+
 const EducationList = ({ portfolioOwnerId, isEditable }) => {
   const [educations, setEducations] = useState([]);
   const [createOpen, setCreateOpen] = useState(false);
@@ -130,7 +132,9 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <Box>
-      <Typography variant="h4">Educations</Typography>
+      <Typography className="modelTitle" variant="h4">
+        Educations
+      </Typography>
       {educations.length === 0 && (
         <Typography variant="body1">No educations found.</Typography>
       )}

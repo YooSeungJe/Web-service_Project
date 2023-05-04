@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import * as Api from '../../api';
 
 
@@ -15,7 +14,7 @@ function LoginForm() {
   const navigate = useNavigate();
   const userState = useContext(UserStateContext);
   const dispatch = useContext(DispatchContext);
-
+  const [error, setError] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -63,7 +62,7 @@ function LoginForm() {
       navigate('/', { replace: true });
     } catch (err) {
       console.log('로그인에 실패하였습니다.\n', err);
-      alert('존재하지 않는 아이디입니다')
+      setError('존재하지 않는 아이디 혹은 비밀번호입니다');
     }
   };
 
@@ -103,6 +102,7 @@ function LoginForm() {
               {!isPasswordValid && passwordTouched && (
                 <p className='error-message'>비밀번호는 4글자 이상입니다.</p>
               )}
+              {error && <p className='error'>{error}</p>}
             </div>
 
             <button className='in' type='submit' disabled={!isFormValid}>

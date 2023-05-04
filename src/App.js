@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import * as Api from './api';
 import { loginReducer } from './reducer';
-import './App.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,9 +12,17 @@ import RegisterForm from './components/user/RegisterForm';
 import Portfolio from './components/Portfolio';
 
 import MySwaggerUI from './SwaggerUI';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './App.css';
 
 export const UserStateContext = createContext(null);
 export const DispatchContext = createContext(null);
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'ChosunGu',
+  },
+});
 
 function App() {
   // useReducer 훅을 통해 userState 상태와 dispatch함수를 생성함.
@@ -64,20 +71,22 @@ function App() {
     <DispatchContext.Provider value={dispatch}>
       <UserStateContext.Provider value={userState}>
         <Router>
-          <Header />
-          {console.log(userState)}
-          <div id='wrapper'>
-            <Routes>
-              <Route path='/' exact element={<Portfolio />} />
-              <Route path='/login' element={<LoginForm />} />
-              <Route path='/register' element={<RegisterForm />} />
-              <Route path='/users/:userId' element={<Portfolio />} />
-              <Route path='/network' element={<Network />} />
-              <Route path='/swagger' element={<MySwaggerUI />} />
-              <Route path='*' element={<Portfolio />} />
-            </Routes>
-          </div>
-          {userState.user && <Footer id='footer' />}
+          <ThemeProvider theme={theme}>
+            <Header />
+            {console.log(userState)}
+            <div id="wrapper">
+              <Routes>
+                <Route path="/" exact element={<Portfolio />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/register" element={<RegisterForm />} />
+                <Route path="/users/:userId" element={<Portfolio />} />
+                <Route path="/network" element={<Network />} />
+                <Route path="/swagger" element={<MySwaggerUI />} />
+                <Route path="*" element={<Portfolio />} />
+              </Routes>
+            </div>
+            {userState.user && <Footer id="footer" />}
+          </ThemeProvider>
         </Router>
       </UserStateContext.Provider>
     </DispatchContext.Provider>

@@ -1,16 +1,16 @@
 html,
 body {
-  background-color: #fefae0;
+  padding: 0;
+  margin: 0;
+  background-color: #ccd5ae;
 }
 
 #wrapper {
+  padding: 10px;
   min-height: calc(100vh - 10rem);
-  background-color: #e9edc9;
-}
-
-#footer {
-  height: 10rem;
-  background: yellow;
+  background-color: #efddab44 !important;
+  border-top: rgba(211, 211, 211, 0.532) solid 1px;
+  /* background-color: #e9edc9; */
 }
 
 .loading {
@@ -20,13 +20,4 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
