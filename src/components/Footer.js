@@ -3,11 +3,11 @@ import turtle from '../image/turtle.png';
 
 function Footer() {
   return (
-    <div id="footer">
-      <img className="turtle" src={turtle} alt="cute turtle" />
-      <div id="footerContent">
-        <div className="footerTitle">주식회사 잊지마 기억해</div>
-        <div className="footerItem">
+    <div id='footer'>
+      <img className='turtle' src={turtle} alt='cute turtle' />
+      <div id='footerContent'>
+        <div className='footerTitle'>주식회사 잊지마 기억해</div>
+        <div className='footerItem'>
           <b>&nbsp;&nbsp;대표 | </b>
           <div>박민수&nbsp;&nbsp;&nbsp;</div>
           <b>상임이사 | </b>
@@ -22,7 +22,7 @@ function Footer() {
           <div>1@elice.kr</div>
           <br />
         </div>
-        <div className="footerCopyright">
+        <div className='footerCopyright'>
           &nbsp;&nbsp;Copyright 2023. 잊지마 기억해. All rights reserved.
         </div>
       </div>

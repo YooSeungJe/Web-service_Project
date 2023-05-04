@@ -7,22 +7,21 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@1000&display=swap');
 nav {
-    display: flex;
-    /* justify-content: space-between; */
-    justify-content: flex-end;
-    align-items: center;
-    background-color: #E9EDC9;
-    padding: 1rem;
-    font-size: 1rem;
-    
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #e9edc9;
+  padding: 1rem;
+  font-size: 1rem;
 }
 
 .mybtn {
-    color: #617A55;
-    font-size: 22px;
-    transition: all 0.2s linear;
-    font-family: 'Nunito', sans-serif;
-    display: block;
+  color: #617a55;
+  font-size: 22px;
+  transition: all 0.2s linear;
+  font-family: 'Nunito', sans-serif;
+  display: block;
 }
 
 .mybtn:hover {
@@ -30,11 +29,11 @@ nav {
 }
 
 .netbtn {
-    color:#617A55;
-    font-size: 22px;
-    font-family: 'Nunito', sans-serif;
-    transition: all 0.2s linear;
-    display: block;
+  color: #617a55;
+  font-size: 22px;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s linear;
+  display: block;
 }
 
 .netbtn:hover {
@@ -46,11 +45,11 @@ nav {
 }
 
 .outbtn {
-    color: red;
-    font-size: 22px;
-    font-family: 'Nunito', sans-serif;
-    transition: all 0.2s linear;
-    display: block;
+  color: red;
+  font-size: 22px;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s linear;
+  display: block;
 }
 
 .outbtn:hover {
@@ -58,14 +57,14 @@ nav {
 }
 
 .bar {
-    /* margin-left: 1250px; */
-    display: flex;
-    align-items: center;
+  /* margin-left: 1250px; */
+  display: flex;
+  align-items: center;
 }
 
 .bar > a {
-    margin-left: 10px;
-    text-decoration: none;
+  margin-left: 10px;
+  text-decoration: none;
 }
 
 button {
