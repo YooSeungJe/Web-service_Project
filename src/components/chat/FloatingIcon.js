@@ -12,10 +12,10 @@ const FloatingIcon = ({ receiverId }) => {
   const senderId = userState.user.id;
 
   return (
-    <div className='floating-icon-container'>
+    <div className="floating-icon-container">
       <FontAwesomeIcon
         icon={faComments}
-        className='floating-icon'
+        className="floating-icon"
         onClick={() => {
           setShowChatBox((prevShowChatBox) => !prevShowChatBox);
         }}
