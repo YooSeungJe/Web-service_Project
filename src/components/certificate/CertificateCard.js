@@ -38,9 +38,12 @@ const CertificateCard = ({
         subheader={certificate.issuingAuthority}
       />
       <CardContent sx={{ fontFamily: 'ChosunGu' }}>
-        <p>Certification Number: {certificate.certificationNumber}</p>
         <p>
-          Issuance Date:{' '}
+          자격증 번호 <br /> {certificate.certificationNumber}
+        </p>
+        <p>
+          발행날짜
+          <br />
           {new Date(certificate.issuanceDate).toLocaleDateString()}
         </p>
       </CardContent>
