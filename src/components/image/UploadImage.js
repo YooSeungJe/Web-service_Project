@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
+import { PhotoCamera } from '@mui/icons-material'
 import * as Api from '../../api';
 import ShowImage from './ShowImage';
 
@@ -10,6 +11,10 @@ const UploadImage = ({ userId, dataId }) => {
 
     const handleFileSelect = async (e) => {
       const image = e.target.files[0];
+      if(image.size > 5 * 1024 * 1024){
+        alert('업로드 가능한 최대 용량은 5MB입니다. ');
+        return;
+      }
       formData.append('image', image);
       try{
         await Api.upload('image', formData);
@@ -22,10 +27,16 @@ const UploadImage = ({ userId, dataId }) => {
     return (
       <>
         <ShowImage userId={userId} dataId={dataId} imageKey={imageKey} />
-        <Button variant="contained" component="label">
-          Upload
-          <input hidden accept="image/*" multiple type="file" onChange={handleFileSelect}/>
-        </Button>
+        <Box>
+          <Button variant="contained" component="label" startIcon={<PhotoCamera />}>
+            Upload
+            <input hidden accept="image/*" multiple type="file" onChange={handleFileSelect}/>
+          </Button>
+          <Button variant="contained" component="label" startIcon={<PhotoCamera />}>
+            Delete
+            <input hidden accept="image/*" multiple type="file" onChange={handleFileSelect}/>
+          </Button>
+        </Box>
       </>
     )
 };
