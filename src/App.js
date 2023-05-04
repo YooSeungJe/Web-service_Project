@@ -84,7 +84,7 @@ function App() {
       <UserStateContext.Provider value={userState}>
         <Router>
           <ThemeProvider theme={theme}>
-            <Header />
+            {userState.user && <Header />}
             {console.log(userState)}
             <div id="wrapper">
               <Routes>
