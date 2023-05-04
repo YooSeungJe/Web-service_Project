@@ -4,6 +4,8 @@ import DeleteCertificateButton from './DeleteCertificateButton';
 import DeleteCertificateDialog from './DeleteCertificateDialog';
 import { UpdateCertificateButton } from './UpdateCertificate';
 
+import '../components.css';
+
 const CertificateCard = ({
   certificate,
   handleOpenUpdate,
@@ -29,12 +31,13 @@ const CertificateCard = ({
   };
 
   return (
-    <Card>
+    <Card className="card">
       <CardHeader
+        className="title"
         title={certificate.certificationName}
         subheader={certificate.issuingAuthority}
       />
-      <CardContent>
+      <CardContent className="content">
         <p>Certification Number: {certificate.certificationNumber}</p>
         <p>
           Issuance Date:{' '}

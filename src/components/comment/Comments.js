@@ -4,6 +4,8 @@ import Comment from './Comment';
 import CommentAddForm from './CommentAddForm';
 import * as Api from '../../api';
 
+import '../components.css';
+
 function Comments({ portfolioOwnerId }) {
   const [comments, setComments] = useState([]);
   const [adding, setAdding] = useState(false);
@@ -15,7 +17,11 @@ function Comments({ portfolioOwnerId }) {
   }, [portfolioOwnerId]);
 
   return (
-    <Card className='mb-2 ms-3 mr-5' style={{ width: '18rem' }}>
+    <Card
+      id="commentCard"
+      className="mb-2 ms-3 mr-5"
+      style={{ width: '18rem' }}
+    >
       <Card.Body>
         <Card.Title>Comments</Card.Title>
         {comments.map((comment) => (
@@ -33,7 +39,7 @@ function Comments({ portfolioOwnerId }) {
             setAdding={setAdding}
           />
         )}
-        <Button variant='secondary' size='sm' onClick={() => setAdding(true)}>
+        <Button variant="secondary" size="sm" onClick={() => setAdding(true)}>
           +
         </Button>
       </Card.Body>

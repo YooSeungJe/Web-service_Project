@@ -1,117 +1,113 @@
 @font-face {
-    font-family: 'ChosunGu';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
-      format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'ChosunGu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .body {
-    background-color:#FEFAE0;
+  background-color: #fefae0;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .form-wrapper {
-    background-color: #E9EDC9 ;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    width: 450px;
-    max-width: 100%;
+  background-color: #e9edc9;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 450px;
+  max-width: 100%;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .labeling {
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    font-family: 'ChosunGu';
-    font-weight: bold;
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: 'ChosunGu';
+  font-weight: bold;
 }
 
 .input {
-    display: block;
-    width: 100%;
-    font-size: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .input:focus {
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .설명 {
-    display: block;
-    color: red;
-    margin-top: 0.25rem;
-    font-family: 'ChosunGu';
-    font-size: 0.9rem;
+  display: block;
+  color: red;
+  margin-top: 0.25rem;
+  font-family: 'ChosunGu';
+  font-size: 0.9rem;
 }
 
 .회원 {
-    margin-top:30px;
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-    border-radius: 5px;
-    border: none;
-    width: 100%;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    font-weight: bold;
-    background-color: #02343F;
-    color: #F0EDCC;
-    font-family: 'ChosunGu';
-   
+  margin-top: 30px;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-weight: bold;
+  background-color: #02343f;
+  color: #f0edcc;
+  font-family: 'ChosunGu';
 }
 
 .회원:hover {
-    background-color: #A4D0A4;
+  background-color: #a4d0a4;
 }
 
 .로그인 {
-    color: #02343F;
-    margin-top:7px;
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-    border-radius: 5px;
-    width: 100%;
-    border-color: #F0EDCC;
-    font-family: 'ChosunGu';
-    border:solid;
-    border-color: #02343F;
-    border-width: thin;
-    background-color: #FEFAE0;
-    font-weight: bold;
+  color: #02343f;
+  margin-top: 7px;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  width: 100%;
+  border-color: #f0edcc;
+  font-family: 'ChosunGu';
+  border: solid;
+  border-color: lightgray;
+  border-width: thin;
+  background-color: #fefae0;
+  font-weight: bold;
 }
 
 .로그인:hover {
-    background-color: #F0EDCC;
+  background-color: #f0edcc;
 }
 
 input {
-    display: block;
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color : #FEFAE0;
-  
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #fefae0;
 }

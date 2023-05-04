@@ -6,6 +6,8 @@ import CreateCertificateButton from './CreateCertificateButton';
 import CreateCertificateDialog from './CreateCertificateDialog';
 import { UpdateCertificateDialog } from './UpdateCertificate';
 
+import '../components.css';
+
 const CertificateList = ({ portfolioOwnerId, isEditable }) => {
   const [certificates, setCertificates] = useState([]);
   const [createOpen, setCreateOpen] = useState(false);
@@ -127,7 +129,9 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <Box>
-      <Typography variant="h4">Certificates</Typography>
+      <Typography className="modelTitle" variant="h4">
+        Certificates
+      </Typography>
       {certificates.length === 0 && (
         <Typography variant="body1">No certificates found.</Typography>
       )}

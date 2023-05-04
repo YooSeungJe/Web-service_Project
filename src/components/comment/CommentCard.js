@@ -4,12 +4,7 @@ import { Card, Button, Col } from 'react-bootstrap';
 import * as Api from '../../api';
 import { UserStateContext } from '../../App';
 
-function CommentCard({
-  comment,
-  setComments,
-  setEdit,
-  portfolioOwnerId,
-}) {
+function CommentCard({ comment, setComments, setEdit, portfolioOwnerId }) {
   const _id = comment._id;
   const userState = useContext(UserStateContext);
 
@@ -25,7 +20,6 @@ function CommentCard({
     }
   };
 
-
   return (
     <Card>
       <Card.Body style={{ width: '40rem' }}>
@@ -34,14 +28,13 @@ function CommentCard({
         {comment.userId === userState.user?.id && (
           <Col>
             <Button
-              variant='outline-secondary'
-              size='sm'
+              variant="outline-secondary"
+              size="sm"
               onClick={() => setEdit((change) => !change)}
             >
               편집
             </Button>
-            <Button variant='outline-danger'
-                  size='sm' onClick={handleDelete}>
+            <Button variant="outline-danger" size="sm" onClick={handleDelete}>
               삭제
             </Button>
           </Col>

@@ -4,6 +4,8 @@ import UpdateAwardButton from './UpdateAwardButton';
 import DeleteAwardButton from './DeleteAwardButton';
 import DeleteAwardDialog from './DeleteAwardDialog';
 
+import '../components.css';
+
 const AwardCard = ({
   award,
   handleOpenUpdate,
@@ -20,9 +22,9 @@ const AwardCard = ({
     setDeleteOpen((prevState) => !prevState);
   };
   return (
-    <Card>
-      <CardHeader title={title} subheader={year} />
-      <CardContent>{description}</CardContent>
+    <Card className="card">
+      <CardHeader className="title" title={title} subheader={year} />
+      <CardContent className="content">{description}</CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (
