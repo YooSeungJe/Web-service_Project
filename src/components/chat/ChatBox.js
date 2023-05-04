@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import io from 'socket.io-client';
 import './ChatBox.css';
 import * as api from '../../api';
+import ChatList from './ChatList';
 
 const ChatBox = ({
   show,
@@ -173,21 +174,11 @@ const ChatBox = ({
           <button onClick={handleClose}>&times;</button>
         </div>
         {isMyPortfolio && !selectedRoomId ? (
-          <div className='chat-room-list'>
-            {chatRooms.length > 0 ? (
-              chatRooms.map((room) => (
-                <div
-                  key={room.roomId}
-                  className='chat-room'
-                  onClick={() => setSelectedRoomId(room.roomId)}
-                >
-                  {room.roomName}
-                </div>
-              ))
-            ) : (
-              <div className='no-chat-rooms'>No chat rooms available.</div>
-            )}
-          </div>
+          <ChatList
+            currentUserId={senderId}
+            onChatSelect={setSelectedRoomId}
+            userId={senderId}
+          />
         ) : (
           <>
             {/* {isChatActive && ( */}

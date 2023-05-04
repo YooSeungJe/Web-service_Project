@@ -79,14 +79,14 @@ function Portfolio() {
   }, [params, userState, navigate]);
 
   if (!isFetchCompleted) {
-    return <div className="loading">loading...</div>;
+    return <div className='loading'>loading...</div>;
   }
 
   return (
-    <div id="portfolio">
+    <div id='portfolio'>
       <Container fluid>
         <Row>
-          <Col md="3" lg="3">
+          <Col md='3' lg='3'>
             <User
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
@@ -94,30 +94,30 @@ function Portfolio() {
             <Comments portfolioOwnerId={portfolioOwner.id} />
           </Col>
           <Col>
-            <div className="list" style={{ textAlign: 'center' }}>
-              <div className="modelList">
+            <div className='list' style={{ textAlign: 'center' }}>
+              <div className='modelList'>
                 <EducationList
                   portfolioOwnerId={portfolioOwner.id}
                   isEditable={portfolioOwner.id === userState.user?.id}
                 />
               </div>
-              <div className="modelList">
+              <div className='modelList'>
                 <ProjectList
-                  className="modelList"
+                  className='modelList'
                   portfolioOwnerId={portfolioOwner.id}
                   isEditable={portfolioOwner.id === userState.user?.id}
                 />
               </div>
-              <div className="modelList">
+              <div className='modelList'>
                 <CertificateList
-                  className="modelList"
+                  className='modelList'
                   portfolioOwnerId={portfolioOwner.id}
                   isEditable={portfolioOwner.id === userState.user?.id}
                 />
               </div>
-              <div className="modelList">
+              <div className='modelList'>
                 <AwardList
-                  className="modelList"
+                  className='modelList'
                   portfolioOwnerId={portfolioOwner.id}
                   isEditable={portfolioOwner.id === userState.user?.id}
                 />
@@ -128,6 +128,8 @@ function Portfolio() {
                 isMyPortfolio={portfolioOwner.id === userState.user?.id}
                 chatList={chatList}
                 userId={userState.user?.id}
+                currentUser={userState.user}
+                receiver={portfolioOwner}
               />
             </div>
           </Col>
