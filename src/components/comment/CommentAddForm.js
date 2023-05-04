@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { DialogActions, Button } from '@mui/material';
 import * as Api from '../../api';
 import { UserStateContext } from '../../App';
 
@@ -31,27 +32,36 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
       </Form.Group>
       <Form.Group controlId="addContent">
         <Form.Control
+          className="commentCard"
           style={{ marginBottom: '3px' }}
           ref={contentInput}
           name="content"
           type="text"
-          placeholder="댓글 내용"
+          placeholder="댓글 내용을 입력해주세요"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
       </Form.Group>
       <Form.Group>
-        <Button variant="outline-primary" size="sm" type="submit">
-          확인
-        </Button>
-        <Button
-          style={{ marginLeft: '6px' }}
-          variant="outline-danger"
-          size="sm"
-          onClick={() => setAdding(false)}
-        >
-          취소
-        </Button>
+        <DialogActions>
+          <Button
+            style={{ marginLeft: '6px' }}
+            variant="outlined"
+            color="secondary"
+            size="small"
+            onClick={() => setAdding(false)}
+          >
+            취소하기
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            type="submit"
+          >
+            추가하기
+          </Button>
+        </DialogActions>
       </Form.Group>
     </Form>
   );

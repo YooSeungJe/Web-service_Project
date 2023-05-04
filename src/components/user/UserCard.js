@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Card, Row, Button, Col } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import { IconButton, Tooltip } from '@mui/material';
 import { Edit } from '@mui/icons-material';
 import styles from './UserCard.module.css';

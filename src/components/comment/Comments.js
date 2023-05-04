@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+import { Button } from '@mui/material';
 import Comment from './Comment';
 import CommentAddForm from './CommentAddForm';
 import * as Api from '../../api';
+import './Comment.css';
 
 import '../components.css';
-import { Block } from '@mui/icons-material';
 
 function Comments({ portfolioOwnerId }) {
   const [comments, setComments] = useState([]);
@@ -24,7 +25,7 @@ function Comments({ portfolioOwnerId }) {
       style={{ width: '300px' }}
     >
       <Card.Body>
-        <Card.Title style={{ textAlign: 'center' }}>Comments</Card.Title>
+        <Card.Title className="commentCardTitle">Comment</Card.Title>
         {comments.map((comment) => (
           <Comment
             portfolioOwnerId={portfolioOwnerId}
@@ -41,9 +42,10 @@ function Comments({ portfolioOwnerId }) {
           />
         )}
         <Button
-          style={{ margin: 'auto', display: 'block' }}
-          variant="outline-success"
-          size="sm"
+          style={{ margin: 'auto', display: 'block', width: '10px' }}
+          variant="contained"
+          color="primary"
+          size="small"
           onClick={() => setAdding(true)}
         >
           +

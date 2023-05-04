@@ -103,7 +103,6 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
   const handleOpenUpdate = (_id) => {
     setSelectedProjectId(_id);
     console.log('Update clicked for project:', _id);
-    // Open the update dialog
     setUpdateOpen(true);
   };
 

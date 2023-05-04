@@ -10,7 +10,6 @@ import {
   FormControlLabel,
   RadioGroup,
 } from '@mui/material';
-import { TrendingUpSharp } from '@mui/icons-material';
 
 const CreateEducationDialog = ({
   open,

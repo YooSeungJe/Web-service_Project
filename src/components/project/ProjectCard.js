@@ -23,13 +23,6 @@ const ProjectCard = ({
     return date.toLocaleDateString();
   };
 
-  // const handleDeleteOpen = () => {
-  //   setDeleteOpen((prevState) => !prevState);
-  // };
-
-  // const handleDeleteClose = () => {
-  //   setDeleteOpen((prevState) => !prevState);
-  // };
   const handleDeleteButton = () => {
     setDeleteOpen((prevState) => !prevState);
   };

@@ -5,7 +5,6 @@ import EducationCard from './EducationCard';
 import CreateEducationButton from './CreateEducationButton';
 import CreateEducationDialog from './CreateEducationDialog.js';
 import UpdateEducationDialog from './UpdateEducationDialog';
-import { ConstructionOutlined } from '@mui/icons-material';
 
 import '../components.css';
 
@@ -83,7 +82,6 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
   const handleOpenUpdate = (_id) => {
     setSelectedEducationId(_id);
     console.log('Update clicked for education:', _id);
-    // Open the update dialog
     setUpdateOpen(true);
   };
 
