@@ -18,3 +18,9 @@
 .floating-icon:hover {
   transform: translate(-50%, -50%) scale(1.1);
 }
+/* .chat-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+} */

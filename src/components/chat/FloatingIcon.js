@@ -8,22 +8,30 @@ import ChatBox from './ChatBox';
 import ChatList from './ChatList';
 
 import { UserStateContext } from '../../App';
-const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
-  const [showChatBox, setShowChatBox] = useState(false);
+
+const FloatingIcon = ({
+  receiverId,
+  isMyPortfolio,
+  receiver,
+  chatList,
+  currentUser,
+}) => {
   const [hasStartedChat, setHasStartedChat] = useState(false);
   const [selectedRoomId, setSelectedRoomId] = useState(null);
+  const [showChatList, setShowChatList] = useState(false);
 
   const userState = useContext(UserStateContext);
   const senderId = userState.user.id;
 
   const handleClick = () => {
-    setShowChatBox((prevShowChatBox) => !prevShowChatBox);
+    console.log('Floating icon clicked');
+    setShowChatList((prevShowChatList) => !prevShowChatList);
     setHasStartedChat(true);
   };
 
   const handleChatSelect = (roomId) => {
     console.log('handleChatSelect called with roomId:', roomId);
-    setShowChatBox(true);
+    setShowChatList(false);
     setSelectedRoomId(roomId);
     setHasStartedChat(true);
   };
@@ -31,7 +39,7 @@ const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
   const location = useLocation();
 
   useEffect(() => {
-    setShowChatBox(false);
+    setShowChatList(false);
   }, [location]);
 
   return (
@@ -42,25 +50,22 @@ const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
         onClick={handleClick}
       />
 
-      {showChatBox && (
-        <>
-          {isMyPortfolio && !selectedRoomId ? (
-            <ChatList onChatSelect={handleChatSelect} userId={senderId} />
-          ) : (
-            <ChatBox
-              show={showChatBox}
-              handleClose={() => {
-                setShowChatBox(false);
-                setSelectedRoomId(null);
-              }}
-              senderId={senderId}
-              receiverId={receiverId}
-              selectedRoomId={selectedRoomId}
-              resetSelectedRoom={() => setSelectedRoomId(null)}
-              isMyPortfolio={isMyPortfolio}
-            />
-          )}
-        </>
+      {showChatList && (
+        <div className='chat-container'>
+          <ChatBox
+            // show={!isMyPortfolio}
+            show={true}
+            handleClose={() => {
+              setShowChatList(false);
+              setSelectedRoomId(null);
+            }}
+            senderId={senderId}
+            receiverId={receiverId}
+            selectedRoomId={selectedRoomId}
+            resetSelectedRoom={() => setSelectedRoomId(null)}
+            isMyPortfolio={isMyPortfolio}
+          />
+        </div>
       )}
     </div>
   );
