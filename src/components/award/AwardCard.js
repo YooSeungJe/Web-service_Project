@@ -23,8 +23,8 @@ const AwardCard = ({
   };
   return (
     <Card className="card">
-      <CardHeader className="title" title={title} subheader={year} />
-      <CardContent className="content">{description}</CardContent>
+      <CardHeader variant="h5" title={title} subheader={year} />
+      <CardContent variant="body1">{description}</CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (

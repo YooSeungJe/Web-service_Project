@@ -14,13 +14,22 @@ import Portfolio from './components/Portfolio';
 import MySwaggerUI from './SwaggerUI';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './App.css';
+import { BloodtypeOutlined } from '@mui/icons-material';
 
 export const UserStateContext = createContext(null);
 export const DispatchContext = createContext(null);
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'ChosunGu',
+    h4: {
+      fontFamily: 'ChosunGu',
+    },
+    h5: {
+      fontFamily: 'ChosunGu',
+    },
+    body1: {
+      fontFamily: 'ChosunGu',
+    },
   },
 });
 
