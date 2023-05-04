@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ChatCard from './ChatCard';
 import * as api from '../../api';
 
 const ChatList = ({ onChatSelect, userId }) => {
@@ -6,7 +7,7 @@ const ChatList = ({ onChatSelect, userId }) => {
 
   const fetchChatRooms = async (userId) => {
     try {
-      const response = await api.get(`chat/user/${userId}`);
+      const response = await api.get(`chats/${userId}`);
 
       setChatRooms(response.data.chatRooms);
     } catch (error) {
@@ -22,14 +23,21 @@ const ChatList = ({ onChatSelect, userId }) => {
     <div className='chat-list'>
       <ul>
         {chatRooms.map((chatRoom) => (
-          <li
+          <ChatCard
             key={chatRoom.roomId}
-            onClick={() => onChatSelect(chatRoom.roomId)}
-          >
-            {userId === chatRoom.senderId
-              ? `${chatRoom.receiverName}님과의 대화`
-              : `${chatRoom.senderName}님과의 대화`}
-          </li>
+            roomId={chatRoom.roomId}
+            senderId={chatRoom.senderId}
+            senderName={chatRoom.senderName}
+            receiverId={chatRoom.receiverId}
+            receiverName={chatRoom.receiverName}
+            onClick={() => {
+              console.log(
+                'Chat room item clicked with roomId:',
+                chatRoom.roomId
+              );
+              onChatSelect(chatRoom.roomId);
+            }}
+          />
         ))}
       </ul>
     </div>
