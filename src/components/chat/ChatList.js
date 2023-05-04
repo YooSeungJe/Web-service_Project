@@ -6,7 +6,7 @@ const ChatList = ({ onChatSelect, userId }) => {
 
   const fetchChatRooms = async (userId) => {
     try {
-      const response = await api.get(`chat/user/${userId}`);
+      const response = await api.get(`chats/${userId}`);
 
       setChatRooms(response.data.chatRooms);
     } catch (error) {
@@ -24,7 +24,13 @@ const ChatList = ({ onChatSelect, userId }) => {
         {chatRooms.map((chatRoom) => (
           <li
             key={chatRoom.roomId}
-            onClick={() => onChatSelect(chatRoom.roomId)}
+            onClick={() => {
+              console.log(
+                'Chat room item clicked with roomId:',
+                chatRoom.roomId
+              );
+              onChatSelect(chatRoom.roomId);
+            }}
           >
             {userId === chatRoom.senderId
               ? `${chatRoom.receiverName}님과의 대화`
