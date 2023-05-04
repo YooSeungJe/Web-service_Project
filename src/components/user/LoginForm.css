@@ -184,3 +184,8 @@ input {
   
 }
 
+.error {
+    color: #FE6244;
+    font-size: 15px;
+}
+
