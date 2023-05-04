@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, Card, Col, Row } from 'react-bootstrap';
-import styled from 'styled-components';
 import * as Api from '../../api';
 import { useNavigate } from 'react-router-dom';
 import UploadImage from '../image/UploadImage';
 
-const FormText = styled.small`
-  display: block;
-  color: #dc3545;
-  margin-top: 0.25rem;
-`;
 
 function UserEditForm({ user, setIsEditing, setUser }) {
   //useState로 name 상태를 생성함.
@@ -86,7 +80,7 @@ function UserEditForm({ user, setIsEditing, setUser }) {
               onChange={(e) => setName(e.target.value)}
             />
             {!isNameValid && (
-              <FormText>이름은 2글자 이상으로 설정해 주세요.</FormText>
+              <p className='small text-danger'>이름은 2글자 이상으로 설정해 주세요.</p>
             )}
           </Form.Group>
 
@@ -116,7 +110,7 @@ function UserEditForm({ user, setIsEditing, setUser }) {
               onChange={(e) => setPassword(e.target.value)}
             />
             {!isPasswordValid && (
-              <FormText>비밀번호는 4글자 이상으로 설정해 주세요.</FormText>
+              <p className='small text-danger'>비밀번호는 4글자 이상으로 설정해 주세요.</p>
             )}
           </Form.Group>
 
@@ -128,7 +122,7 @@ function UserEditForm({ user, setIsEditing, setUser }) {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             {!isPasswordSame && (
-              <FormText>비밀번호가 일치하지 않습니다.</FormText>
+              <p className='small text-danger'>비밀번호가 일치하지 않습니다.</p>
             )}
           </Form.Group>
 
