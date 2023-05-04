@@ -55,7 +55,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
           <TextField
             autoFocus
             margin="dense"
-            label="Certification Name"
+            label="자격증 이름"
             name="certificationName"
             type="text"
             fullWidth
@@ -65,7 +65,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
           />
           <TextField
             margin="dense"
-            label="Certification Number"
+            label="자격증 번호"
             name="certificationNumber"
             type="text"
             fullWidth
@@ -75,7 +75,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
           />
           <TextField
             margin="dense"
-            label="Issuance Date"
+            label="발행날짜"
             name="issuanceDate"
             type="date"
             fullWidth
@@ -94,7 +94,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
 
           <TextField
             margin="dense"
-            label="Issuing Authority"
+            label="발행기관"
             name="issuingAuthority"
             type="text"
             fullWidth

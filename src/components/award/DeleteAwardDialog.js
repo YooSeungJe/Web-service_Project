@@ -22,16 +22,19 @@ const DeleteAwardDialog = ({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>수상 내역 삭제</DialogTitle>
+      <DialogTitle variant="h5">수상 경력 삭제</DialogTitle>
       <DialogContent>
-        <Typography variant='body1'>
-          정말로 이 수상 내역을 삭제하시겠어요? "{awardTitle}"?
+        <Typography variant="body1">
+          정말로 이 수상 경력을 삭제하시겠습니까? <br />
+          <br /> 선택하신 항목 : "{awardTitle}"
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleConfirmDelete} color='error'>
-          Delete
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
+        <Button onClick={handleConfirmDelete} variant="contained" color="error">
+          삭제하기
         </Button>
       </DialogActions>
     </Dialog>

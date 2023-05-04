@@ -53,13 +53,13 @@ const UpdateEducationDialog = ({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Edit Education</DialogTitle>
+      <DialogTitle variant="h5">학력 변경</DialogTitle>
       <DialogContent>
         <TextField
           ref={schoolNameInput}
           margin="normal"
           fullWidth
-          label="Education"
+          label="학교 이름"
           name="schoolName"
           placeholder=""
           value={updatedEducation.schoolName}
@@ -69,7 +69,7 @@ const UpdateEducationDialog = ({
           ref={majorInput}
           margin="normal"
           fullWidth
-          label="Major"
+          label="전공"
           name="major"
           placeholder=""
           value={updatedEducation.major}
