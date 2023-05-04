@@ -39,11 +39,12 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
           onChange={(e) => setContent(e.target.value)}
         />
       </Form.Group>
-      <Form.Group>
-        <Button variant='outline-secondary' size='sm' type='submit'>
+      <Form.Group style={{marginTop:'2px',marginLeft:'168px'}}>
+        <Button  variant='outline-primary' size='sm' type='submit'>
           확인
         </Button>
         <Button
+          style={{marginLeft:'6px'}}
           variant='outline-danger'
           size='sm'
           onClick={() => setAdding(false)}

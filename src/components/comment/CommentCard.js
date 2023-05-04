@@ -21,12 +21,12 @@ function CommentCard({ comment, setComments, setEdit, portfolioOwnerId }) {
   };
 
   return (
-    <Card>
+    <Card style={{width:'16.7rem'}}>
       <Card.Body style={{ width: '40rem' }}>
         <Card.Title variant="h5">{comment.name}</Card.Title>
         <Card.Text variant="body1">{comment.content}</Card.Text>
         {comment.userId === userState.user?.id && (
-          <Col>
+          <Col style={{marginLeft:'145px'}}>
             <Button
               variant="outline-secondary"
               size="sm"
@@ -34,7 +34,7 @@ function CommentCard({ comment, setComments, setEdit, portfolioOwnerId }) {
             >
               편집
             </Button>
-            <Button variant="outline-danger" size="sm" onClick={handleDelete}>
+            <Button  style={{marginLeft:'5px'}} variant="outline-danger" size="sm" onClick={handleDelete}>
               삭제
             </Button>
           </Col>
