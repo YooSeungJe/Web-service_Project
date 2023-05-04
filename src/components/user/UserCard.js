@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Button, Col } from 'react-bootstrap';
+import { IconButton, Tooltip } from '@mui/material';
+import { Edit } from '@mui/icons-material';
 import styles from './UserCard.module.css';
 import ShowImage from '../image/ShowImage';
 
@@ -21,16 +23,25 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
 
         {isEditable && (
           <Col>
-            <Row className={`${styles.row} mt-3 text-center text-info`}>
+            <Row className={`${styles.button} ${styles.editButton}`}>
               <Col sm={{ span: 20 }}>
-                <Button
+                <Tooltip title="Edit UserCard">
+                  <IconButton
+                    sx={{ ml: 'auto' }}
+                    onClick={() => setIsEditing(true)}
+                  >
+                    <Edit />
+                  </IconButton>
+                </Tooltip>
+
+                {/* <Button
                   className={`${styles.button} ${styles.editButton}`}
                   variant="outline-info"
                   size="sm"
                   onClick={() => setIsEditing(true)}
                 >
                   편집
-                </Button>
+                </Button> */}
               </Col>
             </Row>
           </Col>
