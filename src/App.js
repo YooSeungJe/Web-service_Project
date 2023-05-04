@@ -25,6 +25,11 @@ const theme = createTheme({
       fontFamily: 'ChosunGu',
       fontWeight: 'bold',
       color: '#495942',
+      padding: '5px',
+      borderRadius: '15px',
+      backgroundColor: 'ivory',
+      border: 'rgba(128, 128, 128, 0.438) solid 1px',
+      boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
     },
     h5: {
       fontFamily: 'ChosunGu',
@@ -32,6 +37,11 @@ const theme = createTheme({
     },
     body1: {
       fontFamily: 'ChosunGu',
+    },
+  },
+  palette: {
+    primary: {
+      main: '#617A55',
     },
   },
 });

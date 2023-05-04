@@ -50,6 +50,10 @@
 }
 
 .button {
+  margin-left: 180px !important;
+}
+
+/* .button {
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -59,11 +63,11 @@
   background-color: #007bff;
   color: #fff;
   transition: background-color 0.3s ease-in-out;
-}
-
+} */
+/* 
 .button:hover {
   background-color: #0062cc;
-}
+} */
 
 .link {
   font-family: 'ChosunGu';
@@ -96,7 +100,7 @@
   margin-bottom: 16px;
   color: #666;
 }
-
+/* 
 .editButton {
   margin-top: 16px;
 }
@@ -107,7 +111,7 @@
   font-weight: 600;
   color: #007bff;
   text-decoration: none;
-}
+} */
 
 .networkLink:hover {
   text-decoration: underline;

@@ -80,27 +80,35 @@ function Portfolio() {
             <Comments portfolioOwnerId={portfolioOwner.id} />
           </Col>
           <Col>
-            <div style={{ textAlign: 'center' }}>
-              <EducationList
-                className="list"
-                portfolioOwnerId={portfolioOwner.id}
-                isEditable={portfolioOwner.id === userState.user?.id}
-              />
-              <ProjectList
-                className="list"
-                portfolioOwnerId={portfolioOwner.id}
-                isEditable={portfolioOwner.id === userState.user?.id}
-              />
-              <CertificateList
-                className="list"
-                portfolioOwnerId={portfolioOwner.id}
-                isEditable={portfolioOwner.id === userState.user?.id}
-              />
-              <AwardList
-                className="list"
-                portfolioOwnerId={portfolioOwner.id}
-                isEditable={portfolioOwner.id === userState.user?.id}
-              />
+            <div className="list" style={{ textAlign: 'center' }}>
+              <div className="modelList">
+                <EducationList
+                  portfolioOwnerId={portfolioOwner.id}
+                  isEditable={portfolioOwner.id === userState.user?.id}
+                />
+              </div>
+              <div className="modelList">
+                <ProjectList
+                  className="modelList"
+                  portfolioOwnerId={portfolioOwner.id}
+                  isEditable={portfolioOwner.id === userState.user?.id}
+                />
+              </div>
+              <div className="modelList">
+                <CertificateList
+                  className="modelList"
+                  portfolioOwnerId={portfolioOwner.id}
+                  isEditable={portfolioOwner.id === userState.user?.id}
+                />
+              </div>
+              <div className="modelList">
+                <AwardList
+                  className="modelList"
+                  portfolioOwnerId={portfolioOwner.id}
+                  isEditable={portfolioOwner.id === userState.user?.id}
+                />
+              </div>
+
               <FloatingIcon
                 receiverId={portfolioOwner.id}
                 isMyPortfolio={portfolioOwner.id === userState.user?.id}
