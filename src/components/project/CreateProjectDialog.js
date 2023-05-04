@@ -8,6 +8,7 @@ import {
   Button,
 } from '@mui/material';
 import DatePicker from 'react-datepicker';
+import '../components.css';
 
 const CreateProjectDialog = ({
   open,
@@ -65,19 +66,23 @@ const CreateProjectDialog = ({
             shrink: true,
           }}
         />
-        <DatePicker
-          value={newStartDate}
-          selected={newStartDate}
-          onChange={setNewStartDate}
-          dateFormat="yyyy.MM.dd"
-        />
-        <DatePicker
-          value={newEndDate}
-          selected={newEndDate}
-          onChange={setNewEndDate}
-          dateFormat="yyyy.MM.dd"
-          minDate={new Date(newStartDate)}
-        />
+        <div className="datePickers">
+          <DatePicker
+            className="datePicker"
+            value={newStartDate}
+            selected={newStartDate}
+            onChange={setNewStartDate}
+            dateFormat="yyyy.MM.dd"
+          />
+          <DatePicker
+            className="datePicker"
+            value={newEndDate}
+            selected={newEndDate}
+            onChange={setNewEndDate}
+            dateFormat="yyyy.MM.dd"
+            minDate={new Date(newStartDate)}
+          />
+        </div>
       </DialogContent>
 
       <DialogActions>

@@ -30,3 +30,14 @@ body {
 .modelCard:hover {
   transform: translateY(-4px);
 }
+
+.datePicker {
+  width: 95%;
+  background-color: white;
+}
+
+.datePickers {
+  display: flex;
+  flex-direction: space-between;
+  margin-top: 15px;
+}
