@@ -12,16 +12,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
 
-.body {
-  background-color: #fefae0;
-}
-
 .container {
+  min-width: 100vw;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: -70px;
+  background-color: #fefae0 !important;
 }
 
 .left-box {
