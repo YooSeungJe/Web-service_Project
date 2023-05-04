@@ -8,6 +8,7 @@ import {
   TextField,
 } from '@mui/material';
 import DatePicker from 'react-datepicker';
+import '../components.css';
 
 const UpdateProjectDialog = ({
   open,
@@ -81,19 +82,23 @@ const UpdateProjectDialog = ({
           value={updatedProject.description}
           onChange={handleChange}
         />
-        <DatePicker
-          value={updatedProject.StartDate}
-          selected={updatedStartDate}
-          onChange={(date) => setUpdatedStartDate(date)}
-          dateFormat="yyyy.MM.dd"
-        />
-        <DatePicker
-          value={updatedProject.EndDate}
-          selected={updatedEndDate}
-          onChange={(date) => setUpdatedEndDate(date)}
-          dateFormat="yyyy.MM.dd"
-          minDate={new Date(updatedStartDate)}
-        />
+        <div className="datePickers">
+          <DatePicker
+            className="datePicker"
+            value={updatedProject.StartDate}
+            selected={updatedStartDate}
+            onChange={(date) => setUpdatedStartDate(date)}
+            dateFormat="yyyy.MM.dd"
+          />
+          <DatePicker
+            className="datePicker"
+            value={updatedProject.EndDate}
+            selected={updatedEndDate}
+            onChange={(date) => setUpdatedEndDate(date)}
+            dateFormat="yyyy.MM.dd"
+            minDate={new Date(updatedStartDate)}
+          />
+        </div>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} variant="outlined" color="secondary">
