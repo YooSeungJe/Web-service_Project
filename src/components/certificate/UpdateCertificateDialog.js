@@ -35,12 +35,12 @@ const UpdateCertificateDialog = ({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Update Certificate</DialogTitle>
+      <DialogTitle variant="h5">자격증 정보 변경</DialogTitle>
       <DialogContent>
         <TextField
           autoFocus
           margin="dense"
-          label="Certification Name"
+          label="자격증 이름"
           name="certificationName"
           value={updatedCertificate.certificationName}
           fullWidth
@@ -48,7 +48,7 @@ const UpdateCertificateDialog = ({
         />
         <TextField
           margin="dense"
-          label="Certification Number"
+          label="자격증 번호"
           name="certificationNumber"
           value={updatedCertificate.certificationNumber}
           fullWidth
@@ -56,7 +56,7 @@ const UpdateCertificateDialog = ({
         />
         <TextField
           margin="dense"
-          label="Issuance Date"
+          label="발행날짜"
           type="date"
           name="issuanceDate"
           value={new Date(certificate.issuanceDate).toISOString().slice(0, 10)}
@@ -71,7 +71,7 @@ const UpdateCertificateDialog = ({
         />
         <TextField
           margin="dense"
-          label="Issuing Authority"
+          label="발행기관"
           name="issuingAuthority"
           value={updatedCertificate.issuingAuthority}
           fullWidth

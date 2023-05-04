@@ -35,7 +35,7 @@ const CreateEducationDialog = ({
       <DialogContent>
         <TextField
           ref={schoolNameInput}
-          label="School Name"
+          label="학교 이름"
           name="schoolName"
           value={newEducation.schoolName}
           onChange={handleChange}
@@ -48,7 +48,7 @@ const CreateEducationDialog = ({
         />
         <TextField
           ref={majorInput}
-          label="Major"
+          label="전공"
           name="major"
           value={newEducation.major}
           onChange={handleChange}

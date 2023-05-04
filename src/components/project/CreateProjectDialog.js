@@ -41,7 +41,7 @@ const CreateProjectDialog = ({
       <DialogContent>
         <TextField
           ref={titleInput}
-          label="Title"
+          label="프로젝트 제목"
           name="title"
           value={newProject.title}
           onChange={handleChange}
@@ -54,7 +54,7 @@ const CreateProjectDialog = ({
         />
         <TextField
           ref={descriptionInput}
-          label="Description"
+          label="설명"
           name="description"
           value={newProject.description}
           onChange={handleChange}
@@ -82,7 +82,7 @@ const CreateProjectDialog = ({
 
       <DialogActions>
         <Button onClick={handleClose} variant="outlined" color="secondary">
-          Cancel
+          취소하기
         </Button>
         <Button
           onClick={() => {
@@ -92,7 +92,7 @@ const CreateProjectDialog = ({
           variant="contained"
           color="primary"
         >
-          Create
+          추가하기
         </Button>
       </DialogActions>
     </Dialog>
