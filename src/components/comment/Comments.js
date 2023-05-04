@@ -24,7 +24,7 @@ function Comments({ portfolioOwnerId }) {
       style={{ width: '300px' }}
     >
       <Card.Body>
-        <Card.Title style={{textAlign:'center'}}>Comments</Card.Title>
+        <Card.Title style={{ textAlign: 'center' }}>Comments</Card.Title>
         {comments.map((comment) => (
           <Comment
             portfolioOwnerId={portfolioOwnerId}
@@ -40,7 +40,12 @@ function Comments({ portfolioOwnerId }) {
             setAdding={setAdding}
           />
         )}
-        <Button style={{ margin:'auto', display:'block'}} variant="outline-success" size="sm" onClick={() => setAdding(true)}>
+        <Button
+          style={{ margin: 'auto', display: 'block' }}
+          variant="outline-success"
+          size="sm"
+          onClick={() => setAdding(true)}
+        >
           +
         </Button>
       </Card.Body>

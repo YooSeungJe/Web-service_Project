@@ -125,9 +125,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <Box>
-      <Typography className="modelTitle" variant="h4">
-        Awards
-      </Typography>
+      <Typography variant="h4">Awards</Typography>
       {awards.length === 0 && (
         <Typography variant="body1">No awards found.</Typography>
       )}

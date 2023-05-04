@@ -15,8 +15,26 @@ body {
   box-sizing: border-box;
 }
 
-.card {
+/* .card {
   width: 300px;
   background-color: rgba(255, 255, 255, 0.614) !important;
   border: rgba(128, 128, 128, 0.438) solid 1px !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+} */
+
+.modelCard {
+  width: 300px;
+  border: rgba(128, 128, 128, 0.438) solid 1px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.614) !important;
+  border-radius: 15px !important;
+  padding: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.modelCard:hover {
+  transform: translateY(-4px);
 }

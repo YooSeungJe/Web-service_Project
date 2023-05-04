@@ -29,13 +29,13 @@ const EducationCard = ({
     setDeleteOpen((prevState) => !prevState);
   };
   return (
-    <Card className="card">
+    <Card className="modelCard">
       <CardHeader
-        className="title"
+        variant="h5"
         title={schoolName}
         subheader={graduationTypeCode}
       />
-      <CardContent className="content">{major}</CardContent>
+      <CardContent sx={{ fontFamily: 'ChosunGu' }}>{major}</CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (
