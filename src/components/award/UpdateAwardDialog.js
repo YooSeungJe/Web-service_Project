@@ -78,14 +78,18 @@ const UpdateAwardDialog = ({
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>취소하기</Button>
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
         <Button
           onClick={() => {
             checkEmpty(updatedAward, titleInput, descriptionInput) &&
               handleUpdate();
           }}
+          variant="contained"
+          color="primary"
         >
-          수정하기
+          변경하기
         </Button>
       </DialogActions>
     </Dialog>

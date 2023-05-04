@@ -39,7 +39,7 @@ const CreateAwardDialog = ({
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Create Award</DialogTitle>
+      <DialogTitle variant="h5">수상 경력 추가</DialogTitle>
       <DialogContent>
         <TextField
           ref={titleInput}

@@ -38,6 +38,14 @@ const theme = createTheme({
     body1: {
       fontFamily: 'ChosunGu',
     },
+    body2: {
+      fontFamily: 'ChosunGu',
+      fontSize: '1.2rem',
+      color: '#495942',
+      paddingTop: '50px',
+      paddingBottom: '50px',
+      margin: '100px',
+    },
   },
   palette: {
     primary: {
@@ -46,6 +54,7 @@ const theme = createTheme({
     secondary: {
       main: '#617A55',
     },
+    contained: {},
   },
 });
 

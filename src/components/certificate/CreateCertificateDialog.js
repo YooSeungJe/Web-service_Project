@@ -50,7 +50,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
   return (
     <Dialog open={open} onClose={handleDialogClose}>
       <form onSubmit={handleSubmit}>
-        <DialogTitle>Create Certificate</DialogTitle>
+        <DialogTitle variant="h5">자격증 정보 추가</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -104,8 +104,16 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose}>Cancel</Button>
-          <Button type="submit">Create</Button>
+          <Button
+            onClick={handleDialogClose}
+            variant="outlined"
+            color="secondary"
+          >
+            취소하기
+          </Button>
+          <Button type="submit" variant="contained" color="primary">
+            추가하기
+          </Button>
         </DialogActions>
       </form>
     </Dialog>

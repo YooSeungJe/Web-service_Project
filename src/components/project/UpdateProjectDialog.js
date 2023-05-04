@@ -96,14 +96,18 @@ const UpdateProjectDialog = ({
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
         <Button
           onClick={() => {
             checkEmpty(updatedProject, titleInput, descriptionInput) &&
               handleUpdate();
           }}
+          variant="contained"
+          color="primary"
         >
-          Update
+          변경하기
         </Button>
       </DialogActions>
     </Dialog>

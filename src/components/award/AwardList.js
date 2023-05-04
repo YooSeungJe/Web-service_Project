@@ -121,9 +121,14 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <Box>
-      <Typography variant="h4">Awards</Typography>
+      <Typography variant="h4">수상 경력</Typography>
       {awards.length === 0 && (
-        <Typography variant="body1">No awards found.</Typography>
+        <Typography variant="body2">
+          등록된 수상 내용이 없습니다.
+          <br />
+          <br />
+          아래 버튼으로 수상 경력을 추가해보세요.
+        </Typography>
       )}
       {awards.length > 0 && (
         <Grid container spacing={2} key="award-grid">

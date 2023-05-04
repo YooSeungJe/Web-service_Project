@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Form, Card, Col, Row } from 'react-bootstrap';
+import { Form, Card, Col, Row } from 'react-bootstrap';
+import { DialogActions, Button } from '@mui/material';
 import * as Api from '../../api';
 import UploadImage from '../image/UploadImage';
+import styles from './UserCard.module.css';
 
 function UserEditForm({ user, setIsEditing, setUser }) {
   //useState로 name 상태를 생성함.
@@ -41,7 +43,7 @@ function UserEditForm({ user, setIsEditing, setUser }) {
   // 위 3개 조건이 모두 동시에 만족되는지 여부를 확인함.
   const isFormValid = isPasswordValid && isPasswordSame && isNameValid;
   return (
-    <Card className="mb-2">
+    <Card className={`${styles.card} mb-2 ms-3 mr-5`}>
       <Card.Body>
         <Form onSubmit={handleSubmit}>
           <UploadImage userId={user.id} dataId={user.id} />
@@ -105,17 +107,24 @@ function UserEditForm({ user, setIsEditing, setUser }) {
 
           <Form.Group as={Row} className="mt-3 text-center">
             <Col sm={{ span: 20 }}>
-              <Button
-                variant="primary"
-                type="submit"
-                className="me-3"
-                disabled={!isFormValid}
-              >
-                확인
-              </Button>
-              <Button variant="secondary" onClick={() => setIsEditing(false)}>
-                취소
-              </Button>
+              <DialogActions>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => setIsEditing(false)}
+                >
+                  취소
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  className="me-3"
+                  disabled={!isFormValid}
+                >
+                  확인
+                </Button>
+              </DialogActions>
             </Col>
           </Form.Group>
         </Form>

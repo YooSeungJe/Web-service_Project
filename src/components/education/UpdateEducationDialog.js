@@ -57,65 +57,69 @@ const UpdateEducationDialog = ({
       <DialogContent>
         <TextField
           ref={schoolNameInput}
-          margin='normal'
+          margin="normal"
           fullWidth
-          label='Education'
-          name='schoolName'
-          placeholder=''
+          label="Education"
+          name="schoolName"
+          placeholder=""
           value={updatedEducation.schoolName}
           onChange={handleChange}
         />
         <TextField
           ref={majorInput}
-          margin='normal'
+          margin="normal"
           fullWidth
-          label='Major'
-          name='major'
-          placeholder=''
+          label="Major"
+          name="major"
+          placeholder=""
           value={updatedEducation.major}
           onChange={handleChange}
         />
         <RadioGroup
-          name='graduationTypeCode'
+          name="graduationTypeCode"
           value={updatedEducation.graduationTypeCode}
           onChange={handleChange}
           row
         >
           <FormControlLabel
-            value='재학중'
+            value="재학중"
             control={<Radio />}
-            label='재학중'
+            label="재학중"
             checked={updatedEducation.graduationTypeCode === '재학중'}
           />
           <FormControlLabel
-            value='학사졸업'
+            value="학사졸업"
             control={<Radio />}
-            label='학사졸업'
+            label="학사졸업"
             checked={updatedEducation.graduationTypeCode === '학사졸업'}
           />
           <FormControlLabel
-            value='석사졸업'
+            value="석사졸업"
             control={<Radio />}
-            label='석사졸업'
+            label="석사졸업"
             checked={updatedEducation.graduationTypeCode === '석사졸업'}
           />
           <FormControlLabel
-            value='박사졸업'
+            value="박사졸업"
             control={<Radio />}
-            label='박사졸업'
+            label="박사졸업"
             checked={updatedEducation.graduationTypeCode === '박사졸업'}
           />
         </RadioGroup>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
         <Button
           onClick={() => {
             checkEmpty(updatedEducation, schoolNameInput, majorInput) &&
               handleUpdate();
           }}
+          variant="contained"
+          color="primary"
         >
-          Update
+          변경하기
         </Button>
       </DialogActions>
     </Dialog>
