@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'ChosunGu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
+
+* {
+  font-family: 'ChosunGu';
+}
+
+.commentCard {
+  width: 270px;
+  margin-bottom: 5px;
+  background-color: #e9edc96e !important;
+}
+
+.commentCardTitle {
+  text-align: center;
+  font-weight: bold !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 30px !important;
+}
+
+.commentIcon {
+  margin-left: 175px;
+}

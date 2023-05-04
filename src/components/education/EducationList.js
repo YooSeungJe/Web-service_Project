@@ -5,7 +5,6 @@ import EducationCard from './EducationCard';
 import CreateEducationButton from './CreateEducationButton';
 import CreateEducationDialog from './CreateEducationDialog.js';
 import UpdateEducationDialog from './UpdateEducationDialog';
-import { ConstructionOutlined } from '@mui/icons-material';
 
 import '../components.css';
 
@@ -22,19 +21,20 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
   const [updateOpen, setUpdateOpen] = useState(false);
 
   const checkEmpty = (ref, input1, input2) => {
-    if (ref.schoolName.length === 0) {
-      input1.current.querySelector('input').focus();
-      input1.current.querySelector('input').placeholder =
-        '한글자 이상을 입력해주세요.';
-      input1.current.querySelector('input').style.color = 'red';
-      return false;
-    } else if (ref.major.length === 0) {
-      input2.current.querySelector('input').focus();
-      input2.current.querySelector('input').placeholder =
-        '한글자 이상을 입력해주세요.';
-      input2.current.querySelector('input').style.color = 'red';
-      return false;
-    } else return true;
+    switch (true) {
+      case ref.title.length === 0:
+        input1.current.querySelector('input').focus();
+        input1.current.querySelector('input').placeholder =
+          '한글자 이상을 입력해주세요';
+        return false;
+      case ref.description.length === 0:
+        input2.current.querySelector('input').focus();
+        input2.current.querySelector('input').placeholder =
+          '한글자 이상을 입력해주세요';
+        return false;
+      default:
+        return true;
+    }
   };
 
   useEffect(() => {
@@ -82,7 +82,6 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
   const handleOpenUpdate = (_id) => {
     setSelectedEducationId(_id);
     console.log('Update clicked for education:', _id);
-    // Open the update dialog
     setUpdateOpen(true);
   };
 

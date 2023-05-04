@@ -22,6 +22,11 @@ nav {
   transition: all 0.2s linear;
   font-family: 'Nunito', sans-serif;
   display: block;
+  color: #617a55;
+  font-size: 22px;
+  transition: all 0.2s linear;
+  font-family: 'Nunito', sans-serif;
+  display: block;
 }
 
 .mybtn:hover {
@@ -29,6 +34,11 @@ nav {
 }
 
 .netbtn {
+  color: #617a55;
+  font-size: 22px;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s linear;
+  display: block;
   color: #617a55;
   font-size: 22px;
   font-family: 'Nunito', sans-serif;
@@ -50,6 +60,11 @@ nav {
   font-family: 'Nunito', sans-serif;
   transition: all 0.2s linear;
   display: block;
+  color: red;
+  font-size: 22px;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s linear;
+  display: block;
 }
 
 .outbtn:hover {
@@ -57,12 +72,13 @@ nav {
 }
 
 .bar {
-  /* margin-left: 1250px; */
   display: flex;
   align-items: center;
 }
 
 .bar > a {
+  margin-left: 10px;
+  text-decoration: none;
   margin-left: 10px;
   text-decoration: none;
 }
