@@ -1,8 +1,8 @@
 #footer {
-  height: 220px;
+  height: 150px;
   width: 100%;
   align-items: left;
-  background-color: #e9edc98c;
+  background-color: #ccd5ae;
   padding: 1rem;
 }
 
@@ -14,4 +14,9 @@
 .footerItem {
   display: inline-block;
   font-size: 0.7rem;
+}
+
+.footerCopyright {
+  display: inline-block;
+  font-size: 0.5rem;
 }

@@ -6,6 +6,8 @@ import CreateAwardButton from './CreateAwardButton';
 import CreateAwardDialog from './CreateAwardDialog';
 import UpdateAwardDialog from './UpdateAwardDialog';
 
+import '../components.css';
+
 const AwardList = ({ portfolioOwnerId, isEditable }) => {
   const [awards, setAwards] = useState([]);
   const [createOpen, setCreateOpen] = useState(false);
@@ -123,7 +125,9 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <Box>
-      <Typography variant="h4">Awards</Typography>
+      <Typography className="modelTitle" variant="h4">
+        Awards
+      </Typography>
       {awards.length === 0 && (
         <Typography variant="body1">No awards found.</Typography>
       )}

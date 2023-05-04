@@ -18,10 +18,10 @@ const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
   };
 
   return (
-    <div className='floating-icon-container'>
+    <div className="floating-icon-container">
       <FontAwesomeIcon
         icon={faComments}
-        className='floating-icon'
+        className="floating-icon"
         onClick={handleClick}
       />
 

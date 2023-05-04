@@ -1,14 +1,23 @@
 html,
 body {
-  background-color: #fefae0;
+  padding: 0;
+  margin: 0;
+  background-color: #ccd5ae;
 }
 
 #wrapper {
-  min-height: calc(100vh - 10rem); /* footer 높이를 빼준다. */
-  background-color: #e9edc9;
+  padding: 10px;
+  min-height: calc(100vh - 10rem);
+  background-color: #efddab44 !important;
+  border-top: rgba(211, 211, 211, 0.532) solid 1px;
+  /* background-color: #e9edc9; */
 }
 
-#footer {
-  height: 10rem; /* footer 높이 */
-  background: yellow;
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

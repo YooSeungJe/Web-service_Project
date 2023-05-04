@@ -4,6 +4,8 @@ import UpdateProjectButton from './UpdateProjectButton';
 import DeleteProjectButton from './DeleteProjectButton';
 import DeleteProjectDialog from './DeleteProjectDialog';
 
+import '../components.css';
+
 const ProjectCard = ({
   project,
   handleOpenUpdate,
@@ -32,12 +34,13 @@ const ProjectCard = ({
     setDeleteOpen((prevState) => !prevState);
   };
   return (
-    <Card>
+    <Card className="card">
       <CardHeader
+        className="title"
         title={title}
         subheader={`${formatDate(startDate)} ~ ${formatDate(endDate)}`}
       />
-      <CardContent>{description}</CardContent>
+      <CardContent className="content">{description}</CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (
