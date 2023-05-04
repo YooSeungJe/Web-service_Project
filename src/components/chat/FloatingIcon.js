@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
 import './FloatingIcon.css';
 import ChatBox from './ChatBox';
+import ChatList from './ChatList';
 
 import { UserStateContext } from '../../App';
-
 const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
   const [showChatBox, setShowChatBox] = useState(false);
   const [hasStartedChat, setHasStartedChat] = useState(false);
@@ -14,6 +14,11 @@ const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
 
   const handleClick = () => {
     setShowChatBox((prevShowChatBox) => !prevShowChatBox);
+    setHasStartedChat(true);
+  };
+
+  const handleChatSelect = (roomId) => {
+    setShowChatBox(true);
     setHasStartedChat(true);
   };
 
@@ -26,13 +31,18 @@ const FloatingIcon = ({ receiverId, isMyPortfolio }) => {
       />
 
       {showChatBox && (
-        <ChatBox
-          show={showChatBox}
-          handleClose={() => setShowChatBox(false)}
-          senderId={senderId}
-          receiverId={receiverId}
-          isMyPortfolio={isMyPortfolio}
-        />
+        <>
+          {isMyPortfolio ? (
+            <ChatList onChatSelect={handleChatSelect} userId={senderId} />
+          ) : (
+            <ChatBox
+              show={showChatBox}
+              handleClose={() => setShowChatBox(false)}
+              senderId={senderId}
+              receiverId={receiverId}
+            />
+          )}
+        </>
       )}
     </div>
   );
