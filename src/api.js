@@ -17,7 +17,6 @@ async function get(endpoint, params = '') {
     },
   });
 }
-
 // for better security?
 // async function get(endpoint, data = {}) {
 //   console.log(
@@ -48,6 +47,23 @@ async function post(endpoint, data) {
     })
     .catch((error) => {
       console.error('Error in POST request:', error);
+      throw error;
+    });
+}
+
+async function upload(endpoint, formData) {
+  console.log(`%cUPLOAD 요청: ${serverUrl + endpoint}`, 'color: #296aba;');
+  console.log(`%cUPLOAD 요청 데이터: ${formData}`, 'color: #296aba;');
+
+  return axios
+    .put(serverUrl + endpoint, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${sessionStorage.getItem('userToken')}`,
+      },
+    })
+    .catch((error) => {
+      console.error('Error in UPLOAD request:', error);
       throw error;
     });
 }
@@ -95,4 +111,4 @@ async function del(endpoint, params = '') {
 
 // 아래처럼 export한 후, import * as A 방식으로 가져오면,
 // A.get, A.post 로 쓸 수 있음.
-export { get, post, patch, put, del as delete };
+export { get, post, upload, patch, put, del as delete };
