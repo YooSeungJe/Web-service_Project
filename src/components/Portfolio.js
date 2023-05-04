@@ -19,6 +19,20 @@ function Portfolio() {
   const [portfolioOwner, setPortfolioOwner] = useState(null);
   const [isFetchCompleted, setIsFetchCompleted] = useState(false);
   const userState = useContext(UserStateContext);
+  const [chatList, setChatList] = useState([]);
+
+  useEffect(() => {
+    const fetchChats = async () => {
+      try {
+        const response = await Api.get('chats');
+        setChatList(response.data);
+      } catch (error) {
+        console.error('Failed to fetch chats:', error);
+      }
+    };
+
+    fetchChats();
+  }, []);
 
   const fetchPortfolioOwner = async (ownerId) => {
     try {
@@ -92,6 +106,8 @@ function Portfolio() {
               <FloatingIcon
                 receiverId={portfolioOwner.id}
                 isMyPortfolio={portfolioOwner.id === userState.user?.id}
+                chatList={chatList}
+                userId={userState.user?.id}
               />
             </div>
           </Col>
