@@ -1,31 +1,31 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Api from '../../api';
 import './ShowImage.css';
+import ProgressiveImage from "react-progressive-graceful-image";
+//https://www.npmjs.com/package/react-progressive-graceful-image 참조
+import loading from '../../image/loading.gif';
+import profile from '../../image/profile.png';
 
-const ShowImage = ({ userId, dataId, imageKey = 0 }) => {
-    const [ image, setImage ] = useState({});
-    useMemo(() => {
-        const fetchData = async () => {
-          const param = `${userId}/${dataId}`;
-          try{
-            const imageData = await Api.get('image', param);
-            setImage(imageData.data);
-          }catch(e){
-            setImage(null)
-          }
-        };
-        fetchData();
-      }, [userId, dataId, imageKey]);
-
-      if (image) {
-        return (
-          <img src={`data:${image.contentType};base64,${image.data}`} />
-        );
-      }else{
-        return (
-          <img src='http://placekitten.com/200/200' alt='랜덤 고양이 사진 (http://placekitten.com API 사용)'/> 
-        )
-      }
+const ShowImage = ({ userId, dataId, imageKey}) => {
+  const [ image, setImage ] = useState(null);
+  useEffect(() => {
+      const fetchData = async () => {
+        const param = `${userId}/${dataId}`;
+        const imageData = await Api.get('image', param);
+        setImage(imageData.data);
+      };
+      fetchData();
+    }, [userId, dataId, imageKey]);
+  return (
+    image ?
+      <ProgressiveImage
+        src={`data:${image.contentType};base64,${image.data}`}
+        placeholder={loading}
+      >
+        {(src) => <img src={src} alt="profile" />}
+      </ProgressiveImage>
+    : <img src={profile} alt='profile'/>
+  )
 };
 
 export default ShowImage;

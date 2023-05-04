@@ -5,6 +5,7 @@ import CommentAddForm from './CommentAddForm';
 import * as Api from '../../api';
 
 import '../components.css';
+import { Block } from '@mui/icons-material';
 
 function Comments({ portfolioOwnerId }) {
   const [comments, setComments] = useState([]);
@@ -39,12 +40,16 @@ function Comments({ portfolioOwnerId }) {
             setAdding={setAdding}
           />
         )}
+<<<<<<< HEAD
         <Button
           style={{ marginLeft: '117px', marginTop: '5px' }}
           variant="outline-success"
           size="sm"
           onClick={() => setAdding(true)}
         >
+=======
+        <Button style={{ margin:'auto', display:'block'}} variant="outline-success" size="sm" onClick={() => setAdding(true)}>
+>>>>>>> 9c8b2b2a36f611f1c1bde922dc2f4327036af8b5
           +
         </Button>
       </Card.Body>

@@ -23,12 +23,21 @@ function CommentCard({ comment, setComments, setEdit, portfolioOwnerId }) {
   };
 
   return (
+<<<<<<< HEAD
     <Card style={{ width: '16.7rem' }}>
       <Card.Body style={{ width: '40rem' }}>
         <Card.Title variant="h5">{comment.name}</Card.Title>
         <Card.Text>{comment.content}</Card.Text>
         {comment.userId === userState.user?.id && (
           <Col style={{ marginLeft: '145px' }}>
+=======
+    <Card style={{width:'270px',marginBottom:'5px'}}>
+      <Card.Body>
+        <Card.Title>{comment.name}</Card.Title>
+        <Card.Text>{comment.content}</Card.Text>
+        {comment.userId === userState.user?.id && (
+          <Col>
+>>>>>>> 9c8b2b2a36f611f1c1bde922dc2f4327036af8b5
             <Button
               variant="outline-secondary"
               size="sm"
