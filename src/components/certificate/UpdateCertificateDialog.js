@@ -79,9 +79,11 @@ const UpdateCertificateDialog = ({
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleUpdateClick} color="primary">
-          Update
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
+        <Button onClick={handleUpdateClick} variant="contained" color="primary">
+          변경하기
         </Button>
       </DialogActions>
     </Dialog>

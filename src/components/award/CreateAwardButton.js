@@ -3,9 +3,9 @@ import { Box, Button } from '@mui/material';
 
 const CreateAwardButton = ({ onClick, isEditable }) => {
   return isEditable ? (
-    <Box textAlign='center'>
-      <Button variant='contained' color='primary' onClick={onClick}>
-        수상 내역 추가하기
+    <Box textAlign="center">
+      <Button variant="contained" color="primary" onClick={onClick}>
+        추가하기
       </Button>
     </Box>
   ) : null;

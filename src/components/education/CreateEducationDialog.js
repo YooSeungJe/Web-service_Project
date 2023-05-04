@@ -31,7 +31,7 @@ const CreateEducationDialog = ({
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Create Education</DialogTitle>
+      <DialogTitle variant="h5">학력 추가</DialogTitle>
       <DialogContent>
         <TextField
           ref={schoolNameInput}
@@ -85,7 +85,7 @@ const CreateEducationDialog = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} variant="outlined" color="secondary">
-          Cancel
+          취소하기
         </Button>
         <Button
           onClick={() => {
@@ -95,7 +95,7 @@ const CreateEducationDialog = ({
           variant="contained"
           color="primary"
         >
-          Create
+          추가하기
         </Button>
       </DialogActions>
     </Dialog>
