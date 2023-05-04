@@ -43,6 +43,9 @@ const theme = createTheme({
     primary: {
       main: '#617A55',
     },
+    secondary: {
+      main: '#617A55',
+    },
   },
 });
 
@@ -82,11 +85,7 @@ function App() {
   }, []);
 
   if (!isFetchCompleted) {
-    return (
-      <>
-        <h1 className="loading">loading...</h1>
-      </>
-    );
+    return <h1 className="loading">loading...</h1>;
   }
 
   return (

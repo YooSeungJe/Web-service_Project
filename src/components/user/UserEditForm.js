@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, Card, Col, Row } from 'react-bootstrap';
 import * as Api from '../../api';
-import { useNavigate } from 'react-router-dom';
 import UploadImage from '../image/UploadImage';
 
 function UserEditForm({ user, setIsEditing, setUser }) {
@@ -31,28 +30,6 @@ function UserEditForm({ user, setIsEditing, setUser }) {
 
     // isEditing을 false로 세팅함.
     setIsEditing(false);
-  };
-
-  const navigate = useNavigate();
-  const handleWithdraw = async () => {
-    if (window.confirm('정말 탈퇴하시겠습니까?')) {
-      try {
-        // "users/유저id/withdraw" 엔드포인트로 DELETE 요청함.
-        const res = await Api.delete(`user/${user.id}/withdraw`);
-        console.log('check', res);
-        alert(res.data.message);
-        // 로그아웃 처리 등의 후속 처리를 할 수 있음.
-        sessionStorage.clear();
-        localStorage.removeItem('token');
-        window.location.reload();
-        navigate('/login', { replace: true });
-      } catch (err) {
-        console.error(err);
-        alert(
-          err.response?.data?.message || '탈퇴 과정에서 문제가 발생했습니다.'
-        );
-      }
-    }
   };
 
   // 비밀번호를 변경하지 않거나 할 경우 4글자 이상인지 여부를 확인함.
@@ -138,9 +115,6 @@ function UserEditForm({ user, setIsEditing, setUser }) {
               </Button>
               <Button variant="secondary" onClick={() => setIsEditing(false)}>
                 취소
-              </Button>
-              <Button variant="danger" onClick={handleWithdraw}>
-                탈퇴하기
               </Button>
             </Col>
           </Form.Group>

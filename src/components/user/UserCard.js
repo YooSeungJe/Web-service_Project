@@ -4,9 +4,33 @@ import { IconButton, Tooltip } from '@mui/material';
 import { Edit } from '@mui/icons-material';
 import styles from './UserCard.module.css';
 import ShowImage from '../image/ShowImage';
+import DeleteIcon from '@mui/icons-material/Delete';
+import * as Api from '../../api';
 
 function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
   const navigate = useNavigate();
+
+  const handleWithdraw = async () => {
+    if (window.confirm('정말 탈퇴하시겠습니까?')) {
+      try {
+        // "users/유저id/withdraw" 엔드포인트로 DELETE 요청함.
+        const res = await Api.delete(`user/${user.id}/withdraw`);
+        console.log('check', res);
+        alert(res.data.message);
+        // 로그아웃 처리 등의 후속 처리를 할 수 있음.
+        sessionStorage.clear();
+        localStorage.removeItem('token');
+        window.location.reload();
+        navigate('/login', { replace: true });
+      } catch (err) {
+        console.error(err);
+        alert(
+          err.response?.data?.message || '탈퇴 과정에서 문제가 발생했습니다.'
+        );
+      }
+    }
+  };
+
   return (
     <Card className={`${styles.card} mb-2 ms-3 mr-5`}>
       <Card.Body>
@@ -25,23 +49,18 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
           <Col>
             <Row className={`${styles.button} ${styles.editButton}`}>
               <Col sm={{ span: 20 }}>
-                <Tooltip title="Edit UserCard">
-                  <IconButton
-                    sx={{ ml: 'auto' }}
-                    onClick={() => setIsEditing(true)}
-                  >
-                    <Edit />
-                  </IconButton>
-                </Tooltip>
-
-                {/* <Button
-                  className={`${styles.button} ${styles.editButton}`}
-                  variant="outline-info"
-                  size="sm"
-                  onClick={() => setIsEditing(true)}
-                >
-                  편집
-                </Button> */}
+                <div style={{ display: 'inline-flex' }}>
+                  <Tooltip title="회원정보 수정">
+                    <IconButton onClick={() => setIsEditing(true)}>
+                      <Edit />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="회원탈퇴">
+                    <IconButton onClick={handleWithdraw} aria-label="delete">
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
               </Col>
             </Row>
           </Col>
