@@ -24,18 +24,17 @@
 .footerItem {
   font-family: 'ChosunGu';
   font-size: 0.7rem;
-  margin: 0;
+  display: inline;
+}
+
+.footerItem b,
+.footerItem div {
+  display: inline;
 }
 
 .footerCopyright {
   font-family: 'ChosunGu';
   font-size: 0.5rem;
-  margin: 0;
-}
-
-#footerContent {
-  float: left;
-  margin-left: 20px;
 }
 
 .turtle {
