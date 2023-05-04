@@ -4,7 +4,6 @@ import * as Api from '../../api';
 import { useNavigate } from 'react-router-dom';
 import UploadImage from '../image/UploadImage';
 
-
 function UserEditForm({ user, setIsEditing, setUser }) {
   //useState로 name 상태를 생성함.
   const [name, setName] = useState(user.name);
@@ -68,10 +67,7 @@ function UserEditForm({ user, setIsEditing, setUser }) {
     <Card className='mb-2'>
       <Card.Body>
         <Form onSubmit={handleSubmit}>
-          <UploadImage
-            userId={user.id}
-            dataId={user.id}
-          />
+          <UploadImage userId={user.id} dataId={user.id} />
           <Form.Group controlId='useEditName' className='mb-3'>
             <Form.Control
               type='text'
@@ -80,7 +76,9 @@ function UserEditForm({ user, setIsEditing, setUser }) {
               onChange={(e) => setName(e.target.value)}
             />
             {!isNameValid && (
-              <p className='small text-danger'>이름은 2글자 이상으로 설정해 주세요.</p>
+              <p className='small text-danger'>
+                이름은 2글자 이상으로 설정해 주세요.
+              </p>
             )}
           </Form.Group>
 
@@ -110,7 +108,9 @@ function UserEditForm({ user, setIsEditing, setUser }) {
               onChange={(e) => setPassword(e.target.value)}
             />
             {!isPasswordValid && (
-              <p className='small text-danger'>비밀번호는 4글자 이상으로 설정해 주세요.</p>
+              <p className='small text-danger'>
+                비밀번호는 4글자 이상으로 설정해 주세요.
+              </p>
             )}
           </Form.Group>
 
