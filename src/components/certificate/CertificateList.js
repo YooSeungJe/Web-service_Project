@@ -4,7 +4,7 @@ import { get, post, put, delete as del } from '../../api';
 import CertificateCard from './CertificateCard';
 import CreateCertificateButton from './CreateCertificateButton';
 import CreateCertificateDialog from './CreateCertificateDialog';
-import { UpdateCertificateDialog } from './UpdateCertificate';
+import UpdateCertificateDialog from './UpdateCertificateDialog';
 
 import '../components.css';
 

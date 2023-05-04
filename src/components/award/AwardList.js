@@ -93,10 +93,6 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleUpdateSubmit = async (_id, updatedAward) => {
     try {
-      console.log(`updatedAward : ${updatedAward}`);
-      console.log(`updatedAward.title : ${updatedAward.title}`);
-      console.log(`_id : ${_id}`);
-      console.log(`portfolioOwnerId : ${portfolioOwnerId}`);
       await patch(`awards/${_id}`, updatedAward);
       const response = await get(`awards/${portfolioOwnerId}`);
       setAwards(response.data.awards);
