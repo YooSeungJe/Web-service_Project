@@ -26,28 +26,28 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId='addName'>
+      <Form.Group controlId="addName">
         <div>{userState.user.name}</div>
       </Form.Group>
-      <Form.Group controlId='addContent'>
+      <Form.Group controlId="addContent">
         <Form.Control
-          style={{marginBottom:'3px'}}
+          style={{ marginBottom: '3px' }}
           ref={contentInput}
-          name='content'
-          type='text'
-          placeholder='댓글 내용'
+          name="content"
+          type="text"
+          placeholder="댓글 내용"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
       </Form.Group>
       <Form.Group>
-        <Button  variant='outline-primary' size='sm' type='submit'>
+        <Button variant="outline-primary" size="sm" type="submit">
           확인
         </Button>
         <Button
-          style={{marginLeft:'6px'}}
-          variant='outline-danger'
-          size='sm'
+          style={{ marginLeft: '6px' }}
+          variant="outline-danger"
+          size="sm"
           onClick={() => setAdding(false)}
         >
           취소
