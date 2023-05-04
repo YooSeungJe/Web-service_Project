@@ -47,17 +47,17 @@ const UploadImage = ({ userId, dataId }) => {
     };
 
     return (
-      <Container>
+      <Container disableGutters>
         <ShowImage userId={userId} dataId={dataId} imageKey={imageKey}/>
         {isUploaded && <p className="small text-danger text-center">사진이 등록되었습니다.</p>}
         {isDeleted && <p className="small text-danger text-center">사진이 삭제되었습니다.</p>}
         <Stack maxWidth='md' mb={1} justifyContent='space-evenly' direction="row" flexWrap="wrap" useFlexGap>
           <Button variant="contained" component="label" startIcon={<PhotoCamera />} onClick={()=>setImageKey(0)}>
-            Upload
+            업로드
             <input hidden accept="image/*" multiple type="file" onChange={handleFileSelect}/>
           </Button>
           <Button variant="contained" component="label" startIcon={<Delete />} onClick={handleFileDelete}>
-            Delete
+            삭제
           </Button>
         </Stack>
       </Container>
