@@ -46,7 +46,7 @@ const UploadImage = ({ userId, dataId }) => {
       <Container>
         <ShowImage userId={userId} dataId={dataId} imageKey={imageKey}/>
         {isDeleted && <p className="small text-danger">사진이 삭제되었습니다.</p>}
-        <Stack direction="row" spacing={{ xs: 2, sm: 1 }} useFlexGap flexWrap="wrap">
+        <Stack maxWidth='md' mb={1} justifyContent='space-evenly' direction="row" flexWrap="wrap" useFlexGap>
           <Button variant="contained" component="label" startIcon={<PhotoCamera />}>
             Upload
             <input hidden accept="image/*" multiple type="file" onChange={handleFileSelect}/>
