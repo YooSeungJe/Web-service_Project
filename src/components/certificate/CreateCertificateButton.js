@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Button } from "@mui/material";
-import CreateCertificateDialog from "./CreateCertificateDialog";
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import CreateCertificateDialog from './CreateCertificateDialog';
 
 const CreateCertificateButton = ({ onClick, onSubmit }) => {
   const [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@ const CreateCertificateButton = ({ onClick, onSubmit }) => {
   return (
     <>
       <Button variant="contained" color="primary" onClick={handleOpen}>
-        Create
+        추가하기
       </Button>
       <CreateCertificateDialog
         open={open}

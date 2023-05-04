@@ -25,6 +25,11 @@ const theme = createTheme({
       fontFamily: 'ChosunGu',
       fontWeight: 'bold',
       color: '#495942',
+      padding: '5px',
+      borderRadius: '15px',
+      backgroundColor: 'ivory',
+      border: 'rgba(128, 128, 128, 0.438) solid 1px',
+      boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
     },
     h5: {
       fontFamily: 'ChosunGu',
@@ -33,6 +38,23 @@ const theme = createTheme({
     body1: {
       fontFamily: 'ChosunGu',
     },
+    body2: {
+      fontFamily: 'ChosunGu',
+      fontSize: '1.2rem',
+      color: '#495942',
+      paddingTop: '50px',
+      paddingBottom: '50px',
+      margin: '100px',
+    },
+  },
+  palette: {
+    primary: {
+      main: '#617A55',
+    },
+    secondary: {
+      main: '#617A55',
+    },
+    contained: {},
   },
 });
 
@@ -72,11 +94,7 @@ function App() {
   }, []);
 
   if (!isFetchCompleted) {
-    return (
-      <>
-        <h1 className="loading">loading...</h1>
-      </>
-    );
+    return <h1 className="loading">loading...</h1>;
   }
 
   return (

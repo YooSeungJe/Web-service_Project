@@ -50,12 +50,12 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
   return (
     <Dialog open={open} onClose={handleDialogClose}>
       <form onSubmit={handleSubmit}>
-        <DialogTitle>Create Certificate</DialogTitle>
+        <DialogTitle variant="h5">자격증 정보 추가</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            label="Certification Name"
+            label="자격증 이름"
             name="certificationName"
             type="text"
             fullWidth
@@ -65,7 +65,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
           />
           <TextField
             margin="dense"
-            label="Certification Number"
+            label="자격증 번호"
             name="certificationNumber"
             type="text"
             fullWidth
@@ -75,7 +75,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
           />
           <TextField
             margin="dense"
-            label="Issuance Date"
+            label="발행날짜"
             name="issuanceDate"
             type="date"
             fullWidth
@@ -94,7 +94,7 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
 
           <TextField
             margin="dense"
-            label="Issuing Authority"
+            label="발행기관"
             name="issuingAuthority"
             type="text"
             fullWidth
@@ -104,8 +104,16 @@ const CreateCertificateDialog = ({ open, onClose, onSubmit, reset }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose}>Cancel</Button>
-          <Button type="submit">Create</Button>
+          <Button
+            onClick={handleDialogClose}
+            variant="outlined"
+            color="secondary"
+          >
+            취소하기
+          </Button>
+          <Button type="submit" variant="contained" color="primary">
+            추가하기
+          </Button>
         </DialogActions>
       </form>
     </Dialog>

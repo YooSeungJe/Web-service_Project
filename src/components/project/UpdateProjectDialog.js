@@ -34,8 +34,8 @@ const UpdateProjectDialog = ({
       });
       console.log(`project.startDate : ${project.startDate}`);
       console.log(`project.endDate : ${project.endDate}`);
-      setUpdatedStartDate(new Date());
-      setUpdatedEndDate(new Date());
+      setUpdatedStartDate(new Date(project.startDate));
+      setUpdatedEndDate(new Date(project.endDate));
       console.log(`updatedStartDate : ${updatedStartDate}`);
       console.log(`updatedEndDate : ${updatedEndDate}`);
     }
@@ -59,11 +59,11 @@ const UpdateProjectDialog = ({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Edit Project</DialogTitle>
+      <DialogTitle variant="h5">프로젝트 변경</DialogTitle>
       <DialogContent>
         <TextField
           ref={titleInput}
-          label="Title"
+          label="프로젝트 제목"
           name="title"
           margin="normal"
           placeholder=""
@@ -73,7 +73,7 @@ const UpdateProjectDialog = ({
         />
         <TextField
           ref={descriptionInput}
-          label="Description"
+          label="설명"
           name="description"
           margin="normal"
           placeholder=""
@@ -96,14 +96,18 @@ const UpdateProjectDialog = ({
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
         <Button
           onClick={() => {
             checkEmpty(updatedProject, titleInput, descriptionInput) &&
               handleUpdate();
           }}
+          variant="contained"
+          color="primary"
         >
-          Update
+          변경하기
         </Button>
       </DialogActions>
     </Dialog>

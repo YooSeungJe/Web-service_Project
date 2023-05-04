@@ -133,10 +133,15 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
   return (
     <Box>
       <Typography className="modelTitle" variant="h4">
-        Educations
+        학력
       </Typography>
       {educations.length === 0 && (
-        <Typography variant="body1">No educations found.</Typography>
+        <Typography variant="body2">
+          등록된 학력 내용이 없습니다.
+          <br />
+          <br />
+          아래 버튼으로 학력을 추가해보세요.
+        </Typography>
       )}
       {educations.length > 0 && (
         <Grid container spacing={2} key="education-grid">

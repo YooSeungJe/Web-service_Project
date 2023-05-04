@@ -130,10 +130,15 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
   return (
     <Box>
       <Typography className="modelTitle" variant="h4">
-        Certificates
+        자격증
       </Typography>
       {certificates.length === 0 && (
-        <Typography variant="body1">No certificates found.</Typography>
+        <Typography variant="body2">
+          등록된 자격증 내용이 없습니다.
+          <br />
+          <br />
+          아래 버튼으로 보유하신 자격증 정보를 추가해보세요.
+        </Typography>
       )}
       {certificates.length > 0 && (
         <Grid container spacing={2}>

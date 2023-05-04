@@ -17,16 +17,19 @@ const DeleteCertificateDialog = ({
   console.log('check', certificate);
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Delete Certificate</DialogTitle>
+      <DialogTitle>자격증 정보 삭제</DialogTitle>
       <DialogContent>
-        <Typography>
-          {`Are you sure you want to delete the certification "${certificate.certificationName}" ?`}
+        <Typography variant="body1">
+          정말로 이 자격증 정보를 삭제하시겠습니까? <br />
+          <br /> 선택하신 항목 : "{certificate.certificationName}"
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={onConfirmDelete} variant='contained' color='error'>
-          Delete
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
+        <Button onClick={onConfirmDelete} variant="contained" color="error">
+          삭제하기
         </Button>
       </DialogActions>
     </Dialog>

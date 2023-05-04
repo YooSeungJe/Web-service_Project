@@ -39,11 +39,11 @@ const CreateAwardDialog = ({
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Create Award</DialogTitle>
+      <DialogTitle variant="h5">수상 경력 추가</DialogTitle>
       <DialogContent>
         <TextField
           ref={titleInput}
-          label="Title"
+          label="수상 제목"
           name="title"
           value={newAward.title}
           onChange={handleChange}
@@ -56,7 +56,7 @@ const CreateAwardDialog = ({
         />
         <TextField
           ref={descriptionInput}
-          label="Description"
+          label="설명"
           name="description"
           value={newAward.description}
           onChange={handleChange}
@@ -68,17 +68,18 @@ const CreateAwardDialog = ({
           }}
         />
         <TextField
-          label="Year"
+          label="수상연도"
           name="year"
           value={newAward.year}
           onChange={handleYearChange}
           fullWidth
           margin="normal"
+          placeholder="수상연도를 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
           error={yearError}
-          helperText={yearError ? 'Year must be a number' : ''}
+          helperText={yearError ? '숫자로만 입력해주세요.' : ''}
         />
       </DialogContent>
       <DialogActions>

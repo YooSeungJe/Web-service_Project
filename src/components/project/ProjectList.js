@@ -156,10 +156,15 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
   return (
     <Box>
       <Typography className="modelTitle" variant="h4">
-        Projects
+        프로젝트
       </Typography>
       {projects.length === 0 && (
-        <Typography variant="body1">No projects found.</Typography>
+        <Typography variant="body2">
+          등록된 프로젝트 내용이 없습니다.
+          <br />
+          <br />
+          아래 버튼으로 프로젝트를 추가해보세요.
+        </Typography>
       )}
       {projects.length > 0 && (
         <Grid container spacing={2} key="project-grid">

@@ -5,7 +5,7 @@ const CreateEducationButton = ({ onClick, isEditable }) => {
   return isEditable ? (
     <Box textAlign="center">
       <Button variant="contained" color="primary" onClick={onClick}>
-        Create
+        추가하기
       </Button>
     </Box>
   ) : null;

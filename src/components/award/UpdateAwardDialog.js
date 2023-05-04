@@ -24,6 +24,8 @@ const UpdateAwardDialog = ({
   const titleInput = useRef();
   const descriptionInput = useRef();
 
+  const [yearError, setYearError] = useState(false);
+
   useEffect(() => {
     if (award) {
       setUpdatedAward({
@@ -46,13 +48,23 @@ const UpdateAwardDialog = ({
     onClose();
   };
 
+  const handleYearChange = (event) => {
+    const yearValue = event.target.value;
+    if (isNaN(yearValue)) {
+      setYearError(true);
+    } else {
+      setYearError(false);
+    }
+    handleChange(event);
+  };
+
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>수상 내역 수정</DialogTitle>
+      <DialogTitle variant="h5">수상 경력 변경</DialogTitle>
       <DialogContent>
         <TextField
           ref={titleInput}
-          label="Title"
+          label="수상 제목"
           name="title"
           margin="normal"
           fullWidth
@@ -61,7 +73,7 @@ const UpdateAwardDialog = ({
         />
         <TextField
           ref={descriptionInput}
-          label="Description"
+          label="설명"
           name="description"
           margin="normal"
           fullWidth
@@ -71,21 +83,30 @@ const UpdateAwardDialog = ({
         <TextField
           margin="normal"
           fullWidth
-          label="Year"
+          label="수상연도"
           name="year"
           value={updatedAward.year}
-          onChange={handleChange}
+          onChange={handleYearChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          error={yearError}
+          helperText={yearError ? '숫자로만 입력해주세요.' : ''}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>취소하기</Button>
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
         <Button
           onClick={() => {
             checkEmpty(updatedAward, titleInput, descriptionInput) &&
               handleUpdate();
           }}
+          variant="contained"
+          color="primary"
         >
-          수정하기
+          변경하기
         </Button>
       </DialogActions>
     </Dialog>
