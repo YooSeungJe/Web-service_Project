@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Box } from '@mui/material';
+import { Button, Container, Stack } from '@mui/material';
 import { PhotoCamera, Delete } from '@mui/icons-material'
 import * as Api from '../../api';
 import ShowImage from './ShowImage';
@@ -44,16 +44,18 @@ const UploadImage = ({ userId, dataId }) => {
     }, [imageKey]);
 
     return (
-      <>
-        <ShowImage userId={userId} dataId={dataId} imageKey={imageKey} />
-        <Button variant="contained" component="label" startIcon={<PhotoCamera />}>
-          Upload
-          <input hidden accept="image/*" multiple type="file" onChange={handleFileSelect}/>
-        </Button>
-        <Button variant="contained" component="label" startIcon={<Delete />} onClick={handleFileDelete}>
-          Delete
-        </Button>
-      </>
+      <Container>
+        <Stack direction="row" spacing={{ xs: 2, sm: 1 }} useFlexGap flexWrap="wrap">
+          <ShowImage userId={userId} dataId={dataId} imageKey={imageKey}/>
+          <Button variant="contained" component="label" startIcon={<PhotoCamera />}>
+            Upload
+            <input hidden accept="image/*" multiple type="file" onChange={handleFileSelect}/>
+          </Button>
+          <Button variant="contained" component="label" startIcon={<Delete />} onClick={handleFileDelete}>
+            Delete
+          </Button>
+        </Stack>
+      </Container>
     )
 };
 
