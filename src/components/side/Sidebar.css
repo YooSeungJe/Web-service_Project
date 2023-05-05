@@ -25,7 +25,15 @@
 }
 .sidebar div {
     font-family: 'RixYeoljeongdo_Regular';
-    cursor: pointer;
+    cursor: default;
+}
+
+.sidebarText {
+    transition: transform 0.3s ease-out;
+}
+
+.sidebarText:hover {
+    transform: scale(1.1);
 }
 
 .sidebarButton {
@@ -42,6 +50,10 @@
     font-family: 'RixYeoljeongdo_Regular';
     font-size: 25px;
     padding: 0;
-    cursor: pointer;
+    cursor: default;
+    transition: transform 0.3s ease-out;
 }
 
+.sidebarButton:hover {
+    transform: scale(1.1);
+  }

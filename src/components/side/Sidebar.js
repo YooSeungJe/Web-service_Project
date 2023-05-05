@@ -18,11 +18,11 @@ function Sidebar(pos){
     <>
       {showBar && 
         <div className='sidebar'>
-          <div onClick={()=>onMoveBox(0)}>맨 위로</div>
-          <div onClick={()=>onMoveBox(1)}>학력</div>
-          <div onClick={()=>onMoveBox(2)}>프로젝트</div>
-          <div onClick={()=>onMoveBox(3)}>자격증</div>
-          <div onClick={()=>onMoveBox(4)}>수상경력</div>
+          <div className='sidebarText' onClick={()=>onMoveBox(0)}>맨 위로</div>
+          <div className='sidebarText' onClick={()=>onMoveBox(1)}>학력</div>
+          <div className='sidebarText' onClick={()=>onMoveBox(2)}>프로젝트</div>
+          <div className='sidebarText' onClick={()=>onMoveBox(3)}>자격증</div>
+          <div className='sidebarText' onClick={()=>onMoveBox(4)}>수상경력</div>
         </div>
       }
       <div className='sidebarButton'onClick={()=>setShowBar(!showBar)}>
