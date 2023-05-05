@@ -15,7 +15,7 @@ function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   //useState로 name 상태를 생성함.
   const [name, setName] = useState('');
-
+  const [중복, 중복변경] = useState(null);
   //이메일이 abc@example.com 형태인지 regex를 이용해 확인함.
   const validateEmail = (email) => {
     return email === '' || email.toLowerCase().match(
@@ -38,7 +38,7 @@ function RegisterForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
       // "user/register" 엔드포인트로 post요청함.
       await Api.post('user/register', {
@@ -51,6 +51,7 @@ function RegisterForm() {
       navigate('/login');
     } catch (err) {
       console.log('회원가입에 실패하였습니다.', err);
+      중복변경('중복된 아이디 혹은 비밀번호입니다');
     }
   };
 
@@ -116,6 +117,7 @@ function RegisterForm() {
             {!isNameValid && (
               <p className='설명'>이름은 2글자 이상으로 설정해 주세요.</p>
             )}
+            {중복 && <p className="중복">{중복}</p>}
           </div>
 
           <div className='form-group'>
