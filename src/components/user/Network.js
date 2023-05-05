@@ -27,7 +27,7 @@ function Network() {
         <Row xs='auto' className='jusify-content-center'>
           {users.map((user) => (
             <div className={styles.cardWrapper}>
-              <UserCard key={user.id} user={user} isNetwork />
+              <UserCard key={user.id} user={user} isNetwork currentUser={userState.user} />
             </div>
           ))}
         </Row>

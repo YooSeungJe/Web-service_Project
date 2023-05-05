@@ -7,7 +7,7 @@ import ShowImage from '../image/ShowImage';
 import DeleteIcon from '@mui/icons-material/Delete';
 import * as Api from '../../api';
 
-function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
+function UserCard({ user, setIsEditing, isEditable, isNetwork,currentUser}) {
   const navigate = useNavigate();
 
   const handleWithdraw = async () => {
@@ -37,7 +37,12 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
         <Row className="justify-content-md-center">
           <ShowImage userId={user?.id} dataId={user?.id} />
         </Row>
-        <Card.Title className={`${styles.title}`}>{user?.name}</Card.Title>
+        <Card.Title className={`${styles.title}`}>
+          {user?.name}
+          {currentUser && currentUser.id === user?.id && (
+            <span>🐢</span>
+          )}
+        </Card.Title>
         <Card.Subtitle className={`${styles.subtitle} ${styles.email}`}>
           {user?.email}
         </Card.Subtitle>
@@ -67,16 +72,15 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
         )}
 
         {isNetwork && (
-          <Card.Link
-            className={`${styles.link} ${styles.networkLink} mt-3`}
-            href="#"
+          <button
+            className={`${styles.port}`}
             onClick={() => {
               console.log(`Clicked user ID: ${user.id}`);
               navigate(`/users/${user.id}`);
             }}
           >
-            포트폴리오
-          </Card.Link>
+            Portfolio
+          </button>
         )}
       </Card.Body>
     </Card>
