@@ -72,8 +72,9 @@ function UserEditForm({ user, setIsEditing, setUser }) {
 
           <Form.Group controlId='userEditDescription' className='mb-3'>
             <Form.Control
+              maxLength={'50'}
               type='text'
-              placeholder='정보, 인사말'
+              placeholder='정보, 인사말(50이내)'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />

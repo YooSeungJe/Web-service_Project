@@ -12,14 +12,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
 
-.container {
-  min-width: 100vw;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fefae0 !important;
+
+.body {
+  overflow: hidden;
 }
+
 
 .left-box {
   background-color: #02343f;
@@ -29,7 +26,7 @@
   width: 500px;
   min-width: 0;
 
-  margin-top: 85px;
+  /* margin-top: 85px; */
   box-sizing: content-box;
   height: 550px;
   min-height: 0;
@@ -42,7 +39,7 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   width: 370px;
   min-width: 0;
-  margin-top: 85px;
+  /* margin-top: 85px; */
   box-sizing: content-box;
   height: 550px;
   min-height: 0;

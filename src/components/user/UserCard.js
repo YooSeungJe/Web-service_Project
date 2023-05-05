@@ -32,7 +32,7 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork,currentUser}) {
   };
 
   return (
-    <Card className={`${styles.card} mb-2 ms-3 mr-5`} style={{ height: '420px' }}>
+    <Card className={`${styles.card} mb-2 ms-3 mr-5`} style={{ height: '450px' }}>
       <Card.Body>
         <Row className="justify-content-md-center">
           <ShowImage userId={user?.id} dataId={user?.id} />

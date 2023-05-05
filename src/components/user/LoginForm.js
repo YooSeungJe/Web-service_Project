@@ -68,6 +68,7 @@ function LoginForm() {
   };
 
   return (
+    <div className='body'>
     <div className="container">
       <div className="left-box">
         <h2 className="left-head">Portfolio Sharing Service</h2>
@@ -118,6 +119,7 @@ function LoginForm() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }
