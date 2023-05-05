@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import {Typography, Grid } from '@mui/material';
 import { get, post, patch, delete as del } from '../../api';
 import ProjectCard from './ProjectCard';
 import CreateProjectButton from './CreateProjectButton';
@@ -154,7 +154,7 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box sx={{width:1050}}>
+    <div className='pro-box'>
       <Typography className="modelTitle" variant="h4">
         프로젝트
       </Typography>
@@ -182,12 +182,12 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
           ))}
         </Grid>
       )}
-      <Box mt={2}>
+      <div>
         <CreateProjectButton
           onClick={handleOpenCreate}
           isEditable={isEditable}
         />
-      </Box>
+      </div>
       <CreateProjectDialog
         open={createOpen}
         onClose={handleCloseCreate}
@@ -208,7 +208,7 @@ const ProjectList = ({ portfolioOwnerId, isEditable }) => {
         handleSubmit={handleUpdateSubmit}
         checkEmpty={checkEmpty}
       />
-    </Box>
+    </div>
   );
 };
 

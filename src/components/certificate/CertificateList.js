@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import {Typography, Grid } from '@mui/material';
 import { get, post, put, delete as del } from '../../api';
 import CertificateCard from './CertificateCard';
 import CreateCertificateButton from './CreateCertificateButton';
@@ -128,7 +128,7 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box sx={{width:1050}}>
+    <div className='cert-box'>
       <Typography className="modelTitle" variant="h4">
         자격증
       </Typography>
@@ -156,12 +156,12 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
         </Grid>
       )}
       {isEditable && (
-        <Box mt={2}>
+        <div>
           <CreateCertificateButton
             onClick={handleOpenCreate}
             onSubmit={handleSubmit}
           />
-        </Box>
+        </div>
       )}
       <CreateCertificateDialog
         open={createOpen}
@@ -181,7 +181,7 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
             updatedCertificate={updatedCertificate}
           />
         )}
-    </Box>
+    </div>
   );
 };
 

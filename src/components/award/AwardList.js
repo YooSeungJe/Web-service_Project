@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import {Typography, Grid } from '@mui/material';
 import { get, post, patch, delete as del } from '../../api';
 import AwardCard from './AwardCard';
 import CreateAwardButton from './CreateAwardButton';
@@ -121,7 +121,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box sx={{width:1050}}>
+    <div className='award-box'>
       <Typography variant="h4">수상 경력</Typography>
       {awards.length === 0 && (
         <Typography variant="body2">
@@ -147,9 +147,9 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
           ))}
         </Grid>
       )}
-      <Box mt={2}>
+      <div>
         <CreateAwardButton onClick={handleOpenCreate} isEditable={isEditable} />
-      </Box>
+      </div>
       <CreateAwardDialog
         open={createOpen}
         onClose={handleCloseCreate}
@@ -166,7 +166,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
         handleSubmit={handleUpdateSubmit}
         checkEmpty={checkEmpty}
       />
-    </Box>
+    </div>
   );
 };
 
