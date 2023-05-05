@@ -14,7 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 110vh;
+  height: 100vh; /* viewport 높이를 기준으로 설정 */
+  margin-top: 1%;
 }
 
 .form-wrapper {
@@ -22,8 +23,15 @@
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  width: 450px;
+  width: 27vw;
   max-width: 100%;
+  height: auto; /* 높이를 자동으로 설정 */
+}
+
+@media (max-width: 768px) { /* 768px 미만일 때 적용 */
+  .form-wrapper {
+    width: 90vw; /* viewport 넓이를 기준으로 설정 */
+  }
 }
 
 .form-group {
