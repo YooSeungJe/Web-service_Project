@@ -151,7 +151,6 @@ const ChatBox = ({
   console.log('chatList:', chatList);
   const startChat = async (event) => {
     event.stopPropagation();
-    setHasChatHistory(true);
     if (!chatRoomCreated) {
       await socket.emit('createChatRoom', { senderId, receiverId });
       setChatRoomCreated(true);
@@ -159,11 +158,16 @@ const ChatBox = ({
 
     fetchChatHistory(senderId, receiverId).then((chatHistory) => {
       if (chatHistory) {
+        setHasChatHistory(true);
+        setIsChatActive(true);
         setPrevChatList(chatHistory.messages);
+        setChatList(chatHistory.messages);
+      } else {
+        setHasChatHistory(false);
+        setIsChatActive(false);
+        setChatList([{ message: '새로운 채팅이 시작되었습니다.' }]);
       }
-      setIsChatActive(true);
     });
-    setChatList([{ message: '새로운 채팅이 시작되었습니다.' }]);
   };
 
   return (

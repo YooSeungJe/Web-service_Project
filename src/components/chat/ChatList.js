@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import ChatCard from './ChatCard';
 import * as api from '../../api';
 
-const ChatList = ({ onChatSelect, userId, senderId, receiverId }) => {
+const ChatList = ({
+  onChatSelect,
+  userId,
+  senderId,
+  receiverId,
+  fetchChatHistory,
+}) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [counterparts, setCounterparts] = useState({});
 
@@ -83,6 +89,16 @@ const ChatList = ({ onChatSelect, userId, senderId, receiverId }) => {
     }
   };
 
+  const fetchChatHistoryForList = async (roomId) => {
+    try {
+      const response = await api.get(`chat/${roomId}`);
+      console.log('Response data:', response.data);
+      return response.data.messages;
+    } catch (error) {
+      console.error('Failed to fetch chat history:', error);
+    }
+  };
+
   useEffect(() => {
     fetchChatRooms(userId);
   }, [userId]);
@@ -114,9 +130,12 @@ const ChatList = ({ onChatSelect, userId, senderId, receiverId }) => {
             receiverId={chatRoom.receiverId}
             receiverName={chatRoom.receiverName}
             counterpart={counterparts[chatRoom.roomId]}
-            onClick={() => {
+            onClick={async () => {
               console.log('Chat room item clicked with roomId:', chatRoom);
               onChatSelect(chatRoom.roomId);
+              // await fetchChatHistory(chatRoom.senderId, chatRoom.receiverId);
+              await fetchChatHistoryForList(chatRoom.roomId);
+              console.log('fecthcheck', chatRoom);
             }}
           />
         ))}
