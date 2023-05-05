@@ -5,6 +5,9 @@ import './ChatBox.css';
 import * as api from '../../api';
 import ChatList from './ChatList';
 
+const backendPortNumber = '5001';
+const serverUrl =
+  'http://' + window.location.hostname + ':' + backendPortNumber + '/';
 const ChatBox = ({
   show,
   handleClose,
@@ -111,7 +114,7 @@ const ChatBox = ({
   //   };
   // }, [senderId, receiverId, hasChatHistory, isMyPortfolio]);
   useEffect(() => {
-    const newSocket = io(`localhost:5001`, {
+    const newSocket = io(`${serverUrl}`, {
       cors: { origin: '*' },
     });
 
