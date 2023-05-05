@@ -52,7 +52,7 @@ const FloatingIcon = ({
 
       {showChatList && (
         <div className='chat-container'>
-          <ChatBox
+          {/* <ChatBox
             // show={!isMyPortfolio}
             show={true}
             handleClose={() => {
@@ -64,6 +64,20 @@ const FloatingIcon = ({
             selectedRoomId={selectedRoomId}
             resetSelectedRoom={() => setSelectedRoomId(null)}
             isMyPortfolio={isMyPortfolio}
+          /> */}
+          <ChatBox
+            show={true}
+            handleClose={() => {
+              setShowChatList(false);
+              setSelectedRoomId(null);
+            }}
+            senderId={senderId}
+            receiverId={receiverId}
+            selectedRoomId={selectedRoomId}
+            resetSelectedRoom={() => setSelectedRoomId(null)}
+            isMyPortfolio={isMyPortfolio}
+            chatHistory={chatList}
+            counterpart={receiver}
           />
         </div>
       )}
