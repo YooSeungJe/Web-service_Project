@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Col, Row } from 'react-bootstrap';
 import { UserStateContext } from '../App';
@@ -10,6 +10,7 @@ import ProjectList from './project/ProjectList';
 import AwardList from './award/AwardList';
 import CertificateList from './certificate/CertificateList';
 import FloatingIcon from './chat/FloatingIcon';
+import Sidebar from './side/Sidebar';
 
 import './Portfolio.scss';
 
@@ -23,6 +24,8 @@ function Portfolio() {
   const [isFetchCompleted, setIsFetchCompleted] = useState(false);
   const userState = useContext(UserStateContext);
   const [chatList, setChatList] = useState([]);
+
+  const scrollElement = useRef([]);
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -81,9 +84,9 @@ function Portfolio() {
   if (!isFetchCompleted) {
     return <div className='loading'>loading...</div>;
   }
-
   return (
     <div id='portfolio'>
+      <Sidebar scrollElement={scrollElement}/>
       <Container fluid>
         <Row>
           <Col md='3' lg='3'>
@@ -95,27 +98,27 @@ function Portfolio() {
           </Col>
           <Col>
             <div className='list' style={{ textAlign: 'center' }}>
-              <div className='modelList'>
+              <div className='modelList' ref={el => (scrollElement.current[1] = el)}>
                 <EducationList
                   portfolioOwnerId={portfolioOwner.id}
                   isEditable={portfolioOwner.id === userState.user?.id}
                 />
               </div>
-              <div className='modelList'>
+              <div className='modelList' ref={el => (scrollElement.current[2] = el)}>
                 <ProjectList
                   className='modelList'
                   portfolioOwnerId={portfolioOwner.id}
                   isEditable={portfolioOwner.id === userState.user?.id}
                 />
               </div>
-              <div className='modelList'>
+              <div className='modelList' ref={el => (scrollElement.current[3] = el)}>
                 <CertificateList
                   className='modelList'
                   portfolioOwnerId={portfolioOwner.id}
                   isEditable={portfolioOwner.id === userState.user?.id}
                 />
               </div>
-              <div className='modelList'>
+              <div className='modelList' ref={el => (scrollElement.current[4] = el)}>
                 <AwardList
                   className='modelList'
                   portfolioOwnerId={portfolioOwner.id}
@@ -131,6 +134,7 @@ function Portfolio() {
                 currentUser={userState.user}
                 receiver={portfolioOwner}
               />
+
             </div>
           </Col>
         </Row>
