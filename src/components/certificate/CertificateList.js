@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Typography, Grid } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 import { get, post, put, delete as del } from '../../api';
 import CertificateCard from './CertificateCard';
 import CreateCertificateButton from './CreateCertificateButton';
@@ -26,8 +26,6 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
     const fetchData = async () => {
       try {
         const response = await get(`certificates/${portfolioOwnerId}`);
-        console.log(response);
-        console.log(portfolioOwnerId);
         setCertificates(response.data);
       } catch (error) {
         console.error('Error fetching certificates:', error);
@@ -54,7 +52,6 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
   const handleSubmit = async (certification) => {
     try {
       const response = await post('certificates', certification);
-      console.log(certification);
       setCertificates([...certificates, response.data]);
       setCreateOpen(false);
 
@@ -76,7 +73,7 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
       (c) => c._id === selectedCertificateId
     );
     setUpdatedCertificate(currentCertificate); // Add this line
-    console.log('Update clicked for certificate:', selectedCertificateId);
+
     setUpdateOpen(true);
   };
 
@@ -129,11 +126,11 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <div className='cert-box'>
-      <Typography className="modelTitle" variant="h4">
+      <Typography className='modelTitle' variant='h4'>
         자격증
       </Typography>
       {certificates.length === 0 && (
-        <Typography variant="body2">
+        <Typography variant='body2'>
           등록된 자격증 내용이 없습니다.
           <br />
           <br />

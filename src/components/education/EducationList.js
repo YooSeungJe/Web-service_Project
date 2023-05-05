@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Typography, Grid } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 import { get, post, patch, delete as del } from '../../api';
 import EducationCard from './EducationCard';
 import CreateEducationButton from './CreateEducationButton';
@@ -81,7 +81,7 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleOpenUpdate = (_id) => {
     setSelectedEducationId(_id);
-    console.log('Update clicked for education:', _id);
+
     setUpdateOpen(true);
   };
 
@@ -91,9 +91,7 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
     setNewEducation({ schoolName: '', major: '', graduationTypeCode: '' });
   };
 
-  const handleOpenDelete = (_id) => {
-    console.log('Delete clicked for education:', _id);
-  };
+  const handleOpenDelete = (_id) => {};
 
   const handleUpdateSubmit = async (_id, updatedEducation) => {
     try {
@@ -102,12 +100,12 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
       setEducations(response.data);
       handleUpdateClose();
     } catch (error) {
-      console.log(`updatedEducation : ${updatedEducation}`);
-      console.log(
-        `updatedEducation.schoolName : ${updatedEducation.schoolName}`
-      );
-      console.log(`_id : ${_id}`);
-      console.log(`portfolioOwnerId : ${portfolioOwnerId}`);
+      // console.log(`updatedEducation : ${updatedEducation}`);
+      // console.log(
+      //   `updatedEducation.schoolName : ${updatedEducation.schoolName}`
+      // );
+      // console.log(`_id : ${_id}`);
+      // console.log(`portfolioOwnerId : ${portfolioOwnerId}`);
       console.error('Error updating education:', error);
     }
   };
@@ -131,11 +129,11 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
 
   return (
     <div className='edu-box'>
-      <Typography  className="modelTitle" variant="h4">
+      <Typography className='modelTitle' variant='h4'>
         학력
       </Typography>
       {educations.length === 0 && (
-        <Typography variant="body2">
+        <Typography variant='body2'>
           등록된 학력 내용이 없습니다.
           <br />
           <br />
@@ -143,9 +141,9 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
         </Typography>
       )}
       {educations.length > 0 && (
-        <Grid container spacing={2} key="education-grid">
+        <Grid container spacing={2} key='education-grid'>
           {educations.map((education) => (
-            <Grid  item key={education._id} xs={12} sm={6} md={4}>
+            <Grid item key={education._id} xs={12} sm={6} md={4}>
               <EducationCard
                 key={education._id}
                 education={education}

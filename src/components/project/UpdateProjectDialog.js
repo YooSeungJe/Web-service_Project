@@ -33,12 +33,12 @@ const UpdateProjectDialog = ({
         title: project.title,
         description: project.description,
       });
-      console.log(`project.startDate : ${project.startDate}`);
-      console.log(`project.endDate : ${project.endDate}`);
+      // console.log(`project.startDate : ${project.startDate}`);
+      // console.log(`project.endDate : ${project.endDate}`);
       setUpdatedStartDate(new Date(project.startDate));
       setUpdatedEndDate(new Date(project.endDate));
-      console.log(`updatedStartDate : ${updatedStartDate}`);
-      console.log(`updatedEndDate : ${updatedEndDate}`);
+      // console.log(`updatedStartDate : ${updatedStartDate}`);
+      // console.log(`updatedEndDate : ${updatedEndDate}`);
     }
   }, [project]);
 
@@ -60,48 +60,48 @@ const UpdateProjectDialog = ({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle variant="h5">프로젝트 변경</DialogTitle>
+      <DialogTitle variant='h5'>프로젝트 변경</DialogTitle>
       <DialogContent>
         <TextField
           ref={titleInput}
-          label="프로젝트 제목"
-          name="title"
-          margin="normal"
-          placeholder=""
+          label='프로젝트 제목'
+          name='title'
+          margin='normal'
+          placeholder=''
           fullWidth
           value={updatedProject.title}
           onChange={handleChange}
         />
         <TextField
           ref={descriptionInput}
-          label="설명"
-          name="description"
-          margin="normal"
-          placeholder=""
+          label='설명'
+          name='description'
+          margin='normal'
+          placeholder=''
           fullWidth
           value={updatedProject.description}
           onChange={handleChange}
         />
-        <div className="datePickers">
+        <div className='datePickers'>
           <DatePicker
-            className="datePicker"
+            className='datePicker'
             value={updatedProject.StartDate}
             selected={updatedStartDate}
             onChange={(date) => setUpdatedStartDate(date)}
-            dateFormat="yyyy.MM.dd"
+            dateFormat='yyyy.MM.dd'
           />
           <DatePicker
-            className="datePicker"
+            className='datePicker'
             value={updatedProject.EndDate}
             selected={updatedEndDate}
             onChange={(date) => setUpdatedEndDate(date)}
-            dateFormat="yyyy.MM.dd"
+            dateFormat='yyyy.MM.dd'
             minDate={new Date(updatedStartDate)}
           />
         </div>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} variant="outlined" color="secondary">
+        <Button onClick={onClose} variant='outlined' color='secondary'>
           취소하기
         </Button>
         <Button
@@ -109,8 +109,8 @@ const UpdateProjectDialog = ({
             checkEmpty(updatedProject, titleInput, descriptionInput) &&
               handleUpdate();
           }}
-          variant="contained"
-          color="primary"
+          variant='contained'
+          color='primary'
         >
           변경하기
         </Button>
