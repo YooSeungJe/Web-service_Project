@@ -22,12 +22,12 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
 
   const checkEmpty = (ref, input1, input2) => {
     switch (true) {
-      case ref.title.length === 0:
+      case ref.schoolName.length === 0:
         input1.current.querySelector('input').focus();
         input1.current.querySelector('input').placeholder =
           '한글자 이상을 입력해주세요';
         return false;
-      case ref.description.length === 0:
+      case ref.major.length === 0:
         input2.current.querySelector('input').focus();
         input2.current.querySelector('input').placeholder =
           '한글자 이상을 입력해주세요';
