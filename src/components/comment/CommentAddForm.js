@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import { DialogActions, Button } from '@mui/material';
 import * as Api from '../../api';
@@ -6,6 +6,7 @@ import { UserStateContext } from '../../App';
 
 function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
   const [content, setContent] = useState('');
+  const [userName, setUserName] = useState('');
   const contentInput = useRef();
   const userState = useContext(UserStateContext);
 
@@ -17,7 +18,7 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
 
     await Api.post(`comment/${portfolioOwnerId}`, {
       content,
-      name: userState.user.name,
+      name: userName,
     });
 
     const res = await Api.get(`comment/${portfolioOwnerId}`);
@@ -25,10 +26,14 @@ function CommentAddForm({ portfolioOwnerId, setAdding, setComments }) {
     setAdding(false);
   };
 
+  useEffect(() => {
+    setUserName(userState.user.name)
+  }, [userState.user])
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="addName">
-        <div>{userState.user.name}</div>
+        <div>{userName}</div>
       </Form.Group>
       <Form.Group controlId="addContent">
         <Form.Control
