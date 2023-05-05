@@ -7,10 +7,15 @@ const ChatList = ({
   userId,
   senderId,
   receiverId,
+  currentUserId,
   fetchChatHistory,
+  selectedRoomId,
 }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [counterparts, setCounterparts] = useState({});
+  const [selectedChat, setSelectedChat] = useState(null);
+  const [chatHistory, setChatHistory] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState(null);
 
   const fetchChatRooms = async (userId) => {
     try {
@@ -75,7 +80,6 @@ const ChatList = ({
     console.log(userId);
     try {
       const chatRoom = chatRooms.find((chatRoom) => chatRoom.roomId === roomId);
-      // Access the last message in the messages array
       const lastMessage = chatRoom.messages[chatRoom.messages.length - 1];
       const counterpartId =
         lastMessage.senderId === userId
@@ -118,27 +122,45 @@ const ChatList = ({
     updateCounterparts();
   }, [chatRooms]);
 
+  useEffect(() => {
+    if (selectedRoomId) {
+      const room = chatRooms.find((room) => room.roomId === selectedRoomId);
+      setSelectedRoom(room);
+    } else {
+      setSelectedRoom(null);
+    }
+  }, [selectedRoomId, chatRooms]);
   return (
     <div className='chat-list'>
       <ul>
-        {chatRooms.map((chatRoom) => (
-          <ChatCard
-            key={chatRoom.roomId}
-            roomId={chatRoom.roomId}
-            senderId={chatRoom.senderId}
-            senderName={chatRoom.senderName}
-            receiverId={chatRoom.receiverId}
-            receiverName={chatRoom.receiverName}
-            counterpart={counterparts[chatRoom.roomId]}
-            onClick={async () => {
-              console.log('Chat room item clicked with roomId:', chatRoom);
-              onChatSelect(chatRoom.roomId);
-              // await fetchChatHistory(chatRoom.senderId, chatRoom.receiverId);
-              await fetchChatHistoryForList(chatRoom.roomId);
-              console.log('fecthcheck', chatRoom);
-            }}
-          />
-        ))}
+        {chatRooms.map((chatRoom) => {
+          return (
+            <ChatCard
+              key={chatRoom.roomId}
+              roomId={chatRoom.roomId}
+              senderId={chatRoom.senderId}
+              senderName={chatRoom.senderName}
+              receiverId={chatRoom.receiverId}
+              receiverName={chatRoom.receiverName}
+              counterpart={counterparts[chatRoom.roomId]}
+              onClick={async () => {
+                console.log('Chat room item clicked with roomId:', chatRoom);
+                onChatSelect(chatRoom.roomId);
+                setSelectedChat(chatRoom.roomId);
+                console.log('i nened to check1', chatRoom.senderId);
+                console.log('i nened to check1', chatRoom.receiverId);
+                console.log('i nened to check1', currentUserId);
+                const fetchedHistory = await fetchChatHistoryForList(
+                  chatRoom.roomId
+                );
+                // onChatSelect(chatRoom.roomId, counterpartId);
+                setChatHistory(chatRoom);
+                console.log('setChat', fetchedHistory);
+                console.log('fetch', chatRoom);
+              }}
+            />
+          );
+        })}
       </ul>
     </div>
   );

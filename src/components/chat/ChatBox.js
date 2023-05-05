@@ -12,6 +12,8 @@ const ChatBox = ({
   receiverId,
   isMyPortfolio,
   // isChatOn,
+  chatHistory,
+  counterpart,
   resetSelectedRoom,
 }) => {
   console.log('senderId:', senderId, 'receiverId:', receiverId);
@@ -169,7 +171,9 @@ const ChatBox = ({
       }
     });
   };
-
+  useEffect(() => {
+    setChatList(chatHistory);
+  }, [chatHistory]);
   return (
     show && (
       <div className='chat-box'>
@@ -184,6 +188,10 @@ const ChatBox = ({
             userId={senderId}
             senderId={senderId}
             receiverId={receiverId}
+            selectedRoomId={selectedRoomId}
+            onClick={() => {
+              console.log(senderId);
+            }}
           />
         ) : (
           <>
@@ -199,6 +207,19 @@ const ChatBox = ({
                     Back
                   </button>
                 )}
+                {/* <div className='chat-box-body'>
+                  <ul>
+                    {Array.isArray(chatList) ? (
+                      chatList.map((chat, index) => (
+                        <li key={index} className='chat-message'>
+                          {chat.message}
+                        </li>
+                      ))
+                    ) : (
+                      <li>No chat messages</li>
+                    )}
+                  </ul>
+                </div> */}
                 <div className='chat-box-body'>
                   <ul>
                     {Array.isArray(chatList) ? (
@@ -212,6 +233,52 @@ const ChatBox = ({
                     )}
                   </ul>
                 </div>
+                {/* <div className='chat-box-body'>
+                  <ul>
+                    {(chatList || chatHistory) &&
+                      (chatList || chatHistory).map((chat, index) => (
+                        <li key={index} className='chat-message'>
+                          {chat.message}
+                        </li>
+                      ))}
+                    {!(chatList || chatHistory) && <li>No chat messages</li>}
+                  </ul>
+                </div> */}
+                {/* {hasChatHistory && Array.isArray(chatList) && (
+                  <div className='chat-box-body'>
+                    <ul>
+                      {chatList.map((chat, index) => (
+                        <li key={index} className='chat-message'>
+                          {chat.message}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {(!hasChatHistory || !Array.isArray(chatList)) && (
+                  <div className='chat-box-body'>
+                    <ul>
+                      <li>No chat messages</li>
+                    </ul>
+                  </div>
+                )} */}
+
+                {/* <div className='chat-box-footer'>
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group>
+                      <Form.Control
+                        type='text'
+                        placeholder='Enter message'
+                        value={message}
+                        onChange={(event) => setMessage(event.target.value)}
+                        name='message'
+                      />
+                    </Form.Group>
+                    <Button variant='primary' type='submit'>
+                      Send
+                    </Button>
+                  </Form>
+                </div> */}
                 <div className='chat-box-footer'>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group>
