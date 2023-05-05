@@ -5,8 +5,7 @@
   font-weight: normal;
   font-style: normal;
 }
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 .card {
   width: 300px;
   border: none;
@@ -114,5 +113,22 @@
 } */
 
 .networkLink:hover {
+  text-decoration: underline;
+}
+
+
+.port {
+  color: #617a55;
+  font-size: 22px;
+  display: block;
+  color: #617a55;
+  font-size: 22px;
+  font-family: 'Nunito Sans', sans-serif;
+  margin: auto;
+  display: block;
+  text-decoration: none;
+}
+
+.port:hover {
   text-decoration: underline;
 }
