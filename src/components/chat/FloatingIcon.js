@@ -21,7 +21,7 @@ const FloatingIcon = ({
   const [showChatList, setShowChatList] = useState(false);
 
   const userState = useContext(UserStateContext);
-  const senderId = userState.user.id;
+  const senderId = userState.user?.id;
 
   const handleClick = () => {
     console.log('Floating icon clicked');
