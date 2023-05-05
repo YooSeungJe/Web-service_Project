@@ -178,6 +178,8 @@ const ChatBox = ({
             currentUserId={senderId}
             onChatSelect={setSelectedRoomId}
             userId={senderId}
+            senderId={senderId}
+            receiverId={receiverId}
           />
         ) : (
           <>
