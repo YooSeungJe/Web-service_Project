@@ -4,7 +4,7 @@ import './ShowImage.css';
 import ProgressiveImage from "react-progressive-graceful-image";
 //https://www.npmjs.com/package/react-progressive-graceful-image 참조
 import loading from '../../image/loading.gif';
-import profile from '../../image/profile.png';
+import turtle from '../../image/turtle.png';
 
 const ShowImage = ({ userId, dataId, imageKey}) => {
   const [ image, setImage ] = useState(null);
@@ -24,7 +24,7 @@ const ShowImage = ({ userId, dataId, imageKey}) => {
       >
         {(src) => <img src={src} alt="profile" />}
       </ProgressiveImage>
-    : <img src={profile} alt='profile'/>
+    : <img src={turtle} alt='profile'/>
   )
 };
 
