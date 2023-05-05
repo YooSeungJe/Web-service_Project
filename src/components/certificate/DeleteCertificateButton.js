@@ -1,12 +1,14 @@
 import React from 'react';
-import { IconButton } from '@mui/material';
-import { Delete } from '@mui/icons-material';
+import { IconButton, Tooltip } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const DeleteCertificateButton = ({ onClick }) => {
   return (
-    <IconButton onClick={onClick} aria-label='delete certificate'>
-      <Delete />
-    </IconButton>
+    <Tooltip title="삭제하기">
+      <IconButton onClick={onClick} aria-label="delete">
+        <DeleteIcon />
+      </IconButton>
+    </Tooltip>
   );
 };
 

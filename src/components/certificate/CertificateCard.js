@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardActions, Box } from '@mui/material';
-import UpdateCertificateButton from './UpdateCertificateButton';
 import DeleteCertificateButton from './DeleteCertificateButton';
 import DeleteCertificateDialog from './DeleteCertificateDialog';
+import UpdateCertificateButton from './UpdateCertificateButton';
+
+import '../components.css';
 
 const CertificateCard = ({
   certificate,
@@ -10,9 +12,6 @@ const CertificateCard = ({
   handleDeleteConfirm,
   isEditable,
 }) => {
-  const { certificateName, certificateNumber, issuanceDate, issuingAuthority } =
-    certificate;
-
   const [deleteOpen, setDeleteOpen] = useState(false);
 
   const handleDeleteOpen = () => {
@@ -23,19 +22,37 @@ const CertificateCard = ({
     setDeleteOpen(false);
   };
 
+  const handleDelete = async () => {
+    try {
+      await handleDeleteConfirm(certificate._id);
+    } catch (error) {
+      console.error('Error deleting certificate:', error);
+    }
+  };
+
   return (
-    <Card>
-      <CardHeader title={certificateName} subheader={issuingAuthority} />
-      <CardContent>
-        <p>Certificate Number: {certificateNumber}</p>
-        <p>Issuance Date: {new Date(issuanceDate).toLocaleDateString()}</p>
+    <Card className="modelCard">
+      <CardHeader
+        variant="h5"
+        title={certificate.certificationName}
+        subheader={certificate.issuingAuthority}
+      />
+      <CardContent sx={{ fontFamily: 'ChosunGu' }}>
+        <p>
+          자격증 번호 <br /> {certificate.certificationNumber}
+        </p>
+        <p>
+          발행날짜
+          <br />
+          {new Date(certificate.issuanceDate).toLocaleDateString()}
+        </p>
       </CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (
             <UpdateCertificateButton
-              onClick={() => handleOpenUpdate(certificate.id)}
-              id={certificate.id}
+              onClick={() => handleOpenUpdate(certificate._id)}
+              id={certificate._id}
             />
           )}
           {isEditable && <DeleteCertificateButton onClick={handleDeleteOpen} />}
@@ -44,9 +61,8 @@ const CertificateCard = ({
       <DeleteCertificateDialog
         open={deleteOpen}
         onClose={handleDeleteClose}
-        handleDeleteConfirm={handleDeleteConfirm}
-        certificateId={certificate.id}
-        certificateName={certificate.certificateName}
+        onConfirmDelete={handleDelete}
+        certificate={certificate}
       />
     </Card>
   );

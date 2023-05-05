@@ -6,6 +6,8 @@ import CreateAwardButton from './CreateAwardButton';
 import CreateAwardDialog from './CreateAwardDialog';
 import UpdateAwardDialog from './UpdateAwardDialog';
 
+import '../components.css';
+
 const AwardList = ({ portfolioOwnerId, isEditable }) => {
   const [awards, setAwards] = useState([]);
   const [createOpen, setCreateOpen] = useState(false);
@@ -17,6 +19,24 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
 
   const [selectedAwardId, setSelectedAwardId] = useState(null);
   const [updateOpen, setUpdateOpen] = useState(false);
+
+  const checkEmpty = (ref, input1, input2) => {
+    switch (true) {
+      case ref.title.length === 0:
+        input1.current.querySelector('input').focus();
+        input1.current.querySelector('input').placeholder =
+          '한글자 이상을 입력해주세요';
+        return false;
+      case ref.description.length === 0:
+        input2.current.querySelector('input').focus();
+        input2.current.querySelector('input').placeholder =
+          '한글자 이상을 입력해주세요';
+        return false;
+      default:
+        return true;
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,7 +79,6 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
   const handleOpenUpdate = (_id) => {
     setSelectedAwardId(_id);
     console.log('Update clicked for award:', _id);
-    // Open the update dialog
     setUpdateOpen(true);
   };
 
@@ -102,13 +121,18 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box>
-      <Typography variant='h4'>Awards</Typography>
+    <Box sx={{width:1050}}>
+      <Typography variant="h4">수상 경력</Typography>
       {awards.length === 0 && (
-        <Typography variant='body1'>No awards found.</Typography>
+        <Typography variant="body2">
+          등록된 수상 내용이 없습니다.
+          <br />
+          <br />
+          아래 버튼으로 수상 경력을 추가해보세요.
+        </Typography>
       )}
       {awards.length > 0 && (
-        <Grid container spacing={2} key='award-grid'>
+        <Grid container spacing={2} key="award-grid">
           {awards.map((award) => (
             <Grid item key={award._id} xs={12} sm={6} md={4}>
               <AwardCard
@@ -133,12 +157,14 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
         handleChange={handleChangeCreate}
         handleSubmit={handleSubmit}
         setNewAward={setNewAward}
+        checkEmpty={checkEmpty}
       />
       <UpdateAwardDialog
         open={updateOpen}
         onClose={handleUpdateClose}
         award={awards.find((award) => award._id === selectedAwardId)}
         handleSubmit={handleUpdateSubmit}
+        checkEmpty={checkEmpty}
       />
     </Box>
   );

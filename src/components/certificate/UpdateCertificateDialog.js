@@ -1,103 +1,89 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  TextField,
-  DialogActions,
   Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
 } from '@mui/material';
 
 const UpdateCertificateDialog = ({
   open,
-  handleClose,
-  handleSubmit,
+  onClose,
   certificate,
+  handleUpdate,
 }) => {
   const [updatedCertificate, setUpdatedCertificate] = useState({
-    certificateName: '',
-    certificateNumber: '',
-    issuanceDate: '',
-    issuingAuthority: '',
+    certificationName: certificate.certificationName,
+    certificationNumber: certificate.certificationNumber,
+    issuanceDate: certificate.issuanceDate,
+    issuingAuthority: certificate.issuingAuthority,
   });
 
-  useEffect(() => {
-    if (certificate) {
-      setUpdatedCertificate({
-        certificateName: certificate.certificateName,
-        certificateNumber: certificate.certificateNumber,
-        issuanceDate: certificate.issuanceDate,
-        issuingAuthority: certificate.issuingAuthority,
-      });
-    }
-  }, [certificate]);
-
-  const handleChange = (event) => {
+  const handleInputChange = (event) => {
     setUpdatedCertificate({
       ...updatedCertificate,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleUpdate = () => {
-    handleSubmit(updatedCertificate);
+  const handleUpdateClick = () => {
+    handleUpdate(updatedCertificate);
+    onClose();
   };
 
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Edit Certificate</DialogTitle>
+    <Dialog open={open} onClose={onClose}>
+      <DialogTitle variant="h5">자격증 정보 변경</DialogTitle>
       <DialogContent>
         <TextField
-          label='Certificate Name'
-          name='certificateName'
-          value={updatedCertificate.certificateName}
-          onChange={handleChange}
+          autoFocus
+          margin="dense"
+          label="자격증 이름"
+          name="certificationName"
+          value={updatedCertificate.certificationName}
           fullWidth
-          margin='normal'
+          onChange={handleInputChange}
+        />
+        <TextField
+          margin="dense"
+          label="자격증 번호"
+          name="certificationNumber"
+          value={updatedCertificate.certificationNumber}
+          fullWidth
+          onChange={handleInputChange}
+        />
+        <TextField
+          margin="dense"
+          label="발행날짜"
+          type="date"
+          name="issuanceDate"
+          value={new Date(certificate.issuanceDate).toISOString().slice(0, 10)}
           InputLabelProps={{
             shrink: true,
           }}
-        />
-        <TextField
-          label='Certificate Number'
-          name='certificateNumber'
-          value={updatedCertificate.certificateNumber}
-          onChange={handleChange}
-          fullWidth
-          margin='normal'
-          InputLabelProps={{
-            shrink: true,
+          inputProps={{
+            max: '9999-12-31',
           }}
-        />
-        <TextField
-          label='Issuance Date'
-          name='issuanceDate'
-          value={updatedCertificate.issuanceDate}
-          onChange={handleChange}
           fullWidth
-          margin='normal'
-          InputLabelProps={{
-            shrink: true,
-          }}
+          onChange={handleInputChange}
         />
         <TextField
-          label='Issuing Authority'
-          name='issuingAuthority'
+          margin="dense"
+          label="발행기관"
+          name="issuingAuthority"
           value={updatedCertificate.issuingAuthority}
-          onChange={handleChange}
           fullWidth
-          margin='normal'
-          InputLabelProps={{
-            shrink: true,
-          }}
+          onChange={handleInputChange}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleUpdate} variant='contained' color='primary'>
-          Update
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
         </Button>
-        <Button onClick={handleClose} variant='outlined' color='secondary'>
-          Cancel
+        <Button onClick={handleUpdateClick} variant="contained" color="primary">
+          변경하기
         </Button>
       </DialogActions>
     </Dialog>

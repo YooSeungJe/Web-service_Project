@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -15,7 +15,11 @@ const CreateAwardDialog = ({
   handleChange,
   handleSubmit,
   setNewAward,
+  checkEmpty,
 }) => {
+  const titleInput = useRef();
+  const descriptionInput = useRef();
+
   const [yearError, setYearError] = useState(false);
 
   const handleClose = () => {
@@ -35,50 +39,62 @@ const CreateAwardDialog = ({
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Create Award</DialogTitle>
+      <DialogTitle variant="h5">수상 경력 추가</DialogTitle>
       <DialogContent>
         <TextField
-          label='Title'
-          name='title'
+          ref={titleInput}
+          label="수상 제목"
+          name="title"
           value={newAward.title}
           onChange={handleChange}
           fullWidth
-          margin='normal'
+          margin="normal"
+          placeholder="제목을 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
         />
         <TextField
-          label='Description'
-          name='description'
+          ref={descriptionInput}
+          label="설명"
+          name="description"
           value={newAward.description}
           onChange={handleChange}
           fullWidth
-          margin='normal'
+          margin="normal"
+          placeholder="내용을 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
         />
         <TextField
-          label='Year'
-          name='year'
+          label="수상연도"
+          name="year"
           value={newAward.year}
           onChange={handleYearChange}
           fullWidth
-          margin='normal'
+          margin="normal"
+          placeholder="수상연도를 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
           error={yearError}
-          helperText={yearError ? 'Year must be a number' : ''}
+          helperText={yearError ? '숫자로만 입력해주세요.' : ''}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleSubmit} variant='contained' color='primary'>
-          Create
+        <Button onClick={handleClose} variant="outlined" color="secondary">
+          취소하기
         </Button>
-        <Button onClick={handleClose} variant='outlined' color='secondary'>
-          Cancel
+        <Button
+          onClick={() => {
+            checkEmpty(newAward, titleInput, descriptionInput) &&
+              handleSubmit();
+          }}
+          variant="contained"
+          color="primary"
+        >
+          추가하기
         </Button>
       </DialogActions>
     </Dialog>

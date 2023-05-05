@@ -1,50 +1,86 @@
 import { useNavigate } from 'react-router-dom';
-import { Card, Row, Button, Col } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
+import { IconButton, Tooltip } from '@mui/material';
+import { Edit } from '@mui/icons-material';
+import styles from './UserCard.module.css';
+import ShowImage from '../image/ShowImage';
+import DeleteIcon from '@mui/icons-material/Delete';
+import * as Api from '../../api';
 
-function UserCard({ user, setIsEditing, isEditable, isNetwork }) {
+function UserCard({ user, setIsEditing, isEditable, isNetwork,currentUser}) {
   const navigate = useNavigate();
+
+  const handleWithdraw = async () => {
+    if (window.confirm('정말 탈퇴하시겠습니까?')) {
+      try {
+        // "users/유저id/withdraw" 엔드포인트로 DELETE 요청함.
+        const res = await Api.delete(`user/${user.id}/withdraw`);
+        console.log('check', res);
+        alert(res.data.message);
+        // 로그아웃 처리 등의 후속 처리를 할 수 있음.
+        sessionStorage.clear();
+        localStorage.removeItem('token');
+        window.location.reload();
+        navigate('/login', { replace: true });
+      } catch (err) {
+        console.error(err);
+        alert(
+          err.response?.data?.message || '탈퇴 과정에서 문제가 발생했습니다.'
+        );
+      }
+    }
+  };
+
   return (
-    <Card className='mb-2 ms-3 mr-5' style={{ width: '18rem' }}>
+    <Card className={`${styles.card} mb-2 ms-3 mr-5`} style={{ height: '420px' }}>
       <Card.Body>
-        <Row className='justify-content-md-center'>
-          <Card.Img
-            style={{ width: '10rem', height: '8rem' }}
-            className='mb-3'
-            src='http://placekitten.com/200/200'
-            alt='랜덤 고양이 사진 (http://placekitten.com API 사용)'
-          />
+        <Row className="justify-content-md-center">
+          <ShowImage userId={user?.id} dataId={user?.id} />
         </Row>
-        <Card.Title>{user?.name}</Card.Title>
-        <Card.Subtitle className='mb-2 text-muted'>{user?.email}</Card.Subtitle>
-        <Card.Text>{user?.description}</Card.Text>
+        <Card.Title className={`${styles.title}`}>
+          {user?.name}
+          {currentUser && currentUser.id === user?.id && (
+            <span>🐢</span>
+          )}
+        </Card.Title>
+        <Card.Subtitle className={`${styles.subtitle} ${styles.email}`}>
+          {user?.email}
+        </Card.Subtitle>
+        <Card.Text className={`${styles.text} ${styles.description}`}>
+          {user?.description}
+        </Card.Text>
 
         {isEditable && (
           <Col>
-            <Row className='mt-3 text-center text-info'>
+            <Row className={`${styles.button} ${styles.editButton}`}>
               <Col sm={{ span: 20 }}>
-                <Button
-                  variant='outline-info'
-                  size='sm'
-                  onClick={() => setIsEditing(true)}
-                >
-                  편집
-                </Button>
+                <div style={{ display: 'inline-flex' }}>
+                  <Tooltip title="회원정보 수정">
+                    <IconButton onClick={() => setIsEditing(true)}>
+                      <Edit />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="회원탈퇴">
+                    <IconButton onClick={handleWithdraw} aria-label="delete">
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
               </Col>
             </Row>
           </Col>
         )}
 
         {isNetwork && (
-          <Card.Link
-            className='mt-3'
-            href='#'
+          <button
+            className={`${styles.port}`}
             onClick={() => {
               console.log(`Clicked user ID: ${user.id}`);
               navigate(`/users/${user.id}`);
             }}
           >
-            포트폴리오
-          </Card.Link>
+            Portfolio
+          </button>
         )}
       </Card.Body>
     </Card>

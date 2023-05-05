@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -11,12 +11,21 @@ import {
   Radio,
 } from '@mui/material';
 
-const UpdateEducationDialog = ({ open, onClose, education, handleSubmit }) => {
+const UpdateEducationDialog = ({
+  open,
+  onClose,
+  education,
+  handleSubmit,
+  checkEmpty,
+}) => {
   const [updatedEducation, setUpdatedEducation] = useState({
     schoolName: '',
     major: '',
     graduationTypeCode: '',
   });
+
+  const schoolNameInput = useRef();
+  const majorInput = useRef();
 
   useEffect(() => {
     if (education) {
@@ -29,6 +38,8 @@ const UpdateEducationDialog = ({ open, onClose, education, handleSubmit }) => {
   }, [education]);
 
   const handleChange = (event) => {
+    console.log(updatedEducation); //확인용
+    console.log(education); //확인용
     setUpdatedEducation({
       ...updatedEducation,
       [event.target.name]: event.target.value,
@@ -42,49 +53,74 @@ const UpdateEducationDialog = ({ open, onClose, education, handleSubmit }) => {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Edit Education</DialogTitle>
+      <DialogTitle variant="h5">학력 변경</DialogTitle>
       <DialogContent>
         <TextField
+          ref={schoolNameInput}
           margin="normal"
           fullWidth
-          label="Education"
+          label="학교 이름"
           name="schoolName"
+          placeholder=""
           value={updatedEducation.schoolName}
           onChange={handleChange}
         />
         <TextField
+          ref={majorInput}
           margin="normal"
           fullWidth
-          label="Major"
+          label="전공"
           name="major"
+          placeholder=""
           value={updatedEducation.major}
           onChange={handleChange}
         />
         <RadioGroup
+          name="graduationTypeCode"
           value={updatedEducation.graduationTypeCode}
           onChange={handleChange}
+          row
         >
-          <FormControlLabel value="재학중" control={<Radio />} label="재학중" />
+          <FormControlLabel
+            value="재학중"
+            control={<Radio />}
+            label="재학중"
+            checked={updatedEducation.graduationTypeCode === '재학중'}
+          />
           <FormControlLabel
             value="학사졸업"
             control={<Radio />}
             label="학사졸업"
+            checked={updatedEducation.graduationTypeCode === '학사졸업'}
           />
           <FormControlLabel
             value="석사졸업"
             control={<Radio />}
             label="석사졸업"
+            checked={updatedEducation.graduationTypeCode === '석사졸업'}
           />
           <FormControlLabel
             value="박사졸업"
             control={<Radio />}
             label="박사졸업"
+            checked={updatedEducation.graduationTypeCode === '박사졸업'}
           />
         </RadioGroup>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={handleUpdate}>Update</Button>
+        <Button onClick={onClose} variant="outlined" color="secondary">
+          취소하기
+        </Button>
+        <Button
+          onClick={() => {
+            checkEmpty(updatedEducation, schoolNameInput, majorInput) &&
+              handleUpdate();
+          }}
+          variant="contained"
+          color="primary"
+        >
+          변경하기
+        </Button>
       </DialogActions>
     </Dialog>
   );

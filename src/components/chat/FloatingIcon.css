@@ -1,0 +1,26 @@
+.floating-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease-out;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* background-color: #007bff; */
+  /* color: #fff; */
+  text-align: center;
+  line-height: 100px;
+  font-size: 36px;
+}
+
+.floating-icon:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+/* .chat-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+} */

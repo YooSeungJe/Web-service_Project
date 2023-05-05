@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'ChosunGu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
+.card {
+  width: 300px;
+  border: none;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.title {
+  font-family: 'ChosunGu';
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: #666;
+}
+
+.text {
+  font-family: 'ChosunGu';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.row {
+  margin: 0;
+}
+
+.button {
+  margin-left: 120px !important;
+}
+
+/* .button {
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  margin: 0 auto;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+} */
+/* 
+.button:hover {
+  background-color: #0062cc;
+} */
+
+.link {
+  font-family: 'ChosunGu';
+  font-size: 14px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.description {
+  font-family: 'ChosunGu';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #666;
+}
+
+.occupation {
+  font-family: 'ChosunGu';
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.email {
+  font-family: 'ChosunGu';
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: #666;
+}
+/* 
+.editButton {
+  margin-top: 16px;
+}
+
+.networkLink {
+  font-family: 'ChosunGu';
+  font-size: 14px;
+  font-weight: 600;
+  color: #007bff;
+  text-decoration: none;
+} */
+
+.networkLink:hover {
+  text-decoration: underline;
+}
+
+
+.port {
+  color: #617a55;
+  font-size: 22px;
+  display: block;
+  color: #617a55;
+  font-size: 22px;
+  font-family: 'Nunito Sans', sans-serif;
+  margin: auto;
+  display: block;
+  text-decoration: none;
+}
+
+.port:hover {
+  text-decoration: underline;
+}

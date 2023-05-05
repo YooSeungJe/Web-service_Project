@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Grid } from '@mui/material';
-import { get, post, patch, delete as del } from '../../api';
+import { get, post, put, delete as del } from '../../api';
 import CertificateCard from './CertificateCard';
 import CreateCertificateButton from './CreateCertificateButton';
 import CreateCertificateDialog from './CreateCertificateDialog';
 import UpdateCertificateDialog from './UpdateCertificateDialog';
 
+import '../components.css';
+
 const CertificateList = ({ portfolioOwnerId, isEditable }) => {
   const [certificates, setCertificates] = useState([]);
   const [createOpen, setCreateOpen] = useState(false);
   const [newCertificate, setNewCertificate] = useState({
-    certificateName: '',
-    certificateNumber: '',
+    certificationName: '',
+    certificationNumber: '',
     issuanceDate: '',
     issuingAuthority: '',
   });
+  const [updatedCertificate, setUpdatedCertificate] = useState(null);
 
   const [selectedCertificateId, setSelectedCertificateId] = useState(null);
   const [updateOpen, setUpdateOpen] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await get(`certificates/${portfolioOwnerId}`);
+        console.log(response);
         console.log(portfolioOwnerId);
         setCertificates(response.data);
       } catch (error) {
@@ -38,37 +43,40 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
 
   const handleCloseCreate = () => {
     setCreateOpen(false);
-  };
-
-  const handleChangeCreate = (event) => {
     setNewCertificate({
-      ...newCertificate,
-      [event.target.name]: event.target.value,
+      certificationName: '',
+      certificationNumber: '',
+      issuanceDate: '',
+      issuingAuthority: '',
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (certification) => {
     try {
-      await post('certificates', newCertificate);
-      const response = await get(`certificates/${portfolioOwnerId}`);
-      setCertificates(response.data);
+      const response = await post('certificates', certification);
+      console.log(certification);
+      setCertificates([...certificates, response.data]);
       setCreateOpen(false);
 
       setNewCertificate({
-        certificateName: '',
-        certificateNumber: '',
+        certificationName: '',
+        certificationNumber: '',
         issuanceDate: '',
         issuingAuthority: '',
       });
+      setSelectedCertificateId(response.data._id);
       handleCloseCreate();
     } catch (error) {
       console.error('Error creating certificate:', error);
     }
   };
-
-  const handleOpenUpdate = (id) => {
-    setSelectedCertificateId(id);
-    console.log('Update clicked for certificate:', id);
+  const handleOpenUpdate = (selectedCertificateId) => {
+    setSelectedCertificateId(selectedCertificateId);
+    const currentCertificate = certificates.find(
+      (c) => c._id === selectedCertificateId
+    );
+    setUpdatedCertificate(currentCertificate); // Add this line
+    console.log('Update clicked for certificate:', selectedCertificateId);
     setUpdateOpen(true);
   };
 
@@ -76,29 +84,43 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
     setUpdateOpen(false);
     setSelectedCertificateId(null);
     setNewCertificate({
-      certificateName: '',
-      certificateNumber: '',
+      certificationName: '',
+      certificationNumber: '',
       issuanceDate: '',
       issuingAuthority: '',
     });
   };
-
-  const handleUpdateSubmit = async (id, updatedCertificate) => {
+  const handleUpdateSubmit = async (updatedCertificate) => {
     try {
-      await patch(`certificates/${id}`, updatedCertificate);
-      const response = await get(`certificates/${portfolioOwnerId}`);
-      setCertificates(response.data);
+      setCertificates(
+        certificates.map((c) => {
+          if (c._id === selectedCertificateId) {
+            return {
+              ...c,
+              certificationName: updatedCertificate.certificationName,
+              certificationNumber: updatedCertificate.certificationNumber,
+              issuanceDate: updatedCertificate.issuanceDate,
+              issuingAuthority: updatedCertificate.issuingAuthority,
+            };
+          }
+          return c;
+        })
+      );
+
+      await put(`certificates/${selectedCertificateId}`, updatedCertificate);
       handleUpdateClose();
     } catch (error) {
       console.error('Error updating certificate:', error);
     }
   };
 
-  const handleDeleteConfirm = async (id) => {
+  const handleDeleteConfirm = async (certificateId) => {
     try {
-      await del(`certificates/${id}`);
+      await del(`certificates/${certificateId}`);
       setCertificates((prevCertificates) =>
-        prevCertificates.filter((certificate) => certificate.id !== id)
+        prevCertificates.filter(
+          (certificate) => certificate._id !== certificateId
+        )
       );
     } catch (error) {
       console.error('Error deleting certificate:', error);
@@ -106,21 +128,28 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box>
-      <Typography variant="h4">Certificates</Typography>
+    <Box sx={{width:1050}}>
+      <Typography className="modelTitle" variant="h4">
+        자격증
+      </Typography>
       {certificates.length === 0 && (
-        <Typography variant="body1">No certificates found.</Typography>
+        <Typography variant="body2">
+          등록된 자격증 내용이 없습니다.
+          <br />
+          <br />
+          아래 버튼으로 보유하신 자격증 정보를 추가해보세요.
+        </Typography>
       )}
       {certificates.length > 0 && (
         <Grid container spacing={2}>
           {certificates.map((certificate) => (
-            <Grid item key={certificate.id} xs={12} sm={6} md={4}>
+            <Grid item key={certificate._id} xs={12} sm={6} md={4}>
               <CertificateCard
-                key={certificate.id}
+                key={certificate._id}
                 certificate={certificate}
                 isEditable={isEditable}
-                handleDeleteConfirm={handleDeleteConfirm}
-                handleOpenUpdate={handleOpenUpdate}
+                handleDeleteConfirm={() => handleDeleteConfirm(certificate._id)}
+                handleOpenUpdate={() => handleOpenUpdate(certificate._id)}
               />
             </Grid>
           ))}
@@ -128,22 +157,30 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
       )}
       {isEditable && (
         <Box mt={2}>
-          <CreateCertificateButton onClick={handleOpenCreate} />
+          <CreateCertificateButton
+            onClick={handleOpenCreate}
+            onSubmit={handleSubmit}
+          />
         </Box>
       )}
       <CreateCertificateDialog
         open={createOpen}
-        handleClose={handleCloseCreate}
-        handleChange={handleChangeCreate}
-        handleSubmit={handleSubmit}
-        newCertificate={newCertificate}
+        onClose={handleCloseCreate}
+        onSubmit={handleSubmit}
       />
-      <UpdateCertificateDialog
-        open={updateOpen}
-        handleClose={handleUpdateClose}
-        handleSubmit={handleUpdateSubmit}
-        certificate={certificates.find((c) => c.id === selectedCertificateId)}
-      />
+
+      {selectedCertificateId &&
+        certificates.find((c) => c._id === selectedCertificateId) && (
+          <UpdateCertificateDialog
+            open={updateOpen}
+            onClose={handleUpdateClose}
+            handleUpdate={handleUpdateSubmit}
+            certificate={certificates.find(
+              (c) => c._id === selectedCertificateId
+            )}
+            updatedCertificate={updatedCertificate}
+          />
+        )}
     </Box>
   );
 };

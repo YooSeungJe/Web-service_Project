@@ -4,6 +4,8 @@ import UpdateAwardButton from './UpdateAwardButton';
 import DeleteAwardButton from './DeleteAwardButton';
 import DeleteAwardDialog from './DeleteAwardDialog';
 
+import '../components.css';
+
 const AwardCard = ({
   award,
   handleOpenUpdate,
@@ -16,20 +18,13 @@ const AwardCard = ({
 
   const [deleteOpen, setDeleteOpen] = useState(false);
 
-  // const handleDeleteOpen = () => {
-  //   setDeleteOpen((prevState) => !prevState);
-  // };
-
-  // const handleDeleteClose = () => {
-  //   setDeleteOpen((prevState) => !prevState);
-  // };
   const handleDeleteButton = () => {
     setDeleteOpen((prevState) => !prevState);
   };
   return (
-    <Card>
-      <CardHeader title={title} subheader={year} />
-      <CardContent>{description}</CardContent>
+    <Card className="modelCard">
+      <CardHeader variant="h5" title={title} subheader={year} />
+      <CardContent sx={{ fontFamily: 'ChosunGu' }}>{description}</CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (
@@ -38,13 +33,11 @@ const AwardCard = ({
               id={award._id}
             />
           )}
-          {/* {isEditable && <DeleteAwardButton onClick={handleDeleteOpen} />} */}
           {isEditable && <DeleteAwardButton onClick={handleDeleteButton} />}
         </Box>
       </CardActions>
       <DeleteAwardDialog
         open={deleteOpen}
-        // onClose={handleDeleteClose}
         onClose={handleDeleteButton}
         handleDeleteConfirm={() => handleDeleteConfirm(award._id)}
         awardId={award._id}

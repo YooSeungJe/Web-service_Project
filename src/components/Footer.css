@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'ChosunGu';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,1000&display=swap');
+
+#footer {
+  height: 150px;
+  width: 100%;
+  align-items: left;
+  background-color: #ccd5ae;
+  padding: 1rem;
+}
+
+.footerTitle {
+  font-family: 'ChosunGu';
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0;
+}
+.footerItem {
+  font-family: 'ChosunGu';
+  font-size: 0.7rem;
+  display: inline;
+}
+
+.footerItem b,
+.footerItem div {
+  display: inline;
+}
+
+.footerCopyright {
+  font-family: 'ChosunGu';
+  font-size: 0.5rem;
+}
+
+.turtle {
+  float: left;
+  width: 100px;
+  height: 100px;
+  right: 0px;
+  bottom: 0px;
+}

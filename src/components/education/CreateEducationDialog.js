@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -18,41 +18,51 @@ const CreateEducationDialog = ({
   handleChange,
   handleSubmit,
   setNewEducation,
+  checkEmpty,
 }) => {
   const handleClose = () => {
     setNewEducation({ schoolName: '', major: '', graduationTypeCode: '' });
     onClose();
   };
 
+  const schoolNameInput = useRef();
+  const majorInput = useRef();
+
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Create Education</DialogTitle>
+      <DialogTitle variant="h5">학력 추가</DialogTitle>
       <DialogContent>
         <TextField
-          label="Education"
+          ref={schoolNameInput}
+          label="학교 이름"
           name="schoolName"
           value={newEducation.schoolName}
           onChange={handleChange}
           fullWidth
           margin="normal"
+          placeholder="학교 이름을 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
         />
         <TextField
-          label="Major"
+          ref={majorInput}
+          label="전공"
           name="major"
           value={newEducation.major}
           onChange={handleChange}
           fullWidth
           margin="normal"
+          placeholder="전공을 입력해주세요"
           InputLabelProps={{
             shrink: true,
           }}
         />
         <RadioGroup
+          name="graduationTypeCode"
           value={newEducation.graduationTypeCode}
           onChange={handleChange}
+          row
         >
           <FormControlLabel value="재학중" control={<Radio />} label="재학중" />
           <FormControlLabel
@@ -73,11 +83,18 @@ const CreateEducationDialog = ({
         </RadioGroup>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleSubmit} variant="contained" color="primary">
-          Create
-        </Button>
         <Button onClick={handleClose} variant="outlined" color="secondary">
-          Cancel
+          취소하기
+        </Button>
+        <Button
+          onClick={() => {
+            checkEmpty(newEducation, schoolNameInput, majorInput) &&
+              handleSubmit();
+          }}
+          variant="contained"
+          color="primary"
+        >
+          추가하기
         </Button>
       </DialogActions>
     </Dialog>

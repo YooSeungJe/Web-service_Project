@@ -4,6 +4,8 @@ import UpdateEducationButton from './UpdateEducationButton';
 import DeleteEducationButton from './DeleteEducationButton.js';
 import DeleteEducationDialog from './DeleteEducationDialog';
 
+import '../components.css';
+
 const EducationCard = ({
   education,
   handleOpenUpdate,
@@ -27,9 +29,13 @@ const EducationCard = ({
     setDeleteOpen((prevState) => !prevState);
   };
   return (
-    <Card>
-      <CardHeader title={schoolName} subheader={graduationTypeCode} />
-      <CardContent>{major}</CardContent>
+    <Card className="modelCard">
+      <CardHeader
+        variant="h5"
+        title={schoolName}
+        subheader={graduationTypeCode}
+      />
+      <CardContent sx={{ fontFamily: 'ChosunGu' }}>{major}</CardContent>
       <CardActions disableSpacing>
         <Box sx={{ ml: 'auto' }}>
           {isEditable && (
@@ -48,7 +54,7 @@ const EducationCard = ({
         onClose={handleDeleteButton}
         handleDeleteConfirm={() => handleDeleteConfirm(education._id)}
         educationId={education._id}
-        educationTitle={education.title}
+        educationTitle={education.schoolName}
       />
     </Card>
   );
