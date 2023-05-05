@@ -10,7 +10,7 @@ const useCounterpartData = (senderId, receiverId) => {
         const counterpartId =
           senderId === localStorage.getItem('userId') ? receiverId : senderId;
         const counterpart = await api.get(`users/${counterpartId}`);
-        console.log('test', counterpart);
+
         setCounterpartData({ id: counterpartId, name: counterpart.data.name });
       } catch (error) {
         console.error('Failed to fetch counterpart:', error);

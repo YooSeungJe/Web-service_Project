@@ -7,7 +7,7 @@ import ShowImage from '../image/ShowImage';
 import DeleteIcon from '@mui/icons-material/Delete';
 import * as Api from '../../api';
 
-function UserCard({ user, setIsEditing, isEditable, isNetwork,currentUser}) {
+function UserCard({ user, setIsEditing, isEditable, isNetwork, currentUser }) {
   const navigate = useNavigate();
 
   const handleWithdraw = async () => {
@@ -15,7 +15,7 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork,currentUser}) {
       try {
         // "users/유저id/withdraw" 엔드포인트로 DELETE 요청함.
         const res = await Api.delete(`user/${user.id}/withdraw`);
-        console.log('check', res);
+
         alert(res.data.message);
         // 로그아웃 처리 등의 후속 처리를 할 수 있음.
         sessionStorage.clear();
@@ -32,16 +32,17 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork,currentUser}) {
   };
 
   return (
-    <Card className={`${styles.card} mb-2 ms-3 mr-5`} style={{ height: '450px' }}>
+    <Card
+      className={`${styles.card} mb-2 ms-3 mr-5`}
+      style={{ height: '450px' }}
+    >
       <Card.Body>
-        <Row className="justify-content-md-center">
+        <Row className='justify-content-md-center'>
           <ShowImage userId={user?.id} dataId={user?.id} />
         </Row>
         <Card.Title className={`${styles.title}`}>
           {user?.name}
-          {currentUser && currentUser.id === user?.id && (
-            <span>🐢</span>
-          )}
+          {currentUser && currentUser.id === user?.id && <span>🐢</span>}
         </Card.Title>
         <Card.Subtitle className={`${styles.subtitle} ${styles.email}`}>
           {user?.email}
@@ -55,13 +56,13 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork,currentUser}) {
             <Row className={`${styles.button} ${styles.editButton}`}>
               <Col sm={{ span: 20 }}>
                 <div style={{ display: 'inline-flex' }}>
-                  <Tooltip title="회원정보 수정">
+                  <Tooltip title='회원정보 수정'>
                     <IconButton onClick={() => setIsEditing(true)}>
                       <Edit />
                     </IconButton>
                   </Tooltip>
-                  <Tooltip title="회원탈퇴">
-                    <IconButton onClick={handleWithdraw} aria-label="delete">
+                  <Tooltip title='회원탈퇴'>
+                    <IconButton onClick={handleWithdraw} aria-label='delete'>
                       <DeleteIcon />
                     </IconButton>
                   </Tooltip>
@@ -75,7 +76,7 @@ function UserCard({ user, setIsEditing, isEditable, isNetwork,currentUser}) {
           <button
             className={`${styles.port}`}
             onClick={() => {
-              console.log(`Clicked user ID: ${user.id}`);
+              // console.log(`Clicked user ID: ${user.id}`);
               navigate(`/users/${user.id}`);
             }}
           >

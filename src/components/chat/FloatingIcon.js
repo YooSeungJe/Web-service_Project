@@ -24,13 +24,11 @@ const FloatingIcon = ({
   const senderId = userState.user?.id;
 
   const handleClick = () => {
-    console.log('Floating icon clicked');
     setShowChatList((prevShowChatList) => !prevShowChatList);
     setHasStartedChat(true);
   };
 
   const handleChatSelect = (roomId) => {
-    console.log('handleChatSelect called with roomId:', roomId);
     setShowChatList(false);
     setSelectedRoomId(roomId);
     setHasStartedChat(true);

@@ -76,8 +76,6 @@ const ChatList = ({
   //   }
   // };
   const fetchCounterpart = async (roomId, userId) => {
-    console.log(roomId);
-    console.log(userId);
     try {
       const chatRoom = chatRooms.find((chatRoom) => chatRoom.roomId === roomId);
       const lastMessage = chatRoom.messages[chatRoom.messages.length - 1];
@@ -144,19 +142,13 @@ const ChatList = ({
               receiverName={chatRoom.receiverName}
               counterpart={counterparts[chatRoom.roomId]}
               onClick={async () => {
-                console.log('Chat room item clicked with roomId:', chatRoom);
                 onChatSelect(chatRoom.roomId);
                 setSelectedChat(chatRoom.roomId);
-                console.log('i nened to check1', chatRoom.senderId);
-                console.log('i nened to check1', chatRoom.receiverId);
-                console.log('i nened to check1', currentUserId);
                 const fetchedHistory = await fetchChatHistoryForList(
                   chatRoom.roomId
                 );
                 // onChatSelect(chatRoom.roomId, counterpartId);
                 setChatHistory(chatRoom);
-                console.log('setChat', fetchedHistory);
-                console.log('fetch', chatRoom);
               }}
             />
           );

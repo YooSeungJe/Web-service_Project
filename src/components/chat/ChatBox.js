@@ -16,7 +16,6 @@ const ChatBox = ({
   counterpart,
   resetSelectedRoom,
 }) => {
-  console.log('senderId:', senderId, 'receiverId:', receiverId);
   const [message, setMessage] = useState('');
   const [socket, setSocket] = useState(null);
   const [chatList, setChatList] = useState([]);
@@ -63,7 +62,7 @@ const ChatBox = ({
     try {
       const roomId = [senderId, receiverId].sort().join('-');
       const response = await api.get(`chat/${roomId}`);
-      console.log('Response data:', response.data);
+
       setChatList(response.data.messages);
       setHasChatHistory(response.data.messages.length > 0);
       setIsChatActive(true);
@@ -117,9 +116,8 @@ const ChatBox = ({
     });
 
     newSocket.emit('joinRoom', { senderId, receiverId });
-    console.log('joinRoom emitted with', { senderId, receiverId });
+
     newSocket.on('newMessage', (message) => {
-      console.log('newMessage received with', message);
       setChatList((prevChatList) =>
         Array.isArray(prevChatList) ? [...prevChatList, message] : [message]
       );
@@ -144,13 +142,12 @@ const ChatBox = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('handleSubmit called with message:', message);
+
     socket.emit('chatMessage', { senderId, receiverId, message });
-    console.log('chatMessage emitted:', { senderId, receiverId, message });
+
     setMessage('');
   };
 
-  console.log('chatList:', chatList);
   const startChat = async (event) => {
     event.stopPropagation();
     if (!chatRoomCreated) {
@@ -189,9 +186,6 @@ const ChatBox = ({
             senderId={senderId}
             receiverId={receiverId}
             selectedRoomId={selectedRoomId}
-            onClick={() => {
-              console.log(senderId);
-            }}
           />
         ) : (
           <>
