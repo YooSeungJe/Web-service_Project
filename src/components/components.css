@@ -41,3 +41,19 @@ body {
   flex-direction: space-between;
   margin-top: 15px;
 }
+
+.pro-box {
+  width:60vw;
+}
+
+.edu-box {
+  width:60vw;
+}
+
+.cert-box {
+  width:60vw;
+}
+
+.award-box {
+  width: 60vw;
+}

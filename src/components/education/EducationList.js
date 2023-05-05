@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import {Typography, Grid } from '@mui/material';
 import { get, post, patch, delete as del } from '../../api';
 import EducationCard from './EducationCard';
 import CreateEducationButton from './CreateEducationButton';
@@ -130,7 +130,7 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box sx={{width:1050}}>
+    <div className='edu-box'>
       <Typography  className="modelTitle" variant="h4">
         학력
       </Typography>
@@ -158,12 +158,12 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
           ))}
         </Grid>
       )}
-      <Box mt={2}>
+      <div>
         <CreateEducationButton
           onClick={handleOpenCreate}
           isEditable={isEditable}
         />
-      </Box>
+      </div>
       <CreateEducationDialog
         open={createOpen}
         onClose={handleCloseCreate}
@@ -182,7 +182,7 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
         handleSubmit={handleUpdateSubmit}
         checkEmpty={checkEmpty}
       />
-    </Box>
+    </div>
   );
 };
 
