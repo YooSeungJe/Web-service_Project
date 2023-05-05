@@ -128,7 +128,7 @@ const CertificateList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box>
+    <Box sx={{width:1050}}>
       <Typography className="modelTitle" variant="h4">
         자격증
       </Typography>

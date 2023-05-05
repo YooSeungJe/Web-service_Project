@@ -121,7 +121,7 @@ const AwardList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box>
+    <Box sx={{width:1050}}>
       <Typography variant="h4">수상 경력</Typography>
       {awards.length === 0 && (
         <Typography variant="body2">

@@ -130,8 +130,8 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
   };
 
   return (
-    <Box>
-      <Typography className="modelTitle" variant="h4">
+    <Box sx={{width:1050}}>
+      <Typography  className="modelTitle" variant="h4">
         학력
       </Typography>
       {educations.length === 0 && (
@@ -145,7 +145,7 @@ const EducationList = ({ portfolioOwnerId, isEditable }) => {
       {educations.length > 0 && (
         <Grid container spacing={2} key="education-grid">
           {educations.map((education) => (
-            <Grid item key={education._id} xs={12} sm={6} md={4}>
+            <Grid  item key={education._id} xs={12} sm={6} md={4}>
               <EducationCard
                 key={education._id}
                 education={education}
