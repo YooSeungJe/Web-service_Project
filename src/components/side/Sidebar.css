@@ -11,7 +11,7 @@
     right: 25px;
     width: 80px;
     height: 30vh;
-    z-index: 9999;
+    z-index: 9998;
     background-color:rgba(0, 73, 0, 0.3);
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -44,7 +44,7 @@
     height: 70px;
     line-height: 70px;
     border-radius: 50%;
-    z-index: 9999;
+    z-index: 9998;
     text-align: center;
     background-color:rgba(0, 73, 0, 0.3);
     font-family: 'RixYeoljeongdo_Regular';
