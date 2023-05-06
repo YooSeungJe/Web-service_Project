@@ -15,6 +15,7 @@ const FloatingIcon = ({
   receiver,
   chatList,
   currentUser,
+  setShowButton,
 }) => {
   const [hasStartedChat, setHasStartedChat] = useState(false);
   const [selectedRoomId, setSelectedRoomId] = useState(null);
@@ -26,6 +27,7 @@ const FloatingIcon = ({
   const handleClick = () => {
     setShowChatList((prevShowChatList) => !prevShowChatList);
     setHasStartedChat(true);
+    setShowButton(showChatList);
   };
 
   const handleChatSelect = (roomId) => {
@@ -64,10 +66,11 @@ const FloatingIcon = ({
             isMyPortfolio={isMyPortfolio}
           /> */}
           <ChatBox
-            show={true}
+            show={showChatList}
             handleClose={() => {
               setShowChatList(false);
               setSelectedRoomId(null);
+              setShowButton(true);
             }}
             senderId={senderId}
             receiverId={receiverId}
