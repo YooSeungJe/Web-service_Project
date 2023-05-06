@@ -24,7 +24,7 @@ function Portfolio() {
   const [isFetchCompleted, setIsFetchCompleted] = useState(false);
   const userState = useContext(UserStateContext);
   const [chatList, setChatList] = useState([]);
-
+  const [ showButton, setShowButton ] = useState(true);
   const scrollElement = useRef([]);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ function Portfolio() {
   }
   return (
     <div id='portfolio'>
-      <Sidebar scrollElement={scrollElement}/>
+      <Sidebar pos={scrollElement} showButton={showButton} />
       <Container fluid>
         <Row>
           <Col md='3' lg='3'>
@@ -133,6 +133,7 @@ function Portfolio() {
                 userId={userState.user?.id}
                 currentUser={userState.user}
                 receiver={portfolioOwner}
+                setShowButton={setShowButton}
               />
 
             </div>

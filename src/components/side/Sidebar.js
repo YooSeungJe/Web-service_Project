@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Sidebar.css';
 
-function Sidebar(pos){
+function Sidebar({pos,showButton}){
   const [ showBar, setShowBar ] = useState(true);
-  const position = pos.scrollElement.current;
+  const position = pos.scrollElement?.current;
   const top = document.querySelector('#root');
   const onMoveBox = (card) => {
     setShowBar(!showBar)
@@ -13,6 +13,10 @@ function Sidebar(pos){
       position[card].scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+
+  useEffect(()=>{
+    if(showButton===false) setShowBar(false);
+  }, [showButton])
 
   return (
     <>
@@ -25,9 +29,11 @@ function Sidebar(pos){
           <div className='sidebarText' onClick={()=>onMoveBox(4)}>수상경력</div>
         </div>
       }
-      <div className='sidebarButton'onClick={()=>setShowBar(!showBar)}>
-        이동
-      </div>
+      {showButton &&
+        <div className='sidebarButton'onClick={()=>setShowBar(!showBar)}>
+          이동
+        </div>
+      }
     </>
   )
 }
