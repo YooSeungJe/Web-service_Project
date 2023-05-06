@@ -86,7 +86,7 @@ function Portfolio() {
   }
   return (
     <div id='portfolio'>
-      <Sidebar pos={scrollElement} showButton={showButton} />
+      <Sidebar scrollElement={scrollElement} showButton={showButton} />
       <Container fluid>
         <Row>
           <Col md='3' lg='3'>
